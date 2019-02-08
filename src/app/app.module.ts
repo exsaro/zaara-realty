@@ -6,7 +6,7 @@ import  { RouterModule, Routes} from '@angular/router';
 import  { LayoutComponent} from './shared/layout/layout.component';
 import { AppPagesModule} from './pages/app-pages.module';
 import { HomeComponent } from './pages/home/home.component';
-import { ViewComponent } from './pages/view/view.component';
+import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
 
 const routes:Routes = [ {
   path : '',
@@ -14,8 +14,8 @@ const routes:Routes = [ {
 },
 
 {
-  path : 'view',
-  component: ViewComponent
+  path : 'project-details',
+  component: ProjectDetailsComponent
 }
 
 ];

@@ -1,6 +1,6 @@
 import  { NgModule } from '@angular/core';
 import { HomeComponent} from './home/home.component';
-import { ViewComponent} from './view/view.component';
+import { ProjectDetailsComponent} from './project-details/project-details.component';
 import  { RouterModule, Routes} from '@angular/router';
 
 /*const routes:Routes = [ {
@@ -12,7 +12,7 @@ import  { RouterModule, Routes} from '@angular/router';
 
     declarations : [
         HomeComponent,
-        ViewComponent
+        ProjectDetailsComponent
     ],
     imports :[
        // RouterModule.forChild(routes)
