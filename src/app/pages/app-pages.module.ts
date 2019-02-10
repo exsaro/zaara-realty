@@ -1,5 +1,6 @@
 import  { NgModule } from '@angular/core';
 import { HomeComponent} from './home/home.component';
+import { ProjectSummaryComponent } from '../shared/components/project-summary/project-summary.component';
 import { ProjectDetailsComponent} from './project-details/project-details.component';
 import  { RouterModule, Routes} from '@angular/router';
 
@@ -9,12 +10,13 @@ import  { RouterModule, Routes} from '@angular/router';
   }];*/
 
 @NgModule({
-
     declarations : [
         HomeComponent,
+        ProjectSummaryComponent,
         ProjectDetailsComponent
     ],
     imports :[
+        // ProjectSummaryComponent
        // RouterModule.forChild(routes)
     ],
     exports: [

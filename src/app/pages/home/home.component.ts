@@ -59,7 +59,5 @@ export class HomeComponent implements OnInit{
     }
 
 
-    public showProjectDetails():void{
-        this.router.navigate(['project-details']);
-    }
+   
 }
