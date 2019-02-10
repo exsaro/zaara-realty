@@ -3,6 +3,7 @@
  @import '../node_modules/font-awesome/css/font-awesome.min.css'; 
  @import '../node_modules/owl.carousel/dist/assets/owl.carousel.min.css'; 
 
+
  body{
     font-family: 'Roboto', sans-serif;
     color: #343433;
@@ -22,6 +23,9 @@ h3{
     min-width: 197px;
     font-weight: bold;
     font-size: 17px;
+}
+.btn-default{
+    background:#ddd;
 }
 .btn-primary{
     color: #000;
@@ -213,11 +217,11 @@ header h1:after{
     overflow: hidden;
     color: #dabd7a;
 }
-footer{
+.enquiry{
     background: #363635;
     color: #fff;
 }
-footer .btn{
+.enquiry .btn{
     min-width: unset;
     font-family: 'Roboto', sans-serif;
     font-size: 13px;
@@ -393,7 +397,7 @@ footer .btn{
         background-color: rgba(0,0,0,.5);
     }
     .hero-container .carousel-indicators li.active{
-        background: #000;
+        background-color: #000;
     }
     .project-container .media-body ul{
         height: auto;

@@ -124,3 +124,120 @@
     </div>
 </section>
 
+<section class="pt-5 enquiry" id="contact">
+    <div class="container">
+        <div class="text-center">
+            <h3 class="mb-4">Enquiry</h3>
+            <p class="mb-4">Connect with our property Consultant!</p>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-10">
+   
+                <div id='crmWebToEntityForm'>
+                    <META HTTP-EQUIV='content-type' CONTENT='text/html;charset=UTF-8'>
+                    <form action='https://crm.zoho.com/crm/WebToLeadForm' name=WebToLeads3582582000000339009 method='POST' onSubmit='javascript:document.charset="UTF-8"; return checkMandatory3582582000000339009()'
+                        accept-charset='UTF-8'>
+                        <!-- Do not remove this code. 
+                        <input type='text' style='display:none;' name='xnQsjsdp' value='13bd28054a81dc3eec8b1fca1d463073f9b5650291066bcb5198a7146be28171' />
+                        <input type='hidden' name='zc_gad' id='zc_gad' value='' />
+                        <input type='text' style='display:none;' name='xmIwtLD' value='6f7b7d1f42c0878f26498850496694911f514d8ea956d7ce8c626c2685f38e4c' />
+                        <input type='text' style='display:none;' name='actionType' value='TGVhZHM=' />
+                
+                        <input type='text' style='display:none;' name='returnURL' value='http&#x3a;&#x2f;&#x2f;zaararealty.in' />
+                  Do not remove this code. 
+                        <input type='text' style='display:none;' id='ldeskuid' name='ldeskuid'></input>
+                        <input type='text' style='display:none;' id='LDTuvid' name='LDTuvid'></input>
+                    Do not remove this code. -->
+                        <div class="form-row mb-5">
+                            <div class="form-group col-md-4">
+                                <input type='text' class='form-control' maxlength='80' name='Last Name' placeholder='Name' />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input type='text' class='form-control' maxlength='100' name='Email' placeholder='Email' />
+                            </div>
+                            <div class="form-group d-none">
+                                <select class='form-control' name='Lead Source'>
+                                   
+                                    <option selected value='Zaara&#x20;Leads'>Zaara Leads</option>
+                                  
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input type='text' class='form-control' maxlength='30' name='Mobile' placeholder='Mobile' />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <div class="d-flex align-items-center">
+                                <span class="w-50 pr-3"> <input type="text" name='enterdigest' class='form-control' placeholder="Enter Captcha" /></span>
+                                <span class="w-50"><img class="img-fluid" id='imgid' src='https://crm.zoho.com/crm/CaptchaServlet?formId=6f7b7d1f42c0878f26498850496694911f514d8ea956d7ce8c626c2685f38e4c&grpid=13bd28054a81dc3eec8b1fca1d463073f9b5650291066bcb5198a7146be28171'></span>
+                                <span class="cap-reload">
+                                    <a href='javascript:;' onclick='reloadImg()' style="color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#f1c40f"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg></a>
+                                </span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group col-md-8 text-right">
+                                <input class='btn btn-primary' type='submit' value='Submit' />
+                                <input class='btn btn-default ml-1' type='reset' value='Reset' />
+                            </div>
+                        </div>
+                        <!--<script>
+                            var mndFileds = new Array('Last Name', 'Email', 'Mobile');
+                            var fldLangVal = new Array('Last Name', 'Email', 'Mobile');
+                            var name = '';
+                            var email = '';
+                             function reloadImg() {
+if(document.getElementById('imgid').src.indexOf('&d') !== -1 ) {
+  document.getElementById('imgid').src=document.getElementById('imgid').src.substring(0,document.getElementById('imgid').src.indexOf('&d'))+'&d'+new Date().getTime();
+}  else {
+  document.getElementById('imgid').src = document.getElementById('imgid').src+'&d'+new Date().getTime();
+}
+}
+                            function checkMandatory3582582000000339009() {
+                                for (i = 0; i < mndFileds.length; i++) {
+                                    var fieldObj = document.forms['WebToLeads3582582000000339009'][mndFileds[i]];
+                                    if (fieldObj) {
+                                        if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length == 0) {
+                                            if (fieldObj.type == 'file') {
+                                                alert('Please select a file to upload.');
+                                                fieldObj.focus();
+                                                return false;
+                                            }
+                                            alert(fldLangVal[i] + ' cannot be empty.');
+                                            fieldObj.focus();
+                                            return false;
+                                        } else if (fieldObj.nodeName == 'SELECT') {
+                                            if (fieldObj.options[fieldObj.selectedIndex].value == '-None-') {
+                                                alert(fldLangVal[i] + ' cannot be none.');
+                                                fieldObj.focus();
+                                                return false;
+                                            }
+                                        } else if (fieldObj.type == 'checkbox') {
+                                            if (fieldObj.checked == false) {
+                                                alert('Please accept  ' + fldLangVal[i]);
+                                                fieldObj.focus();
+                                                return false;
+                                            }
+                                        }
+                                        try {
+                                            if (fieldObj.name == 'Name') {
+                                                name = fieldObj.value;
+                                            }
+                                        } catch (e) { }
+                                    }
+                                }
+                                trackVisitor();
+                            }
+                        </script>
+                        <script type='text/javascript' id='VisitorTracking'>var $zoho = $zoho || {}; $zoho.salesiq = $zoho.salesiq || { widgetcode: 'cbd79a307854091edc4c17ce1ab03ee4b096443a8ff041c96feb67127ffa91205d5fe629768af6d9a03793700d9418c2', values: {}, ready: function () { $zoho.salesiq.floatbutton.visible('hide'); } }; var d = document; s = d.createElement('script'); s.type = 'text/javascript'; s.id = 'zsiqscript'; s.defer = true; s.src = 'https://salesiq.zoho.com/widget'; t = d.getElementsByTagName('script')[0]; t.parentNode.insertBefore(s, t); function trackVisitor() { try { if ($zoho) { var LDTuvidObj = document.forms['WebToLeads3582582000000339009']['LDTuvid']; if (LDTuvidObj) { LDTuvidObj.value = $zoho.salesiq.visitor.uniqueid(); } var firstnameObj = document.forms['WebToLeads3582582000000339009']['First Name']; if (firstnameObj) { name = firstnameObj.value + ' ' + name; } $zoho.salesiq.visitor.name(name); var emailObj = document.forms['WebToLeads3582582000000339009']['Email']; if (emailObj) { email = emailObj.value; $zoho.salesiq.visitor.email(email); } } } catch (e) { } }</script>-->
+                    </form>
+                     <iframe name='captchaFrame' style='display:none;'></iframe>
+                </div>
+                <div class="address text-center">
+                    <p><span>Call us: </span>+91 7067 7067 22</p>
+                    <p><span>Email us: </span><a href="mailto:contact@zaararealty.in">contact@zaararealty.in</a></p>
+                    <p class="pb-4"><span>Address:</span> F1, No: 78, Gulmohar Avenue, Velachery main road, Guindy, Chennai - 600 032.</p>
+                </div>
+            </div>
+        </div>
+    </div>    
+</section>
