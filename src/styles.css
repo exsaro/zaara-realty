@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
- @import '../node_modules/bootstrap/dist/css/bootstrap.min.css'; 
- @import '../node_modules/font-awesome/css/font-awesome.min.css'; 
- @import '../node_modules/owl.carousel/dist/assets/owl.carousel.min.css'; 
+ @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+ @import '../node_modules/font-awesome/css/font-awesome.min.css';
+ @import '../node_modules/owl.carousel/dist/assets/owl.carousel.min.css';
 
 
  body{
@@ -37,28 +37,7 @@ h3{
 .btn,.nav a{
     font-family: 'Cormorant SC', serif;
 }
-header .nav a{
-    font-size: 12px;
-    text-transform: uppercase;
-    color: #000;
-    font-weight: bold;
-}
-header .nav li{
-    margin-right: 25px;
-}
-header h1{
-    margin: 10px 0;
-    position: relative;
-    padding-right: 45px;
-}
-header h1:after{
-    position: absolute;
-    right: 25px;
-    content: "";
-    width: 1px;
-    height: 100%;
-    background: #cfa854;
-}
+
 .hero-section{
     position: relative;
     background: #000;
@@ -73,7 +52,7 @@ header h1:after{
     color: #fff;
     font-weight: 300;
     text-shadow: 0 0 8px rgb(0,0,0,0.5);
-    
+
 }
 .hero-section .hero-caption.estimtn{
     bottom: 0;
@@ -240,27 +219,7 @@ header h1:after{
 .address a{
     color: #fff;
 }
-.copyright-container{
-    background: #151515;
-}
-.copyright-text{
-    font-size: 12px;
-    color: #727272;
-}
-.copyright-container ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.copyright-container li{
-    margin-left: 15px;
-}
-.copyright-container li a{
-    color: #fff;
-}
-.copyright-container li .fa{
-    font-size: 14px;
-}
+
 .hamburger,.closBtn{
     display: none;
 }
@@ -335,7 +294,7 @@ header h1:after{
     }
     .hamburger,.project-container .media,.closBtn{
         display: block;
-    }   
+    }
     .nav{
         position: fixed;
         right: -220px;
