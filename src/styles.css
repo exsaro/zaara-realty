@@ -41,10 +41,11 @@ h3{
 .hero-section{
     position: relative;
     background: #000;
+    height: 540px;
 }
 .hero-section img{
     width: 100%;
-    opacity: .8;
+    opacity: .5;
 }
 .hero-section .hero-caption{
     position: absolute;
@@ -54,26 +55,7 @@ h3{
     text-shadow: 0 0 8px rgb(0,0,0,0.5);
 
 }
-.hero-section .hero-caption.estimtn{
-    bottom: 0;
-    border-bottom: solid 1px #fff;
-}
-.hero-section .hero-caption.rera{
-    top: 20px;
-    font-size: 14px;
-}
-.hero-caption.estimtn ul{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-.hero-caption.estimtn li{
-    font-size: 32px;
-    margin-right: 50px;
-}
-.hero-caption.estimtn li span{
-    display: block;
-}
+
 /* .hero-section .hero-caption span{
     background: rgba(255,255,255,0.7);
     padding: 0 15px;
