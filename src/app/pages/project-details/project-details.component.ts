@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import { Projects} from '../../shared/models/projects.model';
+
 
 @Component({
     selector:'app-view',
@@ -7,11 +9,17 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class ProjectDetailsComponent implements OnInit{
+    public projectDetails:Projects.ResponseModel;
     constructor(){
-
     }
 
     ngOnInit(){
+        this.setProjectDetails();
+     }
 
-    }
+     public setProjectDetails():void{
+         if(sessionStorage.getItem('projectDetails')){
+            this.projectDetails = JSON.parse(sessionStorage.getItem('projectDetails'));
+         }
+     }
 }

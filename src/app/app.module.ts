@@ -6,6 +6,7 @@ import  { RouterModule, Routes} from '@angular/router';
 import  { LayoutComponent} from './shared/layout/layout.component';
 import { AppPagesModule} from './pages/app-pages.module';
 import { HomeComponent } from './pages/home/home.component';
+import { HttpClientModule} from '@angular/common/http';
 import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
 
 const routes:Routes = [ {
@@ -28,6 +29,7 @@ const routes:Routes = [ {
     BrowserModule,
     SharedModule,
     AppPagesModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   exports: [

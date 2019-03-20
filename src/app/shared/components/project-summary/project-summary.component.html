@@ -1,34 +1,35 @@
 <section class="project-container mb-5 position-relative" id="projects">
     <h3 class="text-center mb-4 mt-0">Projects</h3>
     <div class="container">
-        <div class="row mb-4">
-            <div class="col-xl-6 col-lg-6 col-md-12">
-                <div class="card" (click)="showProjectDetails()">
-                    <p class="card-title">Ready to Move Luxury Villa at Medvakkam</p>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 mb-4" *ngFor="let project of projectSummaryList;let projectIndex = index">
+                <div class="card" (click)="showProjectDetails(projectIndex)">
+                    <p class="card-title">{{project.Project_name}} at {{project.Project_location}}</p>
                     <div class="media">
                         <img class="mr-3" src="assets/images/projects/medavakkam.jpg" width="235" alt="">
                         <div class="media-body">
-                            <h5 class="mt-0">960 Sft Plot Area + 203 UDS</h5>
-                            <ul>
+                            <h5 class="mt-0">{{project.minprice}}</h5>
+                            <p>{{project.project_desc}}</p>
+                            <!--<ul>
                                 <li>Individual Water Tank and Bore connection</li>
                                 <li>Potable ground Water at 50 feet level</li>
                                 <li>Ground + 1 Floor</li>
                                 <li>Vaasthu Compliant</li>
                             </ul>
-                        IGCSE Vaels Billabong school in 100 meters – Commencing from 2019 
+                        IGCSE Vaels Billabong school in 100 meters – Commencing from 2019 -->
                     </div>
                 </div>
             </div> 
             <div class="project-footer-section">
                 <ul class="d-flex justify-content-between">
-                    <li class="d-flex align-items-center"><img width="20" src="assets/images/svg/area.svg" alt=""><span>960 - 1610 Sqft</span></li>
-                    <li class="d-flex align-items-center"><img width="20" src="assets/images/svg/bedroom.svg" alt=""><span>3 Bedrooms</span></li>
-                    <li class="d-flex align-items-center"><img width="20" src="assets/images/svg/bathroom.svg" alt=""><span>3 Bathrooms</span></li>
-                    <li class="d-flex align-items-center"><img width="20" src="assets/images/svg/parking.svg" alt=""><span>1 Coverd Parking</span></li>
+                    <li class="d-flex align-items-center"><img width="20" src="assets/images/svg/area.svg" alt=""><span>{{project.minbuilduparea}} - {{project.maxbuilduparea}} Sqft</span></li>
+                    <li class="d-flex align-items-center"><img width="20" src="assets/images/svg/bedroom.svg" alt=""><span>{{project.BHK}}</span></li>
+                    <!--<li class="d-flex align-items-center"><img width="20" src="assets/images/svg/bathroom.svg" alt=""><span>3 Bathrooms</span></li>
+                    <li class="d-flex align-items-center"><img width="20" src="assets/images/svg/parking.svg" alt=""><span>1 Coverd Parking</span></li>-->
                 </ul>  
             </div>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-12">
+            <!-- <div class="col-xl-6 col-lg-6 col-md-12">
                 <div class="card">
                     <p class="card-title">Ready to Move Luxury Villa at Medvakkam</p>
                     <div class="media">
@@ -56,9 +57,9 @@
                         <li class="d-flex align-items-center"><img width="20" src="assets/images/svg/parking.svg" alt=""><span>1 Coverd Parking</span></li>
                     </ul>  
                 </div>
+            </div> -->
             </div>
-            </div>
-            <div class="row mb-4">
+            <!-- <div class="row mb-4">
             <div class="col-xl-6 col-lg-6 col-md-12">
                 <div class="card">
                     <p class="card-title">Luxury Apartments at Kolathur</p>
@@ -102,8 +103,8 @@
                 </div>
             </div>
             
-        </div>
-        <div class="row mb-4">
+        </div> -->
+        <!-- <div class="row mb-4">
             <div class="col-xl-6 col-lg-6 col-md-12">
                 <div class="card">
                     <p class="card-title">Luxury Apartments at Kolathur</p>
@@ -635,7 +636,7 @@
                 </div>
             </div>
             
-        </div>
+        </div> -->
 
     </div>
 </section>
