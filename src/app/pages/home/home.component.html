@@ -33,6 +33,31 @@
             </div>
         </div>
     </div>
+    <div class="search-container container">
+      <div class="search-section d-flex">
+          <input type="text" (input)="displaySuggest()" (blur)="hideSuggest()" class="search-txt flex-grow-1 mr-2">
+          <button class="btn btn-primary">Submit</button>
+      </div>
+
+      <div class="auto-suggest" *ngIf="dispFlag">
+          <ul>
+              <li><a href="">Medavakkam, Chennai</a></li>
+              <li><a href="">Velacherry, Chennai</a></li>
+              <li><a href="">Amarprakash developers, Chrompet, Chennai</a></li>
+              <li><a href="">Sriram Builders, Porur, Chennai</a></li>
+              <li><a href="">Tambaram</a></li>
+          </ul>
+      </div>
+      <div class="latest-search mt-3">
+          <ul>
+              <li><a href="">Medavakkam</a></li>
+              <li><a href="">Velacherry</a></li>
+              <li><a href="">Guindy</a></li>
+              <li><a href="">Porur</a></li>
+              <li><a href="">Tambaram</a></li>
+          </ul>
+      </div>
+  </div>
 </section>
 
 <section class="welcome-contaoner pb-5 parallax position-relative" id="about">

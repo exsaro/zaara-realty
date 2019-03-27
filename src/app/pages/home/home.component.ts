@@ -1,20 +1,25 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-declare let $:any;
+declare let $: any;
 
 @Component({
-    selector:'app-home',
-    templateUrl:'home.component.html',
-    styleUrls:['home.component.css']
+    selector: 'app-home',
+    templateUrl: 'home.component.html',
+    styleUrls: ['home.component.css']
 })
 
-export class HomeComponent implements OnInit{
-    constructor(private router:Router){}
+export class HomeComponent implements OnInit {
+    dispFlag = false;
+    constructor(private router: Router) {}
 
-    ngOnInit(){
-       
+    displaySuggest() {
+      this.dispFlag = true;
+    }
+    hideSuggest() {
+      this.dispFlag = false;
     }
 
-   
-   
+    ngOnInit() {
+
+    }
 }
