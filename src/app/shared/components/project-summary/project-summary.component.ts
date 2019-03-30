@@ -1,31 +1,33 @@
 import { Component,OnInit } from '@angular/core';
 import { Router} from '@angular/router';
-import { ProjectSummaryService } from "./project-summary.service";
+import { ProjectSummaryService } from './project-summary.service';
 import { Projects } from '../../models/projects.model';
 
 @Component({
-    selector:'app-project-summary',
-    templateUrl:'project-summary.component.html',
-    styleUrls:['project-summary.component.css']
+    selector: 'app-project-summary',
+    templateUrl: 'project-summary.component.html',
+    styleUrls: ['project-summary.component.css']
 })
 
 export class ProjectSummaryComponent implements OnInit{
 
-    projectSummaryList:Array<Projects.ResponseModel>;
+    projectSummaryList: Array<Projects.ResponseModel>;
 
-    constructor(private router:Router, 
+    constructor(private router:Router,
                 private projectSummaryService:ProjectSummaryService){}
 
+    defSerQuery: String = 'All';
+
     ngOnInit(){
-      this.setProjectSummaryList();
+      this.setProjectSummaryList(this.defSerQuery);
     }
 
-    public setProjectSummaryList(){
-        this.projectSummaryService.getProjectSummaryList().subscribe((apiData:Array<Projects.ResponseModel>)=>{
-            if(apiData && apiData.length){
+    public setProjectSummaryList(defSerQuery) {
+        this.projectSummaryService.getProjectSummaryList(defSerQuery).subscribe((apiData: Array<Projects.ResponseModel>) => {
+            if (apiData && apiData.length) {
                 this.projectSummaryList = [...apiData];
                 console.log(this.projectSummaryList);
-            }       
+            };
         },
         error=> {
             console.log(error);

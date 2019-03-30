@@ -144,7 +144,7 @@ h3{
     font-size: 14px;
     font-weight: bold;
 }
-.project-container .media-body ul{
+.project-container .media-body .inr-txt{
     height: 80px;
     overflow-y: auto;
 }

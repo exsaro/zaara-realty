@@ -11,6 +11,6 @@ export class HttpService {
   // get method
   public get(url):Observable<any>{
       return this.http.get<any>(url);
-  } 
+  }
 
 }

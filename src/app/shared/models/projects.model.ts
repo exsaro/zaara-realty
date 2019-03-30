@@ -1,6 +1,5 @@
 export namespace Projects {
-
-    export class ResponseModel{
+    export class ResponseModel {
         ID?: number;
         BID?: number;
         Project_name: string=''; // "MAHINDRA HAPPINEST"
@@ -9,7 +8,7 @@ export namespace Projects {
         Launch_Date: string=''; // "0000-00-00"
         Project_location: string=''; // "Avadi"
         area:string=''; // "Chennai"
-        lang_lat:string=''; 
+        lang_lat:string='';
         BHK:string=''; // "1 ,2 BHK"
         minbuilduparea:string=''; // "348"
         maxbuilduparea:string=''; // "453"
@@ -17,11 +16,13 @@ export namespace Projects {
         total_units: string=''; // "1200"
         total_area: string=''; // "13.22 Acres"
         availability:string=''; // "New"
-        Approvals:string=''; 
+        Approvals:string='';
         status:string=''; // "Available"
-        imgpath:string=''; 
+        imgpath:string='';
         amenities: string[]; // ["Children's play area", "24 X 7 Security", "Jogging Track", "Landscaped Gardens", "Car Parking", "Lift Available", "Power Backup"]
-        
     }
 
+    export class SearchModel {
+        response: string[];
+    }
 }
