@@ -7,10 +7,10 @@
 
 export class Urls {
 
-  public static BASE_URL = 'http://www.zaararealty.in/api/public/';
-  public static BUILDER_URL = 'http://www.zaararealty.in/api/public/builder/';
-  public static PROJECT_URL = 'http://www.zaararealty.in/api/public/projects/';
-  public static SEARCH_URL = 'http://www.zaararealty.in/api/public/search/';
-  public static LOCATION_URL = 'http://www.zaararealty.in/api/public/location/';
+  public static BASE_URL = `http://www.zaararealty.in/api/public/`;
+  public static BUILDER_URL = `${Urls.BASE_URL}builder/`;
+  public static PROJECT_URL = `${Urls.BASE_URL}projects/`;
+  public static SEARCH_URL = `${Urls.BASE_URL}search/`;
+  public static LOCATION_URL = `${Urls.BASE_URL}location/`;
 
 }

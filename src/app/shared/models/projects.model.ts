@@ -22,7 +22,15 @@ export namespace Projects {
         amenities: string[]; // ["Children's play area", "24 X 7 Security", "Jogging Track", "Landscaped Gardens", "Car Parking", "Lift Available", "Power Backup"]
     }
 
-    export class SearchModel {
-        response: string[];
+    export class SearchModel{
+        Builders:SearchResponse;
+        Location:SearchResponse;
+        Projects:SearchResponse;
+        
+    }
+
+    export class SearchResponse{
+        response:string[] = [];
+        type?:string;
     }
 }

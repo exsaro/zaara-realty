@@ -35,13 +35,13 @@
     </div>
     <div class="search-container container">
         <div class="search-section d-flex">
-            <input type="text" name="mainSearch" #mainSearch ng-model="mainSearch" (input)="displaySuggest(mainSearch.value)" class="search-txt flex-grow-1 mr-2">
-            <button class="btn btn-primary">Submit</button>
+            <input type="text" name="mainSearch" #mainSearch ng-model="mainSearch" (input)="displaySuggest(mainSearch.value)" autocomplete="off" class="search-txt flex-grow-1 mr-2">
+            <button class="btn btn-primary" (click)="navigateToProjectDetails()">Submit</button>
         </div>
 
-      <div class="auto-suggest" *ngIf="dispFlag">
+      <div class="auto-suggest" *ngIf="searchResults">
         <ul>
-            <li *ngFor="let suggest of searchResults"><a href="">{{suggest['Location']}}</a></li>
+            <li *ngFor="let suggest of searchResults"><a href="#" (click)="showProjects($event,suggest)">{{suggest}}</a></li>
         </ul>
         </div>
         <!--
@@ -92,7 +92,8 @@
 </section>
 
 
-<app-project-summary></app-project-summary>
+<!--<app-project-summary [searchRes]="searchResults"></app-project-summary>-->
+<app-project-summary [searchRequestParams]="searchRequestParams"></app-project-summary>
 
 <section class="py-5 clients-container">
     <div class="container text-center">
