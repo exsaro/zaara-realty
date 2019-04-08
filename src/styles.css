@@ -34,6 +34,11 @@ h3{
     background: #ac873c;
     color: #000;
 }
+.btn-primary:disabled{
+  background: #ac873c;
+    color: #000;
+  opacity: 0.5;
+}
 .btn,.nav a{
     font-family: 'Cormorant SC', serif;
 }

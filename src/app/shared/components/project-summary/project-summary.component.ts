@@ -1,4 +1,4 @@
-import { Component,OnInit,Input, OnChanges} from '@angular/core';
+import { Component, OnInit, Input, OnChanges} from '@angular/core';
 import { Router} from '@angular/router';
 import { ProjectSummaryService } from './project-summary.service';
 import { Projects } from '../../models/projects.model';
@@ -9,33 +9,33 @@ import { Projects } from '../../models/projects.model';
     styleUrls: ['project-summary.component.css']
 })
 
-export class ProjectSummaryComponent implements OnInit, OnChanges{
+export class ProjectSummaryComponent implements OnInit, OnChanges {
 
     @Input('searchRequestParams') searchRequestParams;
+
+
     projectSummaryList: Array<Projects.ResponseModel>;
 
-    constructor(private router:Router,
-                private projectSummaryService:ProjectSummaryService){}
+    constructor(private router: Router,
+                private projectSummaryService: ProjectSummaryService) {}
 
     defSerQuery: String = 'All';
 
-    ngOnInit(){
+    ngOnInit() {
       this.setProjectSummaryList(this.defSerQuery);
-      
     }
 
-    ngOnChanges(){
-        
-        if(this.searchRequestParams){
+    ngOnChanges() {
+        if (this.searchRequestParams) {
             const searchRequestParamsLen = this.searchRequestParams.split(',').length;
             let projSummaryRequestParams;
-            if(searchRequestParamsLen===1){
-                projSummaryRequestParams=`${this.searchRequestParams.split(',')[1]}`;
-            }else if(searchRequestParamsLen===2){
-                projSummaryRequestParams=`${this.searchRequestParams.split(',')[1]}/${this.searchRequestParams.split(",")[0]}`;
+            if (searchRequestParamsLen === 1) {
+                projSummaryRequestParams = `${this.searchRequestParams.split(',')[1]}`;
+            } else if(searchRequestParamsLen === 2) {
+                projSummaryRequestParams = `${this.searchRequestParams.split(',')[1]}/${this.searchRequestParams.split(',')[0]}`;
             }
-           
           this.setProjectSummaryList(projSummaryRequestParams);
+
         }
     }
 
@@ -46,7 +46,7 @@ export class ProjectSummaryComponent implements OnInit, OnChanges{
                 console.log(this.projectSummaryList);
             };
         },
-        error=> {
+        error => {
             console.log(error);
         });
     }
