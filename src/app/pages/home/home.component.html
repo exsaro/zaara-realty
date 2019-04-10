@@ -42,7 +42,7 @@
 
       <div class="auto-suggest" *ngIf="showSuggest">
         <ul>
-            <li *ngFor="let suggest of searchResults"><a href="#" (click)="getData(suggest)">{{suggest}}</a></li>
+            <li *ngFor="let suggest of searchResults"><a href="#" (click)="getData($event,suggest)">{{suggest}}</a></li>
             <!-- <li *ngFor="let suggest of searchResults"><a href="#" (click)="showProjects($event,suggest)">{{suggest}}</a></li> -->
         </ul>
         </div>
@@ -95,7 +95,7 @@
 
 
 <!--<app-project-summary [searchRes]="searchResults"></app-project-summary>-->
-<app-project-summary [searchRequestParams]="searchRequestParams" #projSummery></app-project-summary>
+<app-project-summary [searchRequestParams]="searchRequestParams"></app-project-summary>
 
 
 

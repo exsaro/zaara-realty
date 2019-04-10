@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-12 mb-4" *ngFor="let project of projectSummaryList;let projectIndex = index">
-                <div class="card" (click)="showProjectDetails(projectIndex)">
+                <div class="card" (click)="showProjectDetails(project.area,project.Project_name)">
                     <p class="card-title">{{project.Project_name}} at {{project.Project_location}}</p>
                     <div class="media">
                         <img class="mr-3" src="assets/images/projects/medavakkam.jpg" width="235" alt="">

@@ -12,8 +12,6 @@ import { Projects } from '../../models/projects.model';
 export class ProjectSummaryComponent implements OnInit, OnChanges {
 
     @Input('searchRequestParams') searchRequestParams;
-
-
     projectSummaryList: Array<Projects.ResponseModel>;
 
     constructor(private router: Router,
@@ -26,24 +24,28 @@ export class ProjectSummaryComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
+        
         if (this.searchRequestParams) {
             const searchRequestParamsLen = this.searchRequestParams.split(',').length;
+           
             let projSummaryRequestParams;
             if (searchRequestParamsLen === 1) {
                 projSummaryRequestParams = `${this.searchRequestParams.split(',')[1]}`;
+                this.setProjectSummaryList(projSummaryRequestParams);
             } else if(searchRequestParamsLen === 2) {
                 projSummaryRequestParams = `${this.searchRequestParams.split(',')[1]}/${this.searchRequestParams.split(',')[0]}`;
+                this.setProjectSummaryList(projSummaryRequestParams);
+            } else if(searchRequestParamsLen === 3) {
+                this.showProjectDetails(this.searchRequestParams.split(',')[2], this.searchRequestParams.split(',')[0]);
             }
-          this.setProjectSummaryList(projSummaryRequestParams);
-
+          
         }
     }
 
     public setProjectSummaryList(defSerQuery) {
         this.projectSummaryService.getProjectSummaryList(defSerQuery).subscribe((apiData: Array<Projects.ResponseModel>) => {
             if (apiData && apiData.length) {
-                this.projectSummaryList = [...apiData];
-                console.log(this.projectSummaryList);
+                this.projectSummaryList = [...apiData];               
             };
         },
         error => {
@@ -51,9 +53,7 @@ export class ProjectSummaryComponent implements OnInit, OnChanges {
         });
     }
 
-    public showProjectDetails(projectId):void{
-        // this.projectSummaryService.projectDetails = this.projectSummaryList[projectId];
-        sessionStorage.setItem('projectDetails', JSON.stringify(this.projectSummaryList[projectId]));
-        this.router.navigate(['project-details']);
+    public showProjectDetails(location:string, project:string):void{
+       this.router.navigate(['project-details',location,project]);
     }
 }

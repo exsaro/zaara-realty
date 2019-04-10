@@ -58,7 +58,8 @@ export class HomeComponent implements OnInit {
      }
     }
 
-    getData(value) {
+    getData(e: any,value) {
+      e.returnValue = false;
       this.mainSearch.nativeElement.value = value;
       this.showSuggest = false;
     }

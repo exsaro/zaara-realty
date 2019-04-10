@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { Projects} from '../../shared/models/projects.model';
+import { ActivatedRoute } from "@angular/router";
+import {ProjectDetailsService} from './project-details.service'
 
 
 @Component({
@@ -10,16 +12,31 @@ import { Projects} from '../../shared/models/projects.model';
 
 export class ProjectDetailsComponent implements OnInit{
     public projectDetails:Projects.ResponseModel;
-    constructor(){
+    constructor(private route:ActivatedRoute,
+                private projectDetailsService:ProjectDetailsService
+    ){
+
+        
     }
 
     ngOnInit(){
-        this.setProjectDetails();
+
+        this.route.params.subscribe((projectDetailsRoutingData)=>{
+            this.setProjectDetails(projectDetailsRoutingData);
+        })
+        
      }
 
-     public setProjectDetails():void{
-         if(sessionStorage.getItem('projectDetails')){
-            this.projectDetails = JSON.parse(sessionStorage.getItem('projectDetails'));
-         }
+     public setProjectDetails(projectDetailsRoutingData):void{
+         const projectDetailsRequestParams = `${projectDetailsRoutingData.location}/${projectDetailsRoutingData.project}`;
+         this.projectDetailsService.getProjectDetails(projectDetailsRequestParams).subscribe((apiData)=>{
+            if(apiData && apiData.length){
+                this.projectDetails = apiData[0];
+            }
+         },
+        error => {
+            console.log(error);
+        });
+    
      }
 }

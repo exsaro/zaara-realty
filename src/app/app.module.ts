@@ -17,7 +17,7 @@ const routes:Routes = [ {
 },
 
 {
-  path : 'project-details',
+  path : 'project-details/:location/:project',
   component: ProjectDetailsComponent
 }
 

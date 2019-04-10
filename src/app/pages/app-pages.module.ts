@@ -4,6 +4,7 @@ import { HomeComponent} from './home/home.component';
 import { ProjectDetailsComponent} from './project-details/project-details.component';
 import  { RouterModule, Routes} from '@angular/router';
 import { SharedModule } from "../shared/shared.module";
+import { ProjectDetailsService} from '../pages/project-details/project-details.service';
 
 
 /*const routes:Routes = [ {
@@ -26,7 +27,7 @@ import { SharedModule } from "../shared/shared.module";
        
         RouterModule
     ],
-    providers:[]
+    providers:[ProjectDetailsService]
 
 })
 
