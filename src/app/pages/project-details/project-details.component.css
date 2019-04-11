@@ -117,3 +117,16 @@
 .assured strong {
   display: block;
 }
+
+@media only screen and (max-width: 991px) {
+  .maindetail-container .desc-section:after,
+.maindetail-container .desc-section:before{
+  content: none;
+}
+}
+@media only screen and (max-width: 767px) {
+  .secondarydetail-container .nav-tabs .nav-link{
+    font-size: 15px;
+    padding: 15px 8px;
+  }
+}

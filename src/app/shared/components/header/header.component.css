@@ -21,3 +21,28 @@ header h1:after{
   height: 100%;
   background: #cfa854;
 }
+@media only screen and (max-width: 767px) {
+  .hamburger,.project-container .media,.closBtn{
+    display: block;
+}
+.nav{
+    position: fixed;
+    right: -220px;
+    display: block;
+    background: rgba(0,0,0,0.9);
+    z-index: 999;
+    height: 100%;
+    top: 0;
+    width: 220px;
+    padding: 20px;
+}
+header .nav a{
+    color: #fff;
+    font-size: 22px;
+}
+header .nav li{
+    margin-right: 0;
+    margin-bottom: 25px;
+    text-align: center;
+}
+}

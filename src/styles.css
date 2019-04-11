@@ -46,7 +46,7 @@ h3{
 .hero-section{
     position: relative;
     background: #000;
-    height: 540px;
+    height: auto;
 }
 .hero-section img{
     width: 100%;
@@ -268,8 +268,17 @@ h3{
     .hero-section .hero-caption{
         font-size: 30px;
     }
+    .hero-section{
+      height: 450px;
+    }
+    .hero-section img{
+      width: auto;
+    }
 }
 @media only screen and (max-width: 767px) {
+  .hero-section{
+    height: auto;
+  }
     .clients-container ul{
         display: block!important;
     }
@@ -280,29 +289,7 @@ h3{
         max-width: initial;
         width: 100%;
     }
-    .hamburger,.project-container .media,.closBtn{
-        display: block;
-    }
-    .nav{
-        position: fixed;
-        right: -220px;
-        display: block;
-        background: rgba(0,0,0,0.9);
-        z-index: 999;
-        height: 100%;
-        top: 0;
-        width: 220px;
-        padding: 20px;
-    }
-    header .nav a{
-        color: #fff;
-        font-size: 22px;
-    }
-    header .nav li{
-        margin-right: 0;
-        margin-bottom: 25px;
-        text-align: center;
-    }
+
     .welcome-img-section img{
         display: none;
     }
@@ -320,12 +307,7 @@ h3{
         color: #343433;
         text-shadow: none;
     }
-    .hero-section .hero-caption.container{
-        max-width: none;
-        margin-top: 20px;
-        position: relative;
-        background: #fff;
-    }
+
     .hero-section .hero-caption.container .d-block{
         display: inline!important;
     }

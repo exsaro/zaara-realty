@@ -29,9 +29,9 @@ export class HomeComponent implements OnInit {
         this.searchservice.search(query).subscribe((apiData: Projects.SearchModel) => {
           if (apiData && Object.keys(apiData).length) {
             this.searchAllResults = apiData;
-              if (apiData.Builders.response.length) {
-                this.searchAllResults.Builders.response = apiData.Builders.response;
-              }
+              // if (apiData.Builders.response.length) {
+              //   this.searchAllResults.Builders.response = apiData.Builders.response;
+              // }
 
               if (apiData.Location.response.length) {
                 this.searchAllResults.Location.response = apiData.Location.response;
@@ -40,8 +40,8 @@ export class HomeComponent implements OnInit {
               if (apiData.Projects.response.length) {
                 this.searchAllResults.Projects.response = apiData.Projects.response;
               }
-              this.searchResults = searchList.concat(this.searchAllResults.Builders.response,
-                                        this.searchAllResults.Location.response,
+              // this.searchAllResults.Builders.response,
+              this.searchResults = searchList.concat(this.searchAllResults.Location.response,
                                         this.searchAllResults.Projects.response
                                       );
            }
