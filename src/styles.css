@@ -116,13 +116,13 @@ h3{
     margin-bottom: 0;
 }
 .excellence{
-    background: url('/assets/images/exellence.png') no-repeat;
+    background: url('./assets/images/exellence.png') no-repeat;
 }
 .passion{
-    background: url('/assets/images/passion.png') no-repeat;
+    background: url('./assets/images/passion.png') no-repeat;
 }
 .intelligence{
-    background: url('/assets/images/inteligence.png') no-repeat;
+    background: url('./assets/images/inteligence.png') no-repeat;
 }
 .excellence,.passion,.intelligence{
     background-size: 50px auto;

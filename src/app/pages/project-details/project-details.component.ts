@@ -16,15 +16,17 @@ export class ProjectDetailsComponent implements OnInit{
                 private projectDetailsService:ProjectDetailsService
     ){
 
-        
+
     }
 
     ngOnInit(){
 
         this.route.params.subscribe((projectDetailsRoutingData)=>{
             this.setProjectDetails(projectDetailsRoutingData);
-        })
-        
+        });
+
+        window.scrollTo(0, 0);
+
      }
 
      public setProjectDetails(projectDetailsRoutingData):void{
@@ -37,6 +39,6 @@ export class ProjectDetailsComponent implements OnInit{
         error => {
             console.log(error);
         });
-    
+
      }
 }
