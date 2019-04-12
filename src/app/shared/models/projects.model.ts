@@ -20,13 +20,14 @@ export namespace Projects {
         status:string=''; // "Available"
         imgpath:string='';
         amenities: string[]; // ["Children's play area", "24 X 7 Security", "Jogging Track", "Landscaped Gardens", "Car Parking", "Lift Available", "Power Backup"]
+        builders_name: string;
     }
 
     export class SearchModel{
         Builders:SearchResponse;
         Location:SearchResponse;
         Projects:SearchResponse;
-        
+
     }
 
     export class SearchResponse{

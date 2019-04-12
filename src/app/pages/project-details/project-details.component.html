@@ -21,9 +21,7 @@
     <div class="d-lg-flex align-items-center">
       <div class="price-section mb-4 mb-lg-0">
         <span>Builder price</span>
-        <strong class="price"
-          ><i class="fa fa-inr" aria-hidden="true"></i> {{projectDetails?.minprice}}</strong
-        >
+        <strong class="price">On request</strong>
       </div>
       <div class="desc-section mx-lg-5">
         <p class="title mb-0">
@@ -75,48 +73,28 @@
       <div class="col-md-12 mb-4 mb-xl-0 col-xl-8">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" id="home-tab"
-              data-toggle="tab"
-              href="#home"
-              role="tab"
-              aria-controls="home"
-              aria-selected="true"
-              >Amenities</a
-            >
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+              Amenities
+            </a>
           </li>
           <li class="nav-item">
-            <a
-              class="nav-link"
-              id="profile-tab"
-              data-toggle="tab"
-              href="#profile"
-              role="tab"
-              aria-controls="profile"
-              aria-selected="false"
-              >Price details</a
-            >
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+              Price details
+            </a>
           </li>
           <li class="nav-item">
-            <a
-              class="nav-link"
-              id="contact-tab"
-              data-toggle="tab"
-              href="#contact"
-              role="tab"
-              aria-controls="contact"
-              aria-selected="false"
-              >Gallery</a
-            >
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
+              Gallery
+            </a>
           </li>
         </ul>
         <div class="tab-content p-4" id="myTabContent">
-          <div
-            class="tab-pane fade show active"
-            id="home"
-            role="tabpanel"
-            aria-labelledby="home-tab"
-          >
-            ...
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <ul class="amndits">
+              <li *ngFor="let item of projectDetails.amenities">
+                {{item}}
+              </li>
+            </ul>
           </div>
           <div
             class="tab-pane fade"
@@ -140,7 +118,7 @@
         <div class="card enqFrm">
           <div class="card-header">
             Interested to buy property in
-            <strong>DRA 90 Degrees ?</strong>
+            <strong>{{projectDetails?.builders_name}}?</strong>
           </div>
           <div class="card-body pb-2">
             <form class="mb-4">
