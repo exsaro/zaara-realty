@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import  { RouterModule, Routes} from '@angular/router';
@@ -15,7 +14,6 @@ const routes:Routes = [ {
   path : '',
   component: HomeComponent
 },
-
 {
   path : 'project-details/:location/:project',
   component: ProjectDetailsComponent
@@ -32,7 +30,7 @@ const routes:Routes = [ {
     SharedModule,
     AppPagesModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes,{useHash:true})
   ],
   exports: [
     RouterModule
