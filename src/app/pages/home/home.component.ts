@@ -20,13 +20,16 @@ export class HomeComponent implements OnInit {
   @ViewChild('mainSearch') mainSearch:ElementRef;
   showSuggest = false;
   disBtn = false;
+  loading = false;
 
   constructor(private router: Router, private searchservice: MainSearchService) {}
 
   public displaySuggest(query: string) {
+      this.loading = true;
       let searchList: string[] = [];
       if (query.length > 3) {
         this.searchservice.search(query).subscribe((apiData: Projects.SearchModel) => {
+          this.loading = false;
           if (apiData && Object.keys(apiData).length) {
             this.searchAllResults = apiData;
               // if (apiData.Builders.response.length) {

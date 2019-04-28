@@ -18,6 +18,9 @@
 
 <div class="container">
   <section class="maindetail-container p-4 mb-5">
+
+    <div class="d-lg-flex align-items-center justify-content-center" *ngIf="loading else load"><img class="mt-4" src="assets/images/loader-summery.gif" alt=""></div>
+    <ng-template #load>
     <div class="d-lg-flex align-items-center">
       <div class="price-section mb-4 mb-lg-0">
         <span>Builder price</span>
@@ -67,6 +70,8 @@
         </ul>
       </div>
     </div>
+    </ng-template>
+
   </section>
   <section class="secondarydetail-container mb-5">
     <div class="row">

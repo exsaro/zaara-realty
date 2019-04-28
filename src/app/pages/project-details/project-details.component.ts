@@ -11,6 +11,8 @@ import {ProjectDetailsService} from './project-details.service'
 })
 
 export class ProjectDetailsComponent implements OnInit{
+
+  loading = false;
     public projectDetails:Projects.ResponseModel;
     constructor(private route:ActivatedRoute,
                 private projectDetailsService:ProjectDetailsService
@@ -30,8 +32,10 @@ export class ProjectDetailsComponent implements OnInit{
      }
 
      public setProjectDetails(projectDetailsRoutingData):void{
+      this.loading = true;
          const projectDetailsRequestParams = `${projectDetailsRoutingData.location}/${projectDetailsRoutingData.project}`;
          this.projectDetailsService.getProjectDetails(projectDetailsRequestParams).subscribe((apiData)=>{
+          this.loading = false;
             if(apiData && apiData.length){
                 this.projectDetails = apiData[0];
             }

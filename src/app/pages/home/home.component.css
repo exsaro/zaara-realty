@@ -41,6 +41,7 @@
   position: absolute;
   max-height: 170px;
   overflow-y: auto;
+  z-index: 99;
 }
 .auto-suggest li a{
   font-size: 14px;

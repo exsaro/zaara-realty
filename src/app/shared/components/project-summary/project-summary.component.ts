@@ -11,6 +11,8 @@ import { Projects } from '../../models/projects.model';
 
 export class ProjectSummaryComponent implements OnInit, OnChanges {
 
+  loading = false;
+
     @Input('searchRequestParams') searchRequestParams;
     projectSummaryList: Array<Projects.ResponseModel>;
 
@@ -24,10 +26,10 @@ export class ProjectSummaryComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
-        
+
         if (this.searchRequestParams) {
             const searchRequestParamsLen = this.searchRequestParams.split(',').length;
-           
+
             let projSummaryRequestParams;
             if (searchRequestParamsLen === 1) {
                 projSummaryRequestParams = `${this.searchRequestParams.split(',')[1]}`;
@@ -38,14 +40,16 @@ export class ProjectSummaryComponent implements OnInit, OnChanges {
             } else if(searchRequestParamsLen === 3) {
                 this.showProjectDetails(this.searchRequestParams.split(',')[2], this.searchRequestParams.split(',')[0]);
             }
-          
+
         }
     }
 
     public setProjectSummaryList(defSerQuery) {
+        this.loading = true;
         this.projectSummaryService.getProjectSummaryList(defSerQuery).subscribe((apiData: Array<Projects.ResponseModel>) => {
+          this.loading = false;
             if (apiData && apiData.length) {
-                this.projectSummaryList = [...apiData];               
+                this.projectSummaryList = [...apiData];
             };
         },
         error => {

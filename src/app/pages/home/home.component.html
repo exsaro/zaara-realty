@@ -42,6 +42,7 @@
 
       <div class="auto-suggest" *ngIf="showSuggest">
         <ul>
+            <li *ngIf="loading">Loading...</li>
             <li *ngFor="let suggest of searchResults"><a href="#" (click)="getData($event,suggest)">{{suggest}}</a></li>
             <!-- <li *ngFor="let suggest of searchResults"><a href="#" (click)="showProjects($event,suggest)">{{suggest}}</a></li> -->
         </ul>
