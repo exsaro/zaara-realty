@@ -27,9 +27,12 @@ export class HomeComponent implements OnInit {
   public displaySuggest(query: string) {
       this.loading = true;
       let searchList: string[] = [];
+      //let searchKeys: string[] = [];
       if (query.length > 3) {
         this.searchservice.search(query).subscribe((apiData: Projects.SearchModel) => {
+          //searchKeys = Object.keys(apiData);
           this.loading = false;
+          //console.log(apiData);
           if (apiData && Object.keys(apiData).length) {
             this.searchAllResults = apiData;
               // if (apiData.Builders.response.length) {
@@ -37,11 +40,15 @@ export class HomeComponent implements OnInit {
               // }
 
               if (apiData.Location.response.length) {
+                this.searchAllResults.Location.type = 'Location';
                 this.searchAllResults.Location.response = apiData.Location.response;
+                console.log(this.searchAllResults.Location.response)
               }
 
               if (apiData.Projects.response.length) {
+                this.searchAllResults.Projects.type = 'Projects';
                 this.searchAllResults.Projects.response = apiData.Projects.response;
+                console.log(this.searchAllResults.Projects.response)
               }
               // this.searchAllResults.Builders.response,
               this.searchResults = searchList.concat(this.searchAllResults.Location.response,
@@ -81,6 +88,29 @@ export class HomeComponent implements OnInit {
     }
 
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    $('.owl-carousel').owlCarousel({
+      items: 5,
+      nav: true,
+      autoplay: true,
+      autoplayTimeout: 5000,
+      autoplayHoverPause: true,
+      responsive: {
+          0: {
+              items: 1
+          },
+          600: {
+              items: 3
+          },
+          1000: {
+              items: 5
+          }
+      }
+  });
+  $('.owl-prev').html('<img src="assets/images/svg/arrow-left.svg" width="32" />');
+  $('.owl-next').html('<img src="assets/images/svg/arrow-right.svg" width="32" />');
+
+  }
 
 }

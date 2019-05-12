@@ -20,7 +20,10 @@ export namespace Projects {
         status:string=''; // "Available"
         imgpath:string='';
         amenities: string[]; // ["Children's play area", "24 X 7 Security", "Jogging Track", "Landscaped Gardens", "Car Parking", "Lift Available", "Power Backup"]
+        gallery: string[];
+        pricing: [];
         builders_name: string;
+        main_img: string;
     }
 
     export class SearchModel{

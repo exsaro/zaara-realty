@@ -10,7 +10,11 @@
               <div class="card" (click)="showProjectDetails(project.area,project.Project_name)">
                   <p class="card-title">{{project.Project_name}} at {{project.Project_location}}</p>
                   <div class="media">
-                      <img class="mr-3" src="assets/images/projects/medavakkam.jpg" width="235" alt="">
+
+                      <span class="summery-img mr-3">
+                        <img [src]="project.main_img != '' ? 'https://www.zaararealty.in'+project.main_img : 'assets/images/proj-fullview-sample.jpg'" alt="">
+                      </span>
+
                       <div class="media-body">
                           <h5 class="mt-0">From {{project.builders_name}}</h5>
                           <p class="inr-txt">{{project.project_desc}}</p>

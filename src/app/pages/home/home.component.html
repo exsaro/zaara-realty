@@ -36,16 +36,27 @@
     <div class="search-container container">
         <div class="search-section d-flex">
             <input type="text" name="mainSearch" #mainSearch value="" ng-model="mainSearch" (input)="displaySuggest(mainSearch.value)" autocomplete="off" class="search-txt flex-grow-1 mr-2">
-            <button class="btn btn-primary" (click)="showProjects($event,mainSearch.value)" [disabled]="!disBtn">Submit</button>
+            <button class="btn btn-primary" (click)="showProjects($event,mainSearch.value)" [disabled]="!searchResults.length">Submit</button>
             <!-- <button class="btn btn-primary" (click)="navigateToProjectDetails()">Submit</button> -->
         </div>
 
       <div class="auto-suggest" *ngIf="showSuggest">
+        <div *ngIf="loading">Loading...</div>
         <ul>
-            <li *ngIf="loading">Loading...</li>
-            <li *ngFor="let suggest of searchResults"><a href="#" (click)="getData($event,suggest)">{{suggest}}</a></li>
-            <!-- <li *ngFor="let suggest of searchResults"><a href="#" (click)="showProjects($event,suggest)">{{suggest}}</a></li> -->
+          <div>
+            <li><span>{{searchAllResults.Location.type}}</span></li>
+            <li *ngFor="let suggestLocation of searchAllResults.Location.response">
+              <a href="#" (click)="getData($event,suggestLocation)">{{suggestLocation}}</a>
+            </li>
+          </div>
+          <div>
+              <li><span>{{searchAllResults.Projects.type}}</span></li>
+              <li *ngFor="let suggestProjects of searchAllResults.Projects.response">
+                <a href="#" (click)="getData($event,suggestProjects)">{{suggestProjects}}</a>
+              </li>
+          </div>
         </ul>
+
         </div>
         <!--
         <div class="latest-search mt-3">

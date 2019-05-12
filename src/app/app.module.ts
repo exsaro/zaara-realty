@@ -8,9 +8,13 @@ import { AppPagesModule} from './pages/app-pages.module';
 import { HomeComponent } from './pages/home/home.component';
 import { HttpClientModule} from '@angular/common/http';
 import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
+import { AdminLoginComponent } from './pages/admin/adminlogin.component';
+import { BuilderlistComponent } from './pages/admin/builderlist/builderlist.component';
+import { AddbuilderComponent } from './pages/admin/addbuilder/addbuilder.component';
 
 
-const routes:Routes = [ {
+
+const routes:Routes = [{
   path : '',
   component: HomeComponent
 },

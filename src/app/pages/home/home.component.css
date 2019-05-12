@@ -49,6 +49,12 @@
   display: block;
   color: #000;
 }
+.auto-suggest li span{
+  display: block;
+  background: #ccc;
+  padding: 5px 20px;
+  text-align: right;
+}
 .auto-suggest li a:hover{
   text-decoration: none;
   background: #f0eadd;
