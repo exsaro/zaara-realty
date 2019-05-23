@@ -13,7 +13,7 @@ export class ProjectSummaryComponent implements OnInit, OnChanges {
 
   loading = false;
 
-    @Input('searchRequestParams') searchRequestParams;
+    @Input() searchRequestParams;
     projectSummaryList: Array<Projects.ResponseModel>;
 
     constructor(private router: Router,
@@ -32,7 +32,7 @@ export class ProjectSummaryComponent implements OnInit, OnChanges {
 
             let projSummaryRequestParams;
             if (searchRequestParamsLen === 1) {
-                projSummaryRequestParams = `${this.searchRequestParams.split(',')[1]}`;
+                projSummaryRequestParams = `${this.searchRequestParams.split(',')[0]}`;
                 this.setProjectSummaryList(projSummaryRequestParams);
             } else if(searchRequestParamsLen === 2) {
                 projSummaryRequestParams = `${this.searchRequestParams.split(',')[1]}/${this.searchRequestParams.split(',')[0]}`;

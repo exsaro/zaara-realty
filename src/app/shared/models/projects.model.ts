@@ -24,6 +24,7 @@ export namespace Projects {
         pricing: [];
         builders_name: string;
         main_img: string;
+        builders_spec: string;
     }
 
     export class SearchModel{

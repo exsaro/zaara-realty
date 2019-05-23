@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Projects} from '../../shared/models/projects.model';
 import { ActivatedRoute } from "@angular/router";
 import {ProjectDetailsService} from './project-details.service'
@@ -14,6 +15,8 @@ declare let $: any;
 
 export class ProjectDetailsComponent implements OnInit{
 
+  leadForm: FormGroup;
+
   loading = false;
   latLang = [];
   lat: number;
@@ -22,13 +25,22 @@ export class ProjectDetailsComponent implements OnInit{
   //mapUrl = "https://www.google.com/maps/embed/v1/place?q=40.7127837,-74.0059413&amp;key=AIzaSyBlVqyB--wrkGpks1i74mHuZLpGu1pwVq8"
     public projectDetails:Projects.ResponseModel;
     constructor(private route:ActivatedRoute,
-                private projectDetailsService:ProjectDetailsService
+                private projectDetailsService:ProjectDetailsService,
+                private fb: FormBuilder
     ){ }
 
     showPop(index) {
       this.selectedImg = index;
     }
+
+
     ngOnInit(){
+
+      this.leadForm = this.fb.group({
+        leadName: ['', Validators.required],
+        leadEmail: ['', Validators.required, Validators.email],
+        leadMobile: ['', Validators.required]
+      });
 
       $('.carousel').carousel();
 

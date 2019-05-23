@@ -178,6 +178,9 @@ agm-map{
   font-size: 42px;
   color: #fff;
 }
+.bulder-desc{
+  font-size: 14px;
+}
 
 @media only screen and (max-width: 991px) {
   .maindetail-container .desc-section:after,

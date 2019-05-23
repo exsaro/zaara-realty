@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   public searchRequestParams;
 
   @ViewChild('mainSearch') mainSearch:ElementRef;
-  showSuggest = false;
+  showSuggest = true;
   disBtn = false;
   loading = false;
 
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
                                         this.searchAllResults.Projects.response
                                       );
            }
-           this.showSuggest = true;
+           this.showSuggest = false;
            this.disBtn = true;
         },
         (error) => {
@@ -63,29 +63,32 @@ export class HomeComponent implements OnInit {
         });
       } else {
         this.searchResults = [];
-        this.showSuggest = false;
+        this.showSuggest = true;
         this.disBtn = false;
      }
     }
 
-    getData(e: any,value) {
+    getData(e: any, value) {
       e.returnValue = false;
       this.mainSearch.nativeElement.value = value;
-      this.showSuggest = false;
+      this.showSuggest = true;
+    }
+
+    showProjects(e: any, projects: string) {
+      e.returnValue = false;
+      this.searchResults = [];
+      this.searchRequestParams = projects;
+      this.disBtn = false;
+      this.mainSearch.nativeElement.value = '';
+      window.scrollTo(0, 1300);
+      this.showSuggest = true;
     }
 
     public navigateToProjectDetails(): void {
       this.router.navigate(['/project-details']);
     }
 
-    public showProjects(e: any, projects: string) {
-        e.returnValue = false;
-        this.searchResults = [];
-        this.searchRequestParams = projects;
-        window.scrollTo(0, 1300);
-        this.mainSearch.nativeElement.value = '';
-        this.disBtn = false;
-    }
+
 
 
   ngOnInit() {

@@ -109,9 +109,3 @@ var mobMenu = (function(){
 $(".hamburger").on('click',mobMenu.showMenu);
 $(".mobileClose").on('click',mobMenu.hideMenu);
 
-$(function(){
-  var gallery = $('.galry a').simpleLightbox({navText:		['&lsaquo;','&rsaquo;']});
-  //gallery.next();
-  //console.log("asdasd");
-});
-
