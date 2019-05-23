@@ -1,7 +1,11 @@
 import  { NgModule } from '@angular/core';
+import { CommonModule} from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent} from './components/footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
+import { HttpService} from '../shared/services/http.service';
+import { ProjectSummaryComponent } from '../shared/components/project-summary/project-summary.component';
+import { ProjectSummaryService} from './components/project-summary/project-summary.service';
 
 
 @NgModule({
@@ -9,15 +13,17 @@ import { LayoutComponent } from './layout/layout.component';
     declarations : [
         LayoutComponent,
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        ProjectSummaryComponent,
 
     ],
-    imports :[],
+    imports :[CommonModule],
     exports: [
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        ProjectSummaryComponent
     ],
-    providers:[]
+    providers:[HttpService,ProjectSummaryService]
 
 })
 

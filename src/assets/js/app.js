@@ -1,25 +1,12 @@
 $(document).ready(function(){
-    $(".owl-carousel").owlCarousel({
-        items: 5,
-        nav:true,
-        autoplay:true,
-        autoplayTimeout:5000,
-        autoplayHoverPause:true,
-        responsive:{
-            0:{
-                items:1
-            },
-            600:{
-                items:3
-            },
-            1000:{
-                items:5
-            }
-        }
-    });
-    $( ".owl-prev").html('<img src="assets/images/svg/arrow-left.svg" width="32" />');
-    $( ".owl-next").html('<img src="assets/images/svg/arrow-right.svg" width="32" />');
+
+  // $('.galry a').simpleLightbox();
+
+
+
 });
+
+
 
 
 $(function() {
@@ -64,10 +51,10 @@ var validateForm = (function(){
         emptyValid: function(ths){
             if(ths.value == ""){
                 $(ths).addClass("is-invalid");
-                flag = 0;   
+                flag = 0;
             }else if(ths.value.length < ths.minLength){
                 $(ths).addClass("is-invalid");
-                flag = 0;   
+                flag = 0;
             }else{
                 $(ths).removeClass("is-invalid");
                 flag = 1;
@@ -121,3 +108,4 @@ var mobMenu = (function(){
 })();
 $(".hamburger").on('click',mobMenu.showMenu);
 $(".mobileClose").on('click',mobMenu.hideMenu);
+

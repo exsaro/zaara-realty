@@ -6,7 +6,7 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <div class="hero-section d-flex justify-content-center align-items-center">
+            <div class="hero-section d-flex justify-content-center">
             <img class="img-fluid" src="assets/images/hero-banner/banner1.jpg" alt="">
             <div class="container hero-caption">
                 <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p>
@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="carousel-item bnr2">
-            <div class="hero-section d-flex justify-content-center align-items-center">
+            <div class="hero-section d-flex justify-content-center">
             <img class="img-fluid" src="assets/images/hero-banner/banner2.jpg" alt="">
             <div class="container hero-caption">
                 <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <div class="hero-section d-flex justify-content-center align-items-center">
+            <div class="hero-section d-flex justify-content-center">
             <img class="img-fluid" src="assets/images/hero-banner/banner3.jpg" alt="">
             <div class="container hero-caption">
                 <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p>
@@ -32,6 +32,42 @@
             </div>
             </div>
         </div>
+    </div>
+    <div class="search-container container">
+        <div class="search-section d-flex">
+            <input type="text" name="mainSearch" #mainSearch value="" ng-model="mainSearch" (input)="displaySuggest(mainSearch.value)" autocomplete="off" class="search-txt flex-grow-1 mr-2">
+            <button class="btn btn-primary" (click)="showProjects($event,mainSearch.value)" [disabled]="!searchResults.length">Submit</button>
+            <!-- <button class="btn btn-primary" (click)="navigateToProjectDetails()">Submit</button> -->
+        </div>
+
+      <div class="auto-suggest" *ngIf="!showSuggest">
+        <div *ngIf="loading">Loading...</div>
+        <ul>
+          <div>
+            <li><span>{{searchAllResults.Location.type}}</span></li>
+            <li *ngFor="let suggestLocation of searchAllResults.Location.response">
+              <a href="#" (click)="getData($event,suggestLocation)">{{suggestLocation}}</a>
+            </li>
+          </div>
+          <div>
+              <li><span>{{searchAllResults.Projects.type}}</span></li>
+              <li *ngFor="let suggestProjects of searchAllResults.Projects.response">
+                <a href="#" (click)="getData($event,suggestProjects)">{{suggestProjects}}</a>
+              </li>
+          </div>
+        </ul>
+
+        </div>
+        <!--
+        <div class="latest-search mt-3">
+            <ul>
+                <li><a href="">Medavakkam</a></li>
+                <li><a href="">Velacherry</a></li>
+                <li><a href="">Guindy</a></li>
+                <li><a href="">Porur</a></li>
+                <li><a href="">Tambaram</a></li>
+            </ul>
+        </div> -->
     </div>
 </section>
 
@@ -70,9 +106,14 @@
 </section>
 
 
-<app-project-summary></app-project-summary>
+<!--<app-project-summary [searchRes]="searchResults"></app-project-summary>-->
+<app-project-summary [searchRequestParams]="searchRequestParams"></app-project-summary>
+
+
+
 
 <section class="py-5 clients-container">
+
     <div class="container text-center">
         <h3 class="mb-4">Clients</h3>
         <div class="row">

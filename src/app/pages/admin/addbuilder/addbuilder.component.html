@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row">
+  <div class="col-md-2">
+    <app-adminsidebar></app-adminsidebar>
+  </div>
+  <div class="col-md-10 py-5">
+    <h3 class="border-bottom pb-3 mb-4">Add Builder</h3>
+    <form>
+        <div class="card p-3">
+            <div class="form-group">
+              <label for="buildname">Builder name</label>
+              <input type="text" formControlName="buildname" class="form-control" id="buildname" placeholder="Builder name">
+            </div>
+            <div class="form-group">
+              <label for="buildloc">Builder location</label>
+              <input type="text" formControlName="buildloc" class="form-control" id="buildloc" placeholder="Builder location">
+            </div>
+            <div class="form-group">
+              <label for="buildarea">Builder area</label>
+              <input type="text" formControlName="buildarea" class="form-control" id="buildarea" placeholder="Builder area">
+            </div>
+            <div class="form-group">
+              <label for="totproj">Total project</label>
+              <input type="text" formControlName="totproj" class="form-control" id="totproj" placeholder="Total project">
+            </div>
+            <div class="form-group">
+              <label for="ongoing">Ongoing</label>
+              <input type="text" formControlName="ongoing" class="form-control" id="ongoing" placeholder="Ongoing">
+            </div>
+            <div class="form-group">
+              <label for="status">Status</label>
+              <input type="text" formControlName="status" class="form-control" id="status" placeholder="Status">
+            </div>
+            <div class="form-group">
+              <label for="buildspec">Builder specification</label>
+              <input type="text" formControlName="buildspec" class="form-control" id="buildspec" placeholder="Status">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+    </form>
+  </div>
+</div>
+</div>
+
