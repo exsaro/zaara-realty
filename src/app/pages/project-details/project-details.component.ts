@@ -33,13 +33,36 @@ export class ProjectDetailsComponent implements OnInit{
       this.selectedImg = index;
     }
 
+    leads(form){
+      let leadData = {
+        'data': [
+          form.value
+        ],
+        'trigger': [
+          'approval',
+          'workflow',
+          'blueprint'
+        ]
+      };
+
+
+      this.projectDetailsService.postProjectLeads(leadData).subscribe( (res)=>{
+        console.log(res);
+      });
+
+    }
+
 
     ngOnInit(){
 
       this.leadForm = this.fb.group({
-        leadName: ['', Validators.required],
-        leadEmail: ['', Validators.required, Validators.email],
-        leadMobile: ['', Validators.required]
+        Last_Name: ['', [Validators.required]],
+        Email: ['', [Validators.required, Validators.email]],
+        Phone: ['', [Validators.required]],
+        Lead_Source: ['Zaara Leads'],
+        Lead_Type_1: ['Cold'],
+        Lead_Status: ['Pre Qualified'],
+        Referrer: [`${window.location.href}`]
       });
 
       $('.carousel').carousel();

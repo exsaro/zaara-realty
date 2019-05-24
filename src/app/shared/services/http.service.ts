@@ -13,4 +13,9 @@ export class HttpService {
       return this.http.get<any>(url);
   }
 
+  // post method
+  public post(url, header, option):Observable<any>{
+    return this.http.post<any>(url, header, option);
+}
+
 }
