@@ -35,8 +35,8 @@
     </div>
     <div class="search-container container">
         <div class="search-section d-flex">
-            <input type="text" name="mainSearch" #mainSearch value="" ng-model="mainSearch" (input)="displaySuggest(mainSearch.value)" autocomplete="off" class="search-txt flex-grow-1 mr-2">
-            <button class="btn btn-primary" (click)="showProjects($event,mainSearch.value)" [disabled]="!searchResults.length">Submit</button>
+            <input type="text" name="mainSearch" #mainSearch value="" ng-model="mainSearch" (keyup)="displaySuggest(mainSearch.value)" autocomplete="off" class="search-txt flex-grow-1 mr-2">
+            <button class="btn btn-primary" (click)="showProjects($event,mainSearch.value)" [disabled]="!mainSearch.value">Submit</button>
             <!-- <button class="btn btn-primary" (click)="navigateToProjectDetails()">Submit</button> -->
         </div>
 

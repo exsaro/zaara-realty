@@ -21,11 +21,13 @@ export class HomeComponent implements OnInit {
   showSuggest = true;
   disBtn = false;
   loading = false;
+  selected = false;
 
   constructor(private router: Router, private searchservice: MainSearchService) {}
 
   public displaySuggest(query: string) {
       this.loading = true;
+      this.selected = false;
       let searchList: string[] = [];
       //let searchKeys: string[] = [];
       if (query.length > 3) {
@@ -55,8 +57,15 @@ export class HomeComponent implements OnInit {
                                         this.searchAllResults.Projects.response
                                       );
            }
-           this.showSuggest = false;
-           this.disBtn = true;
+           if (this.selected === true){
+            this.searchResults = [];
+            this.showSuggest = true;
+            this.disBtn = false;
+           }else{
+            this.showSuggest = false;
+            this.disBtn = true;
+           }
+        
         },
         (error) => {
           console.log(error);
@@ -71,17 +80,22 @@ export class HomeComponent implements OnInit {
     getData(e: any, value) {
       e.returnValue = false;
       this.mainSearch.nativeElement.value = value;
+      this.selected = true
       this.showSuggest = true;
     }
 
     showProjects(e: any, projects: string) {
+      
       e.returnValue = false;
+      this.selected = true
       this.searchResults = [];
       this.searchRequestParams = projects;
       this.disBtn = false;
-      this.mainSearch.nativeElement.value = '';
-      window.scrollTo(0, 1300);
       this.showSuggest = true;
+      this.mainSearch.nativeElement.value = '';
+      
+      window.scrollTo(0, 1300);
+     
     }
 
     public navigateToProjectDetails(): void {

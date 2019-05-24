@@ -12,5 +12,6 @@ export class Urls {
   public static PROJECT_URL = `${Urls.BASE_URL}projects/`;
   public static SEARCH_URL = `${Urls.BASE_URL}search/`;
   public static LOCATION_URL = `${Urls.BASE_URL}location/`;
+  public static LEAD_URL = `${Urls.BASE_URL}enquiry`;
 
 }

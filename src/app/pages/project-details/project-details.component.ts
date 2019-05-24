@@ -33,13 +33,24 @@ export class ProjectDetailsComponent implements OnInit{
       this.selectedImg = index;
     }
 
+    leads(form){
+      let leadData = JSON.stringify(form.value);
+
+
+      this.projectDetailsService.postProjectLeads(leadData).subscribe( (res)=>{
+        console.log(res);
+      });
+
+    }
+    // `${window.location.href}`
 
     ngOnInit(){
 
       this.leadForm = this.fb.group({
-        leadName: ['', Validators.required],
-        leadEmail: ['', Validators.required, Validators.email],
-        leadMobile: ['', Validators.required]
+        Last_Name: ['', [Validators.required]],
+        Email: ['', [Validators.required, Validators.email]],
+        Phone: ['', [Validators.required]],
+        Referrer: [`${window.location.href}`]
       });
 
       $('.carousel').carousel();

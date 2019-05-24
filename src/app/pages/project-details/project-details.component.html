@@ -150,22 +150,24 @@
             <strong>{{projectDetails?.builders_name}}?</strong>
           </div>
           <div class="card-body pb-2">
-            <form class="mb-4" [formGroup]="leadForm">
+            <form class="mb-4" [formGroup]="leadForm" (submit)="leads(leadForm)">
               <div class="form-group">
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Name"
-                  formControlName="leadName"
-                  required
+                  formControlName="Last_Name"
+                  required="required"
                 />
               </div>
+              <span *ngIf="!!leadName?.errors.required">Name field Required</span>
+
               <div class="form-group">
                 <input
                   type="email"
                   class="form-control"
                   placeholder="Enter email"
-                  formControlName="leadEmail"
+                  formControlName="Email"
                   required
                 />
               </div>
@@ -174,7 +176,7 @@
                   type="tel"
                   class="form-control"
                   placeholder="Mobile No."
-                  formControlName="leadMobile"
+                  formControlName="Phone"
                   required
                 />
               </div>
