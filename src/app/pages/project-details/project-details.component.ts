@@ -50,7 +50,7 @@ export class ProjectDetailsComponent implements OnInit{
         Last_Name: ['', [Validators.required]],
         Email: ['', [Validators.required, Validators.email]],
         Phone: ['', [Validators.required]],
-        Referrer: [`${window.location.href}`]
+        Referrer: ['www.zaararealty.in/chennai/mahindra Happinest']
       });
 
       $('.carousel').carousel();
