@@ -9,7 +9,7 @@ export class ProjectDetailsService {
      constructor(private httpService: HttpService) {}
 
      headerDict = {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     };
 
     requestOptions = {
