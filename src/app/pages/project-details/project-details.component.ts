@@ -46,7 +46,7 @@ export class ProjectDetailsComponent implements OnInit{
       };
 
 
-      this.projectDetailsService.postProjectLeads(leadData).subscribe( (res)=>{
+      this.projectDetailsService.postProjectLeads(JSON.stringify(leadData)).subscribe( (res)=>{
         console.log(res);
       });
 
