@@ -35,6 +35,7 @@ export class ProjectDetailsComponent implements OnInit{
 
     leads(form){
       let leadData = JSON.stringify(form.value);
+      console.log(JSON.parse(leadData));
 
 
       this.projectDetailsService.postProjectLeads(leadData).subscribe( (res)=>{
