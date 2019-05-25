@@ -6,10 +6,11 @@ import { Urls } from '../../shared/models/url.model';
 
 @Injectable()
 export class ProjectDetailsService {
-     constructor(private httpService: HttpService) {}
+     constructor(private httpService: HttpService, private http:HttpClient) {}
 
      headerDict = {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json;charset=utf-8',
+
     };
 
     requestOptions = {
@@ -20,7 +21,9 @@ export class ProjectDetailsService {
           return this.httpService.get(Urls.PROJECT_URL+query);
     }
 
-    public postProjectLeads(query) {
-      return this.httpService.post(Urls.LEAD_URL, query, this.requestOptions);
+    public postProjectLeads(query: any ):Observable<any> {
+     
+      return this.httpService.post(Urls.LEAD_URL, query);
+   //  return this.http.post(Urls.LEAD_URL,query);
     }
 }

@@ -14,10 +14,8 @@ export class HttpService {
   }
 
   // post method
-  public post(url, query, header):Observable<any>{
-    const headers = new HttpHeaders().set("Content-Type", "application/json") ;
-    let leadData = JSON.stringify(query);
-    return this.http.post<any>(url, leadData,{headers});
+  public post(url, query):Observable<any>{
+      return this.http.post<any>(url, query);
 }
 
 }
