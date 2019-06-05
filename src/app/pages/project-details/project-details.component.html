@@ -136,7 +136,7 @@
           </div>
         </div>
 
-        <div *ngIf="projectDetails?.builders_spec != ''">
+        <div *ngIf="projectDetails?.builders_spec !== ''">
           <h3>About {{projectDetails?.builders_name | titlecase}}</h3>
           <p class="bulder-desc">{{projectDetails?.builders_spec}}</p>
         </div>
@@ -160,7 +160,7 @@
                   required="required"
                 />
               </div>
-              <span *ngIf="!!leadName?.errors.required">Name field Required</span>
+
 
               <div class="form-group">
                 <input
@@ -184,6 +184,7 @@
                 Get Call Back
               </button>
             </form>
+            <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
             <div class="d-flex assured mb-2">
               <span class="mr-3"
                 ><img src="./assets/images/assured.jpg" alt=""

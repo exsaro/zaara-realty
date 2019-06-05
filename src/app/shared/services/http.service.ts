@@ -7,15 +7,17 @@ export class HttpService {
     constructor(private http:HttpClient){
 
     }
-  
+
   // get method
   public get(url):Observable<any>{
       return this.http.get<any>(url);
   }
 
-  // post method
-  public post(url, query):Observable<any>{
-      return this.http.post<any>(url, query);
-}
+  // post method1
+  public post(url, query, header?):Observable<any>{
+      return this.http.post<any>(url, query, header);
+  }
+
+
 
 }

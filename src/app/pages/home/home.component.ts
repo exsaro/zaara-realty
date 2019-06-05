@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { Router } from '@angular/router';
 import { MainSearchService } from './main-search.service';
 import { Projects} from '../../shared/models/projects.model';
+import { ProjectSummaryService } from '../../shared/components/project-summary/project-summary.service';
 
 declare let $: any;
 
@@ -23,7 +24,9 @@ export class HomeComponent implements OnInit {
   loading = false;
   selected = false;
 
-  constructor(private router: Router, private searchservice: MainSearchService) {}
+  quickSearchs = ['Chennai', 'Coonoor', 'Trichy']
+
+  constructor(private router: Router, private searchservice: MainSearchService, private summeryservice: ProjectSummaryService) {}
 
   public displaySuggest(query: string) {
       this.loading = true;
@@ -65,7 +68,7 @@ export class HomeComponent implements OnInit {
             this.showSuggest = false;
             this.disBtn = true;
            }
-        
+
         },
         (error) => {
           console.log(error);
@@ -84,8 +87,10 @@ export class HomeComponent implements OnInit {
       this.showSuggest = true;
     }
 
+
+
     showProjects(e: any, projects: string) {
-      
+
       e.returnValue = false;
       this.selected = true
       this.searchResults = [];
@@ -93,9 +98,9 @@ export class HomeComponent implements OnInit {
       this.disBtn = false;
       this.showSuggest = true;
       this.mainSearch.nativeElement.value = '';
-      
+
       window.scrollTo(0, 1300);
-     
+
     }
 
     public navigateToProjectDetails(): void {

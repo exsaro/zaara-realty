@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Projects} from '../../shared/models/projects.model';
 import { ActivatedRoute } from "@angular/router";
 import {ProjectDetailsService} from './project-details.service'
@@ -16,6 +16,8 @@ declare let $: any;
 export class ProjectDetailsComponent implements OnInit{
 
   leadForm: FormGroup;
+  public succMsgFlag = false;
+  succMsg = '';
 
   loading = false;
   latLang = [];
@@ -36,22 +38,28 @@ export class ProjectDetailsComponent implements OnInit{
     leads(form){
       let leadData = JSON.stringify(form.value);
       console.log(form.value);
-
-
       this.projectDetailsService.postProjectLeads(leadData).subscribe( (res)=>{
-        console.log(res);
+        console.log(res[0].message);
+        this.succMsgFlag = true;
+        this.succMsg = res[0].message;
+        setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 3000);
       });
+
+      form.reset();
+
 
     }
     // `${window.location.href}`
+
+
 
     ngOnInit(){
 
       this.leadForm = this.fb.group({
         Last_Name: ['', [Validators.required]],
         Email: ['', [Validators.required, Validators.email]],
-        Phone: ['', [Validators.required]],
-        Referrer: ['www.zaararealty.in/chennai/mahindra Happinest']
+        Phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+        Referrer: [`${window.location.href}`]
       });
 
       $('.carousel').carousel();

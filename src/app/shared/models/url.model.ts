@@ -14,4 +14,11 @@ export class Urls {
   public static LOCATION_URL = `${Urls.BASE_URL}location/`;
   public static LEAD_URL = `${Urls.BASE_URL}enquiry`;
 
+  public static ADMIN_LOGIN = `${Urls.BASE_URL}admin/login`;
+  public static ADMIN_ADD_BUILDER = `${Urls.BASE_URL}admin/addbuilder`;
+  public static ADMIN_EDIT_BUILDER = `${Urls.BASE_URL}admin/editbuilder`;
+  public static ADMIN_UPDATE_BUILDER = `${Urls.BASE_URL}admin/updatebuilder`;
+  public static ADMIN_LIST_BUILDER = `${Urls.BASE_URL}admin/listbuilders`;
+  public static ADMIN_DELETE_BUILDER = `${Urls.BASE_URL}admin/deletebuilder`;
+
 }

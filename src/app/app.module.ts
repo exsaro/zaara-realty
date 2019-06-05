@@ -14,6 +14,7 @@ import { AddbuilderComponent } from './pages/admin/addbuilder/addbuilder.compone
 
 
 
+
 const routes:Routes = [{
   path : '',
   component: HomeComponent

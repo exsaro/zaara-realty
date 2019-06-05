@@ -29,13 +29,13 @@
             <div class="container hero-caption">
                 <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p>
                 <!-- <button class="btn btn-primary no-radius">Read more</button> -->
-            </div>  
+            </div>
             </div>
         </div>
     </div>
     <div class="search-container container">
         <div class="search-section d-flex">
-            <input type="text" name="mainSearch" #mainSearch value="" ng-model="mainSearch" (keyup)="displaySuggest(mainSearch.value)" autocomplete="off" class="search-txt flex-grow-1 mr-2">
+            <input type="text" name="mainSearch" #mainSearch value="" ng-model="mainSearch" (keyup)="displaySuggest(mainSearch.value)" autocomplete="off" class="search-txt flex-grow-1 mr-2" placeholder="Enter your Preferred Location">
             <button class="btn btn-primary" (click)="showProjects($event,mainSearch.value)" [disabled]="!mainSearch.value">Submit</button>
             <!-- <button class="btn btn-primary" (click)="navigateToProjectDetails()">Submit</button> -->
         </div>
@@ -58,16 +58,13 @@
         </ul>
 
         </div>
-        <!--
+
         <div class="latest-search mt-3">
             <ul>
-                <li><a href="">Medavakkam</a></li>
-                <li><a href="">Velacherry</a></li>
-                <li><a href="">Guindy</a></li>
-                <li><a href="">Porur</a></li>
-                <li><a href="">Tambaram</a></li>
+                <li *ngFor="let quickSerch of quickSearchs"><a (click)="showProjects($event,quickSerch)" href="#">{{quickSerch}}</a></li>
             </ul>
-        </div> -->
+        </div>
+
     </div>
 </section>
 

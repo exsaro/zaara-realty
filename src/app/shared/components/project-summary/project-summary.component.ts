@@ -12,6 +12,7 @@ import { Projects } from '../../models/projects.model';
 export class ProjectSummaryComponent implements OnInit, OnChanges {
 
   loading = false;
+  noResult = false;
 
     @Input() searchRequestParams;
     projectSummaryList: Array<Projects.ResponseModel>;
@@ -49,11 +50,11 @@ export class ProjectSummaryComponent implements OnInit, OnChanges {
         this.projectSummaryService.getProjectSummaryList(defSerQuery).subscribe((apiData: Array<Projects.ResponseModel>) => {
           this.loading = false;
             if (apiData && apiData.length) {
+                this.noResult = false;
                 this.projectSummaryList = [...apiData];
-            };
-        },
-        error => {
-            console.log(error);
+            } else {
+              this.noResult = true;
+            }
         });
     }
 

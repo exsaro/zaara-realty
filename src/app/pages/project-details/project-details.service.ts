@@ -10,7 +10,6 @@ export class ProjectDetailsService {
 
      headerDict = {
       'Content-Type': 'application/json;charset=utf-8',
-
     };
 
     requestOptions = {
@@ -22,7 +21,7 @@ export class ProjectDetailsService {
     }
 
     public postProjectLeads(query: any ):Observable<any> {
-     
+
       return this.httpService.post(Urls.LEAD_URL, query);
    //  return this.http.post(Urls.LEAD_URL,query);
     }
