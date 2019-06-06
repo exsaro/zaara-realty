@@ -1,7 +1,7 @@
 import  { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { HomeComponent} from './home/home.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+// import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProjectDetailsComponent} from './project-details/project-details.component';
 import  { RouterModule, Routes} from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,7 +15,7 @@ import { AdminSidebarComponent } from './admin/adminsidebar.component';
 import { AgmCoreModule } from '@agm/core';
 import { SafePipe } from './safe.pipe';
 import { AdminAuthGuard } from './admin/admin-auth.guard';
-import { TokenInterceptorService } from '../pages/admin/token-interceptor.service';
+// import { TokenInterceptorService } from '../pages/admin/token-interceptor.service';
 
 
 const routes:Routes = [
@@ -60,11 +60,7 @@ const routes:Routes = [
 
         RouterModule
     ],
-    providers:[ProjectDetailsService, AdminAuthGuard, {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi: true
-    }]
+    providers:[ProjectDetailsService, AdminAuthGuard]
 
 })
 

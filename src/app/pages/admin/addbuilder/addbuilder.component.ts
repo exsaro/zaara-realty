@@ -15,7 +15,7 @@ export class AddbuilderComponent implements OnInit {
   uploadfile:any;
   builderData = new FormData();
   constructor(private fb: FormBuilder, private adminservice: AdminService, private route: Router) {
-   
+
    }
 
   onFileSelect(event) {
@@ -26,8 +26,8 @@ export class AddbuilderComponent implements OnInit {
     }
   }
 
-  addBuilder(){
-       
+  addBuilder(addBuilderForm){
+
     this.builderData.append('buildername', this.addBuilderForm.value["builders_name"]);
     this.builderData.append('builderlocation', this.addBuilderForm.value["builders_location"]);
     this.builderData.append('builderarea', this.addBuilderForm.value["builders_area"]);
@@ -35,9 +35,9 @@ export class AddbuilderComponent implements OnInit {
     this.builderData.append('ongoing', this.addBuilderForm.value["ongoing"]);
     this.builderData.append('status', this.addBuilderForm.value["status"]);
     this.builderData.append('builderspec', this.addBuilderForm.value["builders_spec"]);
-   
 
-   
+
+
 
     this.adminservice.addBuilderData(this.builderData).subscribe(
       (res) => console.log(res),
@@ -51,7 +51,7 @@ export class AddbuilderComponent implements OnInit {
       }
     );
 
-   // this.addBuilderForm.reset();
+    //addBuilderForm.reset();
   }
 
   ngOnInit() {
