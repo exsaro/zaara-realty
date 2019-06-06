@@ -21,20 +21,20 @@ export class AddbuilderComponent implements OnInit {
   onFileSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-         this.builderData.append('logo', file);
+         this.builderData.set('logo', file, file.name);
       // this.addBuilderForm.get('builders_logo').setValue(file);
     }
   }
 
-  addBuilder(addBuilderForm){
+  addBuilder(){
 
-    this.builderData.append('buildername', this.addBuilderForm.value["builders_name"]);
-    this.builderData.append('builderlocation', this.addBuilderForm.value["builders_location"]);
-    this.builderData.append('builderarea', this.addBuilderForm.value["builders_area"]);
-    this.builderData.append('totalproject', this.addBuilderForm.value["totalprojects"]);
-    this.builderData.append('ongoing', this.addBuilderForm.value["ongoing"]);
-    this.builderData.append('status', this.addBuilderForm.value["status"]);
-    this.builderData.append('builderspec', this.addBuilderForm.value["builders_spec"]);
+    this.builderData.set('builders_name', this.addBuilderForm.value["builders_name"]);
+    this.builderData.set('builders_location', this.addBuilderForm.value["builders_location"]);
+    this.builderData.set('builders_area', this.addBuilderForm.value["builders_area"]);
+    this.builderData.set('totalprojects', this.addBuilderForm.value["totalprojects"]);
+    this.builderData.set('ongoing', this.addBuilderForm.value["ongoing"]);
+    this.builderData.set('status', this.addBuilderForm.value["status"]);
+    this.builderData.set('builders_spec', this.addBuilderForm.value["builders_spec"]);
 
 
 
