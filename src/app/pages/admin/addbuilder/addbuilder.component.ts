@@ -12,27 +12,38 @@ import { Router } from '@angular/router';
 export class AddbuilderComponent implements OnInit {
 
   addBuilderForm: FormGroup;
+  uploadfile:any;
+  builderData = new FormData();
+  constructor(private fb: FormBuilder, private adminservice: AdminService, private route: Router) {
+   
+   }
 
-  constructor(private fb: FormBuilder, private adminservice: AdminService, private route: Router) { }
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+         this.builderData.append('logo', file);
+      // this.addBuilderForm.get('builders_logo').setValue(file);
+    }
+  }
 
-  addBuilder(formBuildData){
-    const builderData = new FormData();
-    builderData.append('buildername', this.addBuilderForm.get('builders_name').value);
-    builderData.append('builderlocation', this.addBuilderForm.get('builders_location').value);
-    builderData.append('builderarea', this.addBuilderForm.get('builders_area').value);
-    builderData.append('totalproject', this.addBuilderForm.get('totalprojects').value);
-    builderData.append('ongoing', this.addBuilderForm.get('ongoing').value);
-    builderData.append('status', this.addBuilderForm.get('status').value);
-    builderData.append('builderspec', this.addBuilderForm.get('builders_spec').value);
-    builderData.append('buildername', this.addBuilderForm.get('builders_name').value);
-    builderData.append('logo', this.addBuilderForm.get('builders_logo').value);
+  addBuilder(){
+       
+    this.builderData.append('buildername', this.addBuilderForm.value["builders_name"]);
+    this.builderData.append('builderlocation', this.addBuilderForm.value["builders_location"]);
+    this.builderData.append('builderarea', this.addBuilderForm.value["builders_area"]);
+    this.builderData.append('totalproject', this.addBuilderForm.value["totalprojects"]);
+    this.builderData.append('ongoing', this.addBuilderForm.value["ongoing"]);
+    this.builderData.append('status', this.addBuilderForm.value["status"]);
+    this.builderData.append('builderspec', this.addBuilderForm.value["builders_spec"]);
+   
 
-    console.log(builderData);
+   
 
-    this.adminservice.addBuilderData(builderData).subscribe(
+    this.adminservice.addBuilderData(this.builderData).subscribe(
       (res) => console.log(res),
       (err) => {
         if(err instanceof HttpErrorResponse){
+          console.log(err);
           if(err.status === 401){
             this.route.navigate(['/admin']);
           }
@@ -40,7 +51,7 @@ export class AddbuilderComponent implements OnInit {
       }
     );
 
-    formBuildData.reset();
+   // this.addBuilderForm.reset();
   }
 
   ngOnInit() {
