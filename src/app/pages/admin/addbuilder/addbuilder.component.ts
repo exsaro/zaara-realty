@@ -18,7 +18,7 @@ export class AddbuilderComponent implements OnInit {
   constructor(private fb: FormBuilder, private adminservice: AdminService, private route: Router) {
 
    }
-
+   
   onFileSelect(files: FileList) {
     if (files.length > 0) {
       //let file:any = ;
@@ -44,8 +44,9 @@ console.log(this.builderData.getAll('logo'));
     this.adminservice.addBuilderData(this.builderData).subscribe(
       (res) => console.log(res),
       (err) => {
+      
         if(err instanceof HttpErrorResponse){
-          console.log(err);
+          console.log(err.message);
           if(err.status === 401){
             this.route.navigate(['/admin']);
           }
