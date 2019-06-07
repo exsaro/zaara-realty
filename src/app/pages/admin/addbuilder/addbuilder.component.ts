@@ -19,11 +19,12 @@ export class AddbuilderComponent implements OnInit {
 
    }
 
-  onFileSelect(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-         this.builderData.set('logo', file, file.name);
+  onFileSelect(files: FileList) {
+    if (files.length > 0) {
+      //let file:any = ;
+         this.builderData.set('logo', files.item(0),files.item(0).name);
       // this.addBuilderForm.get('builders_logo').setValue(file);
+      console.log(files.item(0));
     }
   }
 
@@ -39,7 +40,7 @@ export class AddbuilderComponent implements OnInit {
 
 
 
-
+console.log(this.builderData.getAll('logo'));
     this.adminservice.addBuilderData(this.builderData).subscribe(
       (res) => console.log(res),
       (err) => {

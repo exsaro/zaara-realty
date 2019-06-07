@@ -53,7 +53,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="logo">Logo</label>
-                    <input type="file" formControlName="builders_logo" class="form-control"  name="logo" placeholder="Logo" (change)="onFileSelect($event)" #builders_logo >
+                    <input type="file" formControlName="builders_logo" class="form-control"  name="file" placeholder="Logo" (change)="onFileSelect($event.target.files)" #builders_logo >
                   </div>
             </div>
           </div>
