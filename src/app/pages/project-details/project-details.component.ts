@@ -39,15 +39,16 @@ export class ProjectDetailsComponent implements OnInit{
       let leadData = JSON.stringify(form.value);
       console.log(form.value);
       this.projectDetailsService.postProjectLeads(leadData).subscribe( (res)=>{
-        console.log(res[0].message);
+        console.log(res.code);
         this.succMsgFlag = true;
-        this.succMsg = res[0].message;
-        setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 3000);
+        if(res.code === 'Success'){
+          this.succMsg = 'Your details added successfully, Our Representative will get back to you soon.';
+        }else if(res.code === 'Failed'){
+          this.succMsg = 'Something went wrong, please try after some time.';
+        }
+        setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 4000);
       });
-
       form.reset();
-
-
     }
     // `${window.location.href}`
 
@@ -58,8 +59,8 @@ export class ProjectDetailsComponent implements OnInit{
       this.leadForm = this.fb.group({
         Last_Name: ['', [Validators.required]],
         Email: ['', [Validators.required, Validators.email]],
-        Phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-        Referrer: [`${window.location.href}`]
+        Mobile: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+        Referrer: ['www.zaararealty.in']
       });
 
       $('.carousel').carousel();
