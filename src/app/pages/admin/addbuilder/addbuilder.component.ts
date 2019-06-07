@@ -26,7 +26,7 @@ export class AddbuilderComponent implements OnInit {
     }
   }
 
-  addBuilder(addBuilderForm){
+  addBuilder(){
 
     this.builderData.append('buildername', this.addBuilderForm.value["builders_name"]);
     this.builderData.append('builderlocation', this.addBuilderForm.value["builders_location"]);

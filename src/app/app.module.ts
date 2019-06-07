@@ -7,6 +7,7 @@ import  { LayoutComponent} from './shared/layout/layout.component';
 import { AppPagesModule} from './pages/app-pages.module';
 import { HomeComponent } from './pages/home/home.component';
 import { HttpClientModule} from '@angular/common/http';
+import {HttpClientXsrfModule} from '@angular/common/http';
 import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
 import { AdminLoginComponent } from './pages/admin/adminlogin.component';
 import { BuilderlistComponent } from './pages/admin/builderlist/builderlist.component';
@@ -35,6 +36,9 @@ const routes:Routes = [{
     SharedModule,
     AppPagesModule,
     HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+     headerName: 'Z-Token',
+    }),
     RouterModule.forRoot(routes,{useHash:true})
   ],
   exports: [
