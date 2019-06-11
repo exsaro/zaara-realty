@@ -1,12 +1,139 @@
 <div class="container-fluid">
   <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-2">
     <app-adminsidebar></app-adminsidebar>
   </div>
-  <div class="col-md-9">
-    <p>
-      builderlist works!
-    </p>
+  <div class="col-md-10 py-5">
+    <div class="border-bottom pb-3 mb-4 d-flex justify-content-between">
+        <h3>List Builder</h3>
+        <a routerLink="/admin/addbuilder" class="btn btn-info">Add Builder</a>
+    </div>
+    <div class="text-right my-3">
+
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Area</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of builderList; let i = index">
+            <th scope="row">{{i}}</th>
+            <td>{{list.builders_name}}</td>
+            <td>{{list.builders_location}}</td>
+            <td>{{list.builders_area}}</td>
+            <td>
+              <a href="#editBuilderModal" data-toggle="modal" (click)="editBuilder(list.ID, $event)">Edit</a>
+              <a href="#deleteBuilderModal" data-toggle="modal" (click)="deleteBuilder(list.ID)">Delete</a>
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="deleteBuilderModal" tabindex="-1" role="dialog" aria-labelledby="deleteBuilderModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteBuilderModalLabel">Delete Builder</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you sure, want to delete this Builder?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info" (click)="deleteBuilderConfirm()">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="editBuilderModal" tabindex="-1" role="dialog" aria-labelledby="editBuilderModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editBuilderModalLabel">Edit Builder</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form [formGroup]="editBuilderForm">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="text" formControlName="builders_name" class="form-control" name="buildname"
+                              placeholder="Builder name">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="text" formControlName="builders_location" class="form-control" name="buildloc"
+                              placeholder="Builder location">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="text" formControlName="builders_area" class="form-control" name="buildarea"
+                              placeholder="Builder area">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="number" min="1" formControlName="totalprojects" class="form-control" name="totproj"
+                              placeholder="Total project">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="number" min="1" formControlName="ongoing" class="form-control" name="ongoing"
+                              placeholder="Ongoing">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <select formControlName="status" class="form-control" name="status" #status>
+                              <option value="active" selected>Active</option>
+                              <option value="inactive">In active</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="file" formControlName="builders_logo" class="form-control" name="logo" placeholder="Logo"
+                              (change)="onFileSelect($event)" #builders_logo>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <textarea formControlName="builders_spec" class="form-control" name="buildspec" cols="30" rows="5"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-info"
+                  [disabled]="!editBuilderForm.valid">Save changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
   </div>
 </div>
 </div>

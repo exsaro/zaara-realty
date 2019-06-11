@@ -5,6 +5,8 @@ import { HomeComponent} from './home/home.component';
 import { ProjectDetailsComponent} from './project-details/project-details.component';
 import  { RouterModule, Routes} from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { SharedModule } from "../shared/shared.module";
 import { ProjectDetailsService} from '../pages/project-details/project-details.service';
 import { AdminComponent } from './admin/admin.component';
@@ -50,6 +52,8 @@ const routes:Routes = [
          CommonModule,
          FormsModule,
          ReactiveFormsModule,
+         RecaptchaModule,
+         RecaptchaFormsModule,
          AgmCoreModule.forRoot({
           apiKey: 'AIzaSyBlVqyB--wrkGpks1i74mHuZLpGu1pwVq8'
         }),

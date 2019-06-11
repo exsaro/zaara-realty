@@ -14,9 +14,13 @@ export class HttpService {
   }
 
   // post method1
-  public post(url, query, header?){
-
+  public post(url, query, header?):Observable<any>{
       return this.http.post<any>(url, query, header);
+  }
+
+  //Delete method
+  public delete(url):Observable<any>{
+    return this.http.delete<any>(url);
   }
 
 

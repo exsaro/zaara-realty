@@ -14,17 +14,18 @@ export class AddbuilderComponent implements OnInit {
 
   addBuilderForm: FormGroup;
   uploadfile:any;
+  public succMsgFlag = false;
+  succMsg = '';
   builderData = new FormData();
   constructor(private fb: FormBuilder, private adminservice: AdminService, private route: Router) {
 
    }
-   
-  onFileSelect(files: FileList) {
-    if (files.length > 0) {
-      //let file:any = ;
-         this.builderData.set('logo', files.item(0),files.item(0).name);
+
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+         this.builderData.set('logo', file, file.name);
       // this.addBuilderForm.get('builders_logo').setValue(file);
-      console.log(files.item(0));
     }
   }
 
@@ -38,35 +39,30 @@ export class AddbuilderComponent implements OnInit {
     this.builderData.set('status', this.addBuilderForm.value["status"]);
     this.builderData.set('builders_spec', this.addBuilderForm.value["builders_spec"]);
 
-
-
-console.log(this.builderData.getAll('logo'));
     this.adminservice.addBuilderData(this.builderData).subscribe(
-      (res) => console.log(res),
-      (err) => {
-      
-        if(err instanceof HttpErrorResponse){
-          console.log(err.message);
-          if(err.status === 401){
-            this.route.navigate(['/admin']);
-          }
+      (res) => {
+        this.succMsgFlag = true;
+        if(res.code === 'Success'){
+          this.succMsg = 'Record added successfully.';
+        }else if(res.code === 'Failed'){
+          this.succMsg = 'Something went wrong, please try after some time.';
         }
+        setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 4000);
+        this.addBuilderForm.reset();
       }
     );
-
-    //addBuilderForm.reset();
   }
 
   ngOnInit() {
     this.addBuilderForm = this.fb.group({
       builders_name: ['', [Validators.required]],
-      builders_location: ['', [Validators.required]],
-      builders_area: ['', [Validators.required]],
-      totalprojects: ['', [Validators.required]],
-      ongoing: ['', [Validators.required]],
+      builders_location: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
+      builders_area: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
+      totalprojects: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      ongoing: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       status: ['', [Validators.required]],
       builders_spec: ['', [Validators.required]],
-      builders_logo: ['', [Validators.required]]
+      builders_logo: ['']
     })
   }
 

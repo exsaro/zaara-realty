@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Projects} from '../../shared/models/projects.model';
 import { ActivatedRoute } from "@angular/router";
-import {ProjectDetailsService} from './project-details.service'
+import {ProjectDetailsService} from './project-details.service';
 
 declare let $: any;
 
@@ -52,7 +52,9 @@ export class ProjectDetailsComponent implements OnInit{
     }
     // `${window.location.href}`
 
-
+    // resolved(captchaResponse: string) {
+    //   console.log(`Resolved captcha with response: ${captchaResponse}`);
+    // }
 
     ngOnInit(){
 
@@ -60,7 +62,8 @@ export class ProjectDetailsComponent implements OnInit{
         Last_Name: ['', [Validators.required]],
         Email: ['', [Validators.required, Validators.email]],
         Mobile: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-        Referrer: ['www.zaararealty.in']
+        // recaptchaReactive: ['', [Validators.required]],
+        Referrer: [`${window.location.href}`]
       });
 
       $('.carousel').carousel();
