@@ -21,4 +21,22 @@ export class Urls {
   public static ADMIN_LIST_BUILDER = `${Urls.BASE_URL}admin/listbuilders`;
   public static ADMIN_DELETE_BUILDER = `${Urls.BASE_URL}admin/deletebuilder`;
 
+  public static ADMIN_ADD_PROJECT = `${Urls.BASE_URL}admin/addproject`;
+  public static ADMIN_EDIT_PROJECT = `${Urls.BASE_URL}admin/editproject`;
+  public static ADMIN_UPDATE_PROJECT = `${Urls.BASE_URL}admin/updateproject`;
+  public static ADMIN_LIST_PROJECT = `${Urls.BASE_URL}admin/listprojects`;
+  public static ADMIN_DELETE_PROJECT = `${Urls.BASE_URL}admin/deleteproject`;
+
+
+  public static ADMIN_ADD_AMENITIES = `${Urls.BASE_URL}admin/addamenities`;
+  public static ADMIN_ADD_PRICING = `${Urls.BASE_URL}admin/addpricing`;
+  public static ADMIN_ADD_GALLERY = `${Urls.BASE_URL}admin/addgallery`;
+  public static ADMIN_LIST_AMENITIES = `${Urls.BASE_URL}admin/listamenities`;
+  public static ADMIN_LIST_PRICING = `${Urls.BASE_URL}admin/listpricing`;
+  public static ADMIN_LIST_GALLERY = `${Urls.BASE_URL}admin/`;
+  public static ADMIN_DELETE_AMENITIES = `${Urls.BASE_URL}admin/deleteamenities`;
+  public static ADMIN_DELETE_PRICING = `${Urls.BASE_URL}admin/deletepricing`;
+  public static ADMIN_DELETE_GALLERY = `${Urls.BASE_URL}admin/`;
+
+
 }

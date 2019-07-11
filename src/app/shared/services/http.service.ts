@@ -19,7 +19,7 @@ export class HttpService {
   }
 
   //Delete method
-  public delete(url):Observable<any>{
+  public delete(url, id?):Observable<any>{
     return this.http.delete<any>(url);
   }
 

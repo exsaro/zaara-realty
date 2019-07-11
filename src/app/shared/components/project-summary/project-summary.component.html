@@ -11,7 +11,7 @@
       <h4 class="text-center" *ngIf="noResult else result">Sorry No Matching Result found.</h4>
       <ng-template #result>
       <div class="row">
-          <div class="col-xl-6 col-lg-6 col-md-12 mb-4" *ngFor="let project of projectSummaryList;let projectIndex = index">
+          <div class="col-xl-6 col-lg-6 col-md-12 mb-4" *ngFor="let project of projectSummaryList; let projectIndex = index ">
               <div class="card" (click)="showProjectDetails(project.area,project.Project_name)">
                   <p class="card-title">{{project.Project_name}} at {{project.Project_location}}</p>
                   <div class="media">
@@ -36,8 +36,13 @@
           </div>
           </div>
         </div>
+
+
+
+
       </ng-template>
     </div>
   </ng-template>
 </section>
+
 

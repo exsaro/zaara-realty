@@ -17,6 +17,14 @@ import { AdminSidebarComponent } from './admin/adminsidebar.component';
 import { AgmCoreModule } from '@agm/core';
 import { SafePipe } from './safe.pipe';
 import { AdminAuthGuard } from './admin/admin-auth.guard';
+import { ProjectlistComponent } from './admin/projectlist/projectlist.component';
+import { AddprojectComponent } from './admin/addproject/addproject.component';
+import { AmenitiesComponent } from './admin/amenities/amenities.component';
+import { PricingComponent } from './admin/pricing/pricing.component';
+import { AddpricingComponent } from './admin/addpricing/addpricing.component';
+import { AddamenitiesComponent } from './admin/addamenities/addamenities.component';
+import { AddgalleryComponent } from './admin/addgallery/addgallery.component';
+import { GallerylistComponent } from './admin/gallerylist/gallerylist.component';
 // import { TokenInterceptorService } from '../pages/admin/token-interceptor.service';
 
 
@@ -33,6 +41,38 @@ const routes:Routes = [
   {
     path : 'admin/addbuilder',
     component: AddbuilderComponent
+  },
+  {
+    path : 'admin/projectlist/:id',
+    component: ProjectlistComponent
+  },
+  {
+    path : 'admin/addproject/:id',
+    component: AddprojectComponent
+  },
+  {
+    path : 'admin/addamenities/:id',
+    component: AddamenitiesComponent
+  },
+  {
+    path : 'admin/addgallery/:id',
+    component: AddgalleryComponent
+  },
+  {
+    path : 'admin/addpricing/:id',
+    component: AddpricingComponent
+  },
+  {
+    path : 'admin/amenitieslist/:id',
+    component: AmenitiesComponent
+  },
+  {
+    path : 'admin/pricinglist/:id',
+    component: PricingComponent
+  },
+  {
+    path : 'admin/gallerylist/:id',
+    component: GallerylistComponent
   }
 ];
 
@@ -45,7 +85,15 @@ const routes:Routes = [
          AddbuilderComponent,
          AdminSidebarComponent,
          AdminComponent,
-         SafePipe
+         SafePipe,
+         ProjectlistComponent,
+         AddprojectComponent,
+         AmenitiesComponent,
+         PricingComponent,
+         AddpricingComponent,
+         AddamenitiesComponent,
+         AddgalleryComponent,
+         GallerylistComponent
     ],
     imports :[
          SharedModule,

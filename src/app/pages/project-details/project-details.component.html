@@ -183,7 +183,8 @@
               <!-- <div class="form-group"><re-captcha formControlName="recaptchaReactive" (resolved)="resolved($event)" siteKey="6Lf2yacUAAAAAH3PNu4YOwtQdRZFUWVfLoUp-yVR
                 "></re-captcha></div> -->
               <button type="submit" class="btn btn-primary btn-block" [disabled]="!leadForm.valid">
-                Get Call Back
+                <span *ngIf="!progressFlag">Get Call Back</span>
+                <span *ngIf="!!progressFlag" class="loader-submit"></span>
               </button>
             </form>
             <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>

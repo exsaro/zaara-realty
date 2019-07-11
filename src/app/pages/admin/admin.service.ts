@@ -37,12 +37,44 @@ export class AdminService {
     return this.httpservice.get(Urls.ADMIN_LIST_BUILDER);
   }
   editBuilderData(builderId){
-    return this.httpservice.get(Urls.ADMIN_EDIT_BUILDER+'/'+builderId);
+    return this.httpservice.get(`${Urls.ADMIN_EDIT_BUILDER}/${builderId}`);
   }
   deleteBuilder(builderId){
-    return this.httpservice.delete(Urls.ADMIN_DELETE_BUILDER+'/'+builderId);
+    return this.httpservice.get(`${Urls.ADMIN_DELETE_BUILDER}/${builderId}`);
   }
-
+  listProjectData(builderId){
+    return this.httpservice.get(`${Urls.ADMIN_LIST_PROJECT}/${builderId}`);
+  }
+  addProjectData(projData){
+    return this.httpservice.post(`${Urls.ADMIN_ADD_PROJECT}`, projData);
+  }
+  editProjectData(projId){
+    return this.httpservice.get(`${Urls.ADMIN_EDIT_PROJECT}/${projId}`);
+  }
+  deleteproject(projId){
+    return this.httpservice.get(`${Urls.ADMIN_DELETE_PROJECT}/${projId}`);
+  }
+  addamenities(projId, amenData){
+    return this.httpservice.post(`${Urls.ADMIN_ADD_AMENITIES}/${projId}`, amenData);
+  }
+  listamenities(projId){
+    return this.httpservice.get(`${Urls.ADMIN_LIST_AMENITIES}/${projId}`);
+  }
+  deleteamenities(amenId){
+    return this.httpservice.get(`${Urls.ADMIN_DELETE_AMENITIES}/${amenId}`);
+  }
+  addpricing(projId, priceData){
+    return this.httpservice.post(`${Urls.ADMIN_ADD_PRICING}/${projId}`, priceData);
+  }
+  listpricing(projId){
+    return this.httpservice.get(`${Urls.ADMIN_LIST_PRICING}/${projId}`);
+  }
+  deletepricing(priceId){
+    return this.httpservice.get(`${Urls.ADMIN_DELETE_PRICING}/${priceId}`);
+  }
+  addgallery(priceId){
+    return this.httpservice.post(`${Urls.ADMIN_ADD_GALLERY}`, priceId);
+  }
 
   loggedIn(){
     return !!localStorage.getItem('Authendication');

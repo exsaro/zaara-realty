@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../admin.service';
 
@@ -9,35 +10,48 @@ import { AdminService } from '../admin.service';
 })
 export class BuilderlistComponent implements OnInit {
 
-  constructor(private adminservice: AdminService, private fb: FormBuilder) { }
+  constructor(private adminservice: AdminService, private fb: FormBuilder, private router: Router) { }
 
   builderList:any = [];
   editBuilderForm: FormGroup;
   editBuilderData: any = [];
   deleteBuilderId:Number;
+  public succMsgFlag = false;
+  succMsg = '';
+  loading = false;
 
   showBuilderList(){
+    this.loading = true;
     this.adminservice.listBuilderData().subscribe((res)=>{
       this.builderList = res;
       console.log(this.builderList);
+      this.loading = false;
     })
   }
 
-  editBuilder(builderId, event){
-    event.preventDefault();
+  editBuilder(builderId){
+
     this.adminservice.editBuilderData(builderId).subscribe((res)=>{
       this.editBuilderData = res[0];
       console.log(this.editBuilderData);
+      this.formValidation();
     })
-    this.formValidation();
+
   }
   deleteBuilder(builderId){
     this.deleteBuilderId = builderId;
   }
   deleteBuilderConfirm(){
     this.adminservice.deleteBuilder(this.deleteBuilderId).subscribe((res)=>{
-      console.log(res);
-    })
+        this.showBuilderList();
+        this.succMsgFlag = true;
+        if(res.code === 'Success'){
+          this.succMsg = 'Record added successfully.';
+        }else if(res.code === 'Failed'){
+          this.succMsg = 'Something went wrong, please try after some time.';
+        }
+        setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 4000);
+    });
   }
 
   formValidation(){
@@ -53,6 +67,11 @@ export class BuilderlistComponent implements OnInit {
     });
   }
 
+
+  public projectList(builderId, event):void{
+    event.preventDefault();
+    this.router.navigate(['admin/projectlist',builderId]);
+ }
 
 
   ngOnInit() {

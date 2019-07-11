@@ -11,8 +11,13 @@
     <div class="text-right my-3">
 
     </div>
+    <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
 
-    <table class="table table-hover">
+    <div class="container d-flex align-items-center justify-content-center" *ngIf="loading else load">
+      <img class="mt-4" src="assets/images/loader-summery.gif" alt="">
+    </div>
+    <ng-template #load>
+      <table class="table table-hover">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -29,14 +34,18 @@
             <td>{{list.builders_location}}</td>
             <td>{{list.builders_area}}</td>
             <td>
-              <a href="#editBuilderModal" data-toggle="modal" (click)="editBuilder(list.ID, $event)">Edit</a>
+              <a href="#editBuilderModal" data-toggle="modal" (click)="editBuilder(list.ID)">Edit</a>
               <a href="#deleteBuilderModal" data-toggle="modal" (click)="deleteBuilder(list.ID)">Delete</a>
+              <a href="#" (click)="projectList(list.ID, $event)">Project List</a>
             </td>
           </tr>
 
 
+
         </tbody>
       </table>
+    </ng-template>
+
 
 
       <!-- Modal -->
@@ -53,7 +62,7 @@
               Are you sure, want to delete this Builder?
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-info" (click)="deleteBuilderConfirm()">Delete</button>
+              <button type="button" class="btn btn-info" data-dismiss="modal" (click)="deleteBuilderConfirm()">Delete</button>
             </div>
           </div>
         </div>
@@ -107,15 +116,16 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <select formControlName="status" class="form-control" name="status" #status>
-                              <option value="active" selected>Active</option>
+                              <option value="active">Active</option>
                               <option value="inactive">In active</option>
                             </select>
                           </div>
                         </div>
+                        <!-- (change)="onFileSelect($event)" -->
                         <div class="col-md-6">
                           <div class="form-group">
                             <input type="file" formControlName="builders_logo" class="form-control" name="logo" placeholder="Logo"
-                              (change)="onFileSelect($event)" #builders_logo>
+                              #builders_logo>
                           </div>
                         </div>
                         <div class="col-md-6">

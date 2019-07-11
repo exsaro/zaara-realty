@@ -18,6 +18,7 @@ export class ProjectDetailsComponent implements OnInit{
   leadForm: FormGroup;
   public succMsgFlag = false;
   succMsg = '';
+  progressFlag = false;
 
   loading = false;
   latLang = [];
@@ -38,9 +39,12 @@ export class ProjectDetailsComponent implements OnInit{
     leads(form){
       let leadData = JSON.stringify(form.value);
       console.log(form.value);
+      this.progressFlag = true;
       this.projectDetailsService.postProjectLeads(leadData).subscribe( (res)=>{
         console.log(res.code);
         this.succMsgFlag = true;
+        this.progressFlag = false;
+
         if(res.code === 'Success'){
           this.succMsg = 'Your details added successfully, Our Representative will get back to you soon.';
         }else if(res.code === 'Failed'){
@@ -61,7 +65,7 @@ export class ProjectDetailsComponent implements OnInit{
       this.leadForm = this.fb.group({
         Last_Name: ['', [Validators.required]],
         Email: ['', [Validators.required, Validators.email]],
-        Mobile: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+        Mobile: ['', [Validators.required, Validators.pattern(/^(\+)?\d+$/)]],
         // recaptchaReactive: ['', [Validators.required]],
         Referrer: [`${window.location.href}`]
       });
