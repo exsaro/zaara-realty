@@ -19,6 +19,7 @@ export class BuilderlistComponent implements OnInit {
   public succMsgFlag = false;
   succMsg = '';
   loading = false;
+  editBuilderFormData = new FormData();
 
   showBuilderList(){
     this.loading = true;
@@ -29,14 +30,39 @@ export class BuilderlistComponent implements OnInit {
     })
   }
 
-  editBuilder(builderId){
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+         this.editBuilderFormData.set('logo', file, file.name);
+      // this.addBuilderForm.get('builders_logo').setValue(file);
+    }
+  }
 
+  editBuilderConfirm(){
+
+    this.editBuilderFormData.set('builders_name', this.editBuilderForm.value['builders_name']);
+    this.editBuilderFormData.set('builders_location', this.editBuilderForm.value['builders_location']);
+    this.editBuilderFormData.set('builders_area', this.editBuilderForm.value['builders_area']);
+    this.editBuilderFormData.set('totalprojects', this.editBuilderForm.value['totalprojects']);
+    this.editBuilderFormData.set('ongoing', this.editBuilderForm.value['ongoing']);
+    this.editBuilderFormData.set('status', this.editBuilderForm.value['status']);
+    this.editBuilderFormData.set('builders_spec', this.editBuilderForm.value['builders_spec']);
+
+    this.adminservice.editBuilderData(this.editBuilderFormData).subscribe((res)=>{
+      console.log(res);
+    });
+
+
+
+  }
+
+  editBuilder(builderId){
     this.adminservice.editBuilderData(builderId).subscribe((res)=>{
       this.editBuilderData = res[0];
       console.log(this.editBuilderData);
       this.formValidation();
-    })
-
+    });
+    //this.formValidation();
   }
   deleteBuilder(builderId){
     this.deleteBuilderId = builderId;

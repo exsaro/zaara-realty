@@ -60,7 +60,9 @@ export class ProjectlistComponent implements OnInit {
   }
 
   editProject(projId){
+    this.loading = true;
     this.adminservice.editProjectData(projId).subscribe((res)=>{
+      this.loading = false;
       this.editProjectData = res[0];
       this.formValidation();
     });

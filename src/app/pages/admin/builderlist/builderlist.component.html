@@ -80,7 +80,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <form [formGroup]="editBuilderForm">
+              <form [formGroup]="editBuilderForm" (submit)="editBuilderConfirm()">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -115,16 +115,16 @@
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <select formControlName="status" class="form-control" name="status" #status>
-                              <option value="active">Active</option>
-                              <option value="inactive">In active</option>
+
+                            <select ng-modal="status" class="form-control" name="status" #status>
+                              <option [value]="status">{{status}}</option>
                             </select>
                           </div>
                         </div>
                         <!-- (change)="onFileSelect($event)" -->
                         <div class="col-md-6">
                           <div class="form-group">
-                            <input type="file" formControlName="builders_logo" class="form-control" name="logo" placeholder="Logo"
+                            <input type="file" [value]="builders_logo" (change)="onFileSelect($event)" class="form-control" name="logo" placeholder="Logo"
                               #builders_logo>
                           </div>
                         </div>

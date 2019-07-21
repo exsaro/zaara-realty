@@ -72,12 +72,15 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form [formGroup]="editProjectForm">
+          <form [formGroup]="editProjectForm" (ngSubmit)="editProject()">
           <div class="modal-body">
+            <div class="container d-flex align-items-center justify-content-center" *ngIf="loading else editLoad">
+              <img class="mt-4" src="assets/images/loader-summery.gif" alt="">
+            </div>
+            <ng-template #editLoad>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-
                   <input type="text" formControlName="Project_name" class="form-control" name="projname"
                     placeholder="Project name">
                 </div>
@@ -188,10 +191,13 @@
                 </div>
               </div>
             </div>
+          </ng-template>
+
+
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-info"
-            [disabled]="!editProjectForm.valid">Save changes</button>
+            [disabled]="!editProjectForm.valid" >Save changes</button>
           </div>
           </form>
         </div>
