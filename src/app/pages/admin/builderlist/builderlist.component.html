@@ -116,8 +116,8 @@
                         <div class="col-md-6">
                           <div class="form-group">
 
-                            <select ng-modal="status" class="form-control" name="status" #status>
-                              <option [value]="status">{{status}}</option>
+                            <select ng-modal="status" formControlName="status" class="form-control" name="status" #status>
+                              <option [value]="status" *ngFor="let status of builder_Status">{{status}}</option>
                             </select>
                           </div>
                         </div>

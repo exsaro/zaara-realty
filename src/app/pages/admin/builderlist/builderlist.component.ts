@@ -12,22 +12,23 @@ export class BuilderlistComponent implements OnInit {
 
   constructor(private adminservice: AdminService, private fb: FormBuilder, private router: Router) { }
 
-  builderList:any = [];
+  builderList: any = [];
   editBuilderForm: FormGroup;
   editBuilderData: any = [];
-  deleteBuilderId:Number;
+  deleteBuilderId: Number;
   public succMsgFlag = false;
   succMsg = '';
   loading = false;
   editBuilderFormData = new FormData();
+  builder_Status: any = [ 'Active' , 'DeActive' ];
 
-  showBuilderList(){
+  showBuilderList() {
     this.loading = true;
-    this.adminservice.listBuilderData().subscribe((res)=>{
+    this.adminservice.listBuilderData().subscribe((res) => {
       this.builderList = res;
       console.log(this.builderList);
       this.loading = false;
-    })
+    } );
   }
 
   onFileSelect(event) {
@@ -38,7 +39,7 @@ export class BuilderlistComponent implements OnInit {
     }
   }
 
-  editBuilderConfirm(){
+  editBuilderConfirm() {
 
     this.editBuilderFormData.set('builders_name', this.editBuilderForm.value['builders_name']);
     this.editBuilderFormData.set('builders_location', this.editBuilderForm.value['builders_location']);
@@ -48,7 +49,7 @@ export class BuilderlistComponent implements OnInit {
     this.editBuilderFormData.set('status', this.editBuilderForm.value['status']);
     this.editBuilderFormData.set('builders_spec', this.editBuilderForm.value['builders_spec']);
 
-    this.adminservice.editBuilderData(this.deleteBuilderId).subscribe((res)=>{
+    this.adminservice.editBuilderData(this.deleteBuilderId).subscribe((res) => {
       console.log(res);
     });
 
@@ -56,32 +57,32 @@ export class BuilderlistComponent implements OnInit {
 
   }
 
-  editBuilder(builderId){
+  editBuilder(builderId) {
     this.deleteBuilderId = builderId;
-    this.adminservice.editBuilderData(builderId).subscribe((res)=>{
+    this.adminservice.editBuilderData(builderId).subscribe((res) => {
       this.editBuilderData = res[0];
       console.log(this.editBuilderData);
       this.formValidation();
     });
-    //this.formValidation();
+    // this.formValidation();
   }
-  deleteBuilder(builderId){
+  deleteBuilder(builderId) {
     this.deleteBuilderId = builderId;
   }
-  deleteBuilderConfirm(){
-    this.adminservice.deleteBuilder(this.deleteBuilderId).subscribe((res)=>{
+  deleteBuilderConfirm() {
+    this.adminservice.deleteBuilder(this.deleteBuilderId).subscribe((res) => {
         this.showBuilderList();
         this.succMsgFlag = true;
-        if(res.code === 'Success'){
+        if (res.code === 'Success') {
           this.succMsg = 'Record added successfully.';
-        }else if(res.code === 'Failed'){
+        } else if (res.code === 'Failed') {
           this.succMsg = 'Something went wrong, please try after some time.';
         }
-        setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 4000);
+        setTimeout(function() { this.succMsgFlag = false; }.bind(this), 4000);
     });
   }
 
-  formValidation(){
+  formValidation() {
     this.editBuilderForm = this.fb.group({
       builders_name: [this.editBuilderData.builders_name, [Validators.required]],
       builders_location: [this.editBuilderData.builders_location, [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
@@ -95,9 +96,9 @@ export class BuilderlistComponent implements OnInit {
   }
 
 
-  public projectList(builderId, event):void{
+  public projectList(builderId, event): void {
     event.preventDefault();
-    this.router.navigate(['admin/projectlist',builderId]);
+    this.router.navigate(['admin/projectlist', builderId]);
  }
 
 
