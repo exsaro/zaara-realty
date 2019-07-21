@@ -48,7 +48,7 @@ export class BuilderlistComponent implements OnInit {
     this.editBuilderFormData.set('status', this.editBuilderForm.value['status']);
     this.editBuilderFormData.set('builders_spec', this.editBuilderForm.value['builders_spec']);
 
-    this.adminservice.editBuilderData(this.editBuilderFormData).subscribe((res)=>{
+    this.adminservice.editBuilderData(this.deleteBuilderId).subscribe((res)=>{
       console.log(res);
     });
 
@@ -57,6 +57,7 @@ export class BuilderlistComponent implements OnInit {
   }
 
   editBuilder(builderId){
+    this.deleteBuilderId = builderId;
     this.adminservice.editBuilderData(builderId).subscribe((res)=>{
       this.editBuilderData = res[0];
       console.log(this.editBuilderData);
