@@ -24,16 +24,19 @@
             <th scope="col">Name</th>
             <th scope="col">Location</th>
             <th scope="col">Area</th>
+            <th scope="col">status</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let list of builderList; let i = index">
-            <th scope="row">{{i}}</th>
+            <th scope="row">{{i+1}}</th>
             <td>{{list.builders_name}}</td>
             <td>{{list.builders_location}}</td>
             <td>{{list.builders_area}}</td>
+            <td>{{list.status}}</td>
             <td>
+          
               <a href="#editBuilderModal" data-toggle="modal" (click)="editBuilder(list.ID)">Edit</a>
               <a href="#deleteBuilderModal" data-toggle="modal" (click)="deleteBuilder(list.ID)">Delete</a>
               <a href="#" (click)="projectList(list.ID, $event)">Project List</a>
@@ -116,16 +119,15 @@
                         <div class="col-md-6">
                           <div class="form-group">
 
-                            <select ng-modal="status" formControlName="status" class="form-control" name="status" #status>
-                              <option [value]="status" *ngFor="let status of builder_Status">{{status}}</option>
+                            <select ng-modal="status" formControlName="status" class="form-control" name="status">
+                              <option [value]="status1" *ngFor="let status1 of builder_Status">{{status1}}</option>
                             </select>
                           </div>
                         </div>
                         <!-- (change)="onFileSelect($event)" -->
                         <div class="col-md-6">
                           <div class="form-group">
-                            <input type="file" formControlName="builders_logo" [value]="builders_logo" (change)="onFileSelect($event)" class="form-control" name="logo" placeholder="Logo"
-                              #builders_logo>
+                            <input type="file" (change)="onFileSelect($event)" class="form-control" name="logo" placeholder="Logo">
                           </div>
                         </div>
                         <div class="col-md-6">

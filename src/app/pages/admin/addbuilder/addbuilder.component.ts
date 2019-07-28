@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class AddbuilderComponent implements OnInit {
 
   addBuilderForm: FormGroup;
-  uploadfile:any;
+  uploadfile: any;
   public succMsgFlag = false;
   succMsg = '';
   builderData = new FormData();
@@ -29,25 +29,24 @@ export class AddbuilderComponent implements OnInit {
     }
   }
 
-  addBuilder(){
+  addBuilder() {
 
-    this.builderData.set('builders_name', this.addBuilderForm.value["builders_name"]);
-    this.builderData.set('builders_location', this.addBuilderForm.value["builders_location"]);
-    this.builderData.set('builders_area', this.addBuilderForm.value["builders_area"]);
-    this.builderData.set('totalprojects', this.addBuilderForm.value["totalprojects"]);
-    this.builderData.set('ongoing', this.addBuilderForm.value["ongoing"]);
-    this.builderData.set('status', this.addBuilderForm.value["status"]);
-    this.builderData.set('builders_spec', this.addBuilderForm.value["builders_spec"]);
-
+    this.builderData.set('builders_name', this.addBuilderForm.value['builders_name']);
+    this.builderData.set('builders_location', this.addBuilderForm.value['builders_location']);
+    this.builderData.set('builders_area', this.addBuilderForm.value['builders_area']);
+    this.builderData.set('totalprojects', this.addBuilderForm.value['totalprojects']);
+    this.builderData.set('ongoing', this.addBuilderForm.value['ongoing']);
+    this.builderData.set('status', this.addBuilderForm.value['status']);
+    this.builderData.set('builders_spec', this.addBuilderForm.value['builders_spec']);
     this.adminservice.addBuilderData(this.builderData).subscribe(
       (res) => {
         this.succMsgFlag = true;
-        if(res.code === 'Success'){
+        if (res.code === 'Success') {
           this.succMsg = 'Record added successfully.';
-        }else if(res.code === 'Failed'){
+        } else if (res.code === 'Failed') {
           this.succMsg = 'Something went wrong, please try after some time.';
         }
-        setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 4000);
+        setTimeout(function() { this.succMsgFlag = false; }.bind(this), 4000);
         this.addBuilderForm.reset();
       }
     );
@@ -60,10 +59,10 @@ export class AddbuilderComponent implements OnInit {
       builders_area: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
       totalprojects: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       ongoing: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      status: ['', [Validators.required]],
+      status: ['Active', [Validators.required]],
       builders_spec: ['', [Validators.required]],
       builders_logo: ['']
-    })
+    });
   }
 
 }

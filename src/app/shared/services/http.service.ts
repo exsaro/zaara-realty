@@ -1,25 +1,25 @@
-import { Injectable } from "@angular/core";
-import { HttpClient,HttpResponse,HttpHeaders} from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class HttpService {
-    constructor(private http:HttpClient){
+    constructor(private http: HttpClient) {
 
     }
 
   // get method
-  public get(url):Observable<any>{
+  public get(url): Observable<any> {
       return this.http.get<any>(url);
   }
 
   // post method1
-  public post(url, query, header?):Observable<any>{
+  public post(url, query, header?): Observable<any> {
       return this.http.post<any>(url, query, header);
   }
 
-  //Delete method
-  public delete(url, id?):Observable<any>{
+  // Delete method
+  public delete(url, id?): Observable<any> {
     return this.http.delete<any>(url);
   }
 

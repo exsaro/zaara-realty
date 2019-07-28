@@ -16,9 +16,9 @@ export class AdminLoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private adminservice: AdminService, private route: Router) { }
 
-  adminLogin(loginData){
-    let username = this.adminForm.get('adminLogin').value.toLowerCase();
-    let password = this.adminForm.get('adminPass').value.toLowerCase();
+  adminLogin(loginData) {
+    const username = this.adminForm.get('adminLogin').value.toLowerCase();
+    const password = this.adminForm.get('adminPass').value.toLowerCase();
 
     loginData = JSON.stringify({
       username: username,
@@ -27,16 +27,16 @@ export class AdminLoginComponent implements OnInit {
 
     console.log(loginData);
 
-    if( username === 'admin' && password === 'admin' ){
-      this.adminservice.adminLogin(loginData).subscribe((res)=>{
-          if(!!res['token']){
+    if ( username === 'admin' && password === 'admin' ) {
+      this.adminservice.adminLogin(loginData).subscribe((res) => {
+          if (!!res['token']) {
             localStorage.setItem('Authendication', res['token']);
-            this.route.navigate(['/admin', 'addbuilder']);
+            this.route.navigate(['/admin', 'builderlist']);
           }
         },
-        (err)=>console.log(err)
-      )
-    }else{
+        (err) => console.log(err)
+      );
+    } else {
       this.validateFlag = true;
       this.validateMsg = 'Username and password incorrect';
     }
@@ -46,7 +46,7 @@ export class AdminLoginComponent implements OnInit {
     this.adminForm = this.fb.group({
       adminLogin: ['', [Validators.required]],
       adminPass: ['', [Validators.required]]
-    })
+    });
   }
 
 }

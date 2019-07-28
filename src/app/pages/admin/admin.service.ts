@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs/Observable";
-import { HttpClient,HttpResponse,HttpHeaders} from "@angular/common/http";
+import { Observable } from 'rxjs/Observable';
+import { HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
 import { Urls } from '../../shared/models/url.model';
 import { HttpService } from '../../shared/services/http.service';
 
@@ -11,11 +11,11 @@ import { HttpService } from '../../shared/services/http.service';
 })
 export class AdminService {
 
-  constructor(private http:HttpClient, private httpservice: HttpService) {}
+  constructor(private http: HttpClient, private httpservice: HttpService) {}
 
 
 
-  adminLogin(loginData){
+  adminLogin(loginData) {
     // const httpOptions = {
     //   headers: new HttpHeaders({
     //     'Content-Type':  'application/json'
@@ -24,7 +24,7 @@ export class AdminService {
     return this.httpservice.post(Urls.ADMIN_LOGIN, loginData);
   }
 
-  addBuilderData(formData){
+  addBuilderData(formData) {
     // const httpOptions = {
     //   headers: new HttpHeaders({
     //     'Content-Type':  'multipart/form-data'
@@ -33,50 +33,53 @@ export class AdminService {
     return this.httpservice.post(Urls.ADMIN_ADD_BUILDER, formData);
   }
 
-  listBuilderData(){
+  listBuilderData() {
     return this.httpservice.get(Urls.ADMIN_LIST_BUILDER);
   }
-  editBuilderData(builderId){
+  editBuilderData(builderId) {
     return this.httpservice.get(`${Urls.ADMIN_EDIT_BUILDER}/${builderId}`);
   }
-  deleteBuilder(builderId){
+  deleteBuilder(builderId) {
     return this.httpservice.get(`${Urls.ADMIN_DELETE_BUILDER}/${builderId}`);
   }
-  listProjectData(builderId){
+  listProjectData(builderId) {
     return this.httpservice.get(`${Urls.ADMIN_LIST_PROJECT}/${builderId}`);
   }
-  addProjectData(projData){
+  addProjectData(projData) {
     return this.httpservice.post(`${Urls.ADMIN_ADD_PROJECT}`, projData);
   }
-  editProjectData(projId){
+  editProjectData(projId) {
     return this.httpservice.get(`${Urls.ADMIN_EDIT_PROJECT}/${projId}`);
   }
-  deleteproject(projId){
+  deleteproject(projId) {
     return this.httpservice.get(`${Urls.ADMIN_DELETE_PROJECT}/${projId}`);
   }
-  addamenities(projId, amenData){
+  addamenities(projId, amenData) {
     return this.httpservice.post(`${Urls.ADMIN_ADD_AMENITIES}/${projId}`, amenData);
   }
-  listamenities(projId){
+  listamenities(projId) {
     return this.httpservice.get(`${Urls.ADMIN_LIST_AMENITIES}/${projId}`);
   }
-  deleteamenities(amenId){
+  deleteamenities(amenId) {
     return this.httpservice.get(`${Urls.ADMIN_DELETE_AMENITIES}/${amenId}`);
   }
-  addpricing(projId, priceData){
+  addpricing(projId, priceData) {
     return this.httpservice.post(`${Urls.ADMIN_ADD_PRICING}/${projId}`, priceData);
   }
-  listpricing(projId){
+  listpricing(projId) {
     return this.httpservice.get(`${Urls.ADMIN_LIST_PRICING}/${projId}`);
   }
-  deletepricing(priceId){
+  deletepricing(priceId) {
     return this.httpservice.get(`${Urls.ADMIN_DELETE_PRICING}/${priceId}`);
   }
-  addgallery(priceId){
+  addgallery(priceId) {
     return this.httpservice.post(`${Urls.ADMIN_ADD_GALLERY}`, priceId);
   }
-
-  loggedIn(){
+  updateBuilder(builderId, updatedata) {
+    console.log(updatedata);
+   return this.httpservice.post(`${Urls.ADMIN_UPDATE_BUILDER}/${builderId}` , updatedata);
+  }
+  loggedIn() {
     return !!localStorage.getItem('Authendication');
   }
 
