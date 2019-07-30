@@ -11,7 +11,7 @@ import { AdminService } from '../admin.service';
 export class ProjectlistComponent implements OnInit {
 
   constructor(private adminservice: AdminService,
-    private actRoute:ActivatedRoute,
+    private actRoute: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder) { }
 
@@ -27,7 +27,7 @@ export class ProjectlistComponent implements OnInit {
 
 
 
-  formValidation(){
+  formValidation() {
     this.editProjectForm = this.fb.group({
       BID: this.BuildId,
       Project_name: [this.editProjectData['Project_name']],
@@ -45,12 +45,13 @@ export class ProjectlistComponent implements OnInit {
       total_area: [this.editProjectData['total_area']],
       availability: [this.editProjectData['availability']],
       Approvals: [this.editProjectData['Approvals']],
+      status: [this.editProjectData['status']]
     });
   }
 
   ngOnInit() {
 
-    this.actRoute.params.subscribe((builderId)=> {
+    this.actRoute.params.subscribe((builderId) => {
       this.BuildId = builderId;
       this.getProjectList(builderId);
     });
@@ -59,47 +60,47 @@ export class ProjectlistComponent implements OnInit {
 
   }
 
-  editProject(projId){
+  editProject(projId) {
     this.loading = true;
-    this.adminservice.editProjectData(projId).subscribe((res)=>{
+    this.adminservice.editProjectData(projId).subscribe((res) => {
       this.loading = false;
       this.editProjectData = res[0];
       this.formValidation();
     });
   }
 
-  deleteProject(projId){
+  deleteProject(projId) {
     this.projId = projId;
     console.log(this.projId);
   }
 
-  deleteProjectConfirm(){
-    this.adminservice.deleteproject(this.projId).subscribe((res)=>{
+  deleteProjectConfirm() {
+    this.adminservice.deleteproject(this.projId).subscribe((res) => {
       console.log(res);
       this.getProjectList(this.BuildId);
       this.succMsgFlag = true;
-        if(res.code === 'Success'){
+        if (res.code === 'Success') {
           this.succMsg = 'Record deleted successfully.';
-        }else if(res.code === 'Failed'){
+        } else if (res.code === 'Failed') {
           this.succMsg = 'Something went wrong, please try after some time.';
         }
-        setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 4000);
-    })
-  }
-
-  public getProjectList(builderId):void {
-    this.loading = true;
-    this.adminservice.listProjectData(builderId.id).subscribe((res)=>{
-      this.listProjects = res;
-      this.loading = false;
-      console.log(res)
+        setTimeout(function() { this.succMsgFlag = false; }.bind(this), 4000);
     });
   }
 
-  public addProject(BuildId, event?):void{
+  public getProjectList(builderId): void {
+    this.loading = true;
+    this.adminservice.listProjectData(builderId.id).subscribe((res) => {
+      this.listProjects = res;
+      this.loading = false;
+      console.log(res);
+    });
+  }
+
+  public addProject(BuildId, event?): void {
     event.preventDefault();
-    this.router.navigate(['admin/addproject',BuildId.id]);
-    //console.log(BuildId);
+    this.router.navigate(['admin/addproject', BuildId.id]);
+    // console.log(BuildId);
  }
 
 }

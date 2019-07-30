@@ -20,12 +20,14 @@
           <th>Name</th>
           <th>Location</th>
           <th>Area</th>
+          <th>Status</th>
           <th></th>
         </tr>
         <tr *ngFor="let projList of listProjects; let i = index">
           <td>{{projList.Project_name}}</td>
           <td>{{projList.Project_location}}</td>
           <td>{{projList.area}}</td>
+          <td>{{projList.status}}</td>
           <td>
             <a href="#editProjModal" data-toggle="modal" (click)="editProject(projList.ID)">Edit</a>
             <a href="#deleteProjModal" data-toggle="modal" (click)="deleteProject(projList.ID)">Delete</a>
@@ -179,8 +181,8 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <select formControlName="status" class="form-control" name="status" #status>
-                    <option [value]="editProjectData['status']" [selected]="true">{{editProjectData['status']}}</option>
-                    <option value="inactive">In active</option>
+                    <option value="Active" [selected]="true">Active</option>
+                    <option value="InActive">InActive</option>
                   </select>
                 </div>
               </div>

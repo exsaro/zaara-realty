@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../admin.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-builderlist',
@@ -65,6 +66,7 @@ export class BuilderlistComponent implements OnInit {
       setTimeout(function() { this.succMsgFlag = false; }.bind(this), 4000);
       this.editBuilderForm.reset();
       this.loading = false;
+      (<any>$('#editBuilderModal')).modal('hide');
            });
 
   }

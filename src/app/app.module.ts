@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
-import  { RouterModule, Routes} from '@angular/router';
-import  { LayoutComponent} from './shared/layout/layout.component';
+import { RouterModule, Routes} from '@angular/router';
+import { LayoutComponent} from './shared/layout/layout.component';
 import { AppPagesModule} from './pages/app-pages.module';
 import { HomeComponent } from './pages/home/home.component';
 import { HttpClientModule} from '@angular/common/http';
@@ -12,19 +12,27 @@ import { ProjectDetailsComponent } from './pages/project-details/project-details
 import { AdminLoginComponent } from './pages/admin/adminlogin.component';
 import { BuilderlistComponent } from './pages/admin/builderlist/builderlist.component';
 import { AddbuilderComponent } from './pages/admin/addbuilder/addbuilder.component';
+import { AddgalleryComponent } from './pages/admin/addgallery/addgallery.component';
 
 
 
 
-const routes:Routes = [{
+const routes: Routes = [{
   path : '',
   component: HomeComponent
 },
 {
   path : 'project-details/:location/:project',
   component: ProjectDetailsComponent
+},
+{
+  path : 'admin/gallery',
+  component : AddgalleryComponent
+},
+{
+  path : 'admin/builderlist',
+  component : BuilderlistComponent
 }
-
 ];
 
 @NgModule({
@@ -39,7 +47,7 @@ const routes:Routes = [{
     HttpClientXsrfModule.withOptions({
      headerName: 'Z-Token',
     }),
-    RouterModule.forRoot(routes,{useHash:true})
+    RouterModule.forRoot(routes, {useHash: true})
   ],
   exports: [
     RouterModule
