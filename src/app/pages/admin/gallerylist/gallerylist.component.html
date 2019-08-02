@@ -6,11 +6,24 @@
     <div class="col-md-10 py-5">
       <div class="border-bottom pb-3 mb-4 d-flex justify-content-between">
         <h3>List Gallery</h3>
-        <a routerLink="/admin/addgallery/" class="btn btn-info">Add Gallery</a>
+        <label class="btn btn-info custom-file-upload">
+            <input type="file" (change)="onFileSelect($event)"/>
+            Add Gallery
+        </label>
       </div>
-    </div>
-    <div>
       
+          <div class="col-md-12 py-6">
+        <div>
+            <ul id="navlist">
+                <li *ngFor="let Gallery of galarylist"  class="img_wrp">
+                    <img class="thumbnail"  width="200px" height="200px" class="brochure-poster" src="https://www.zaararealty.in/{{Gallery.img_path}}/{{Gallery.img_name}}" />
+                    <img class="close_icon" (click)="remove(Gallery.ID)" src="assets/icons/delete-bin.png" />
+
+                </li>
+                </ul>
+      </div> 
     </div>
+        </div>
+   
   </div>
 </div>

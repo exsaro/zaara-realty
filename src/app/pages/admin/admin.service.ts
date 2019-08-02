@@ -79,10 +79,10 @@ export class AdminService {
     return this.httpservice.post(`${Urls.ADMIN_ADD_GALLERY}/${projId}`, fdata);
   }
   listgallery(projId) {
-    return this.httpservice.get(`${Urls.ADMIN_ADD_GALLERY}/${projId}`);
+    return this.httpservice.get(`${Urls.ADMIN_LIST_GALLERY}/${projId}`);
   }
   deletegallery(gid) {
-    return this.httpservice.get(`${Urls.ADMIN_ADD_GALLERY}/${gid}`);
+    return this.httpservice.get(`${Urls.ADMIN_DELETE_GALLERY}/${gid}`);
   }
   updateBuilder(builderId, updatedata) {
     console.log(updatedata);
