@@ -26,7 +26,7 @@ const routes: Routes = [{
   component: ProjectDetailsComponent
 },
 {
-  path : 'admin/gallery',
+  path : 'admin/addgallery',
   component : AddgalleryComponent
 },
 {

@@ -16,10 +16,12 @@
           <table class="table table-hover" *ngIf="amenities.length > 0; else noProjects">
             <tr>
               <th>Name</th>
+              <th>Status</th>
               <th></th>
             </tr>
             <tr *ngFor="let amenList of amenities; let i = index">
               <td>{{amenList.amenities_name}}</td>
+              <td>{{amenList.status}}</td>
               <td><a href="#deleteAmenModal" data-toggle="modal" (click)="deleteAmenities(amenList.ID)">Delete</a></td>
             </tr>
           </table>

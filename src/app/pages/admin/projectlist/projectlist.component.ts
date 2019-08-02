@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../admin.service';
+import * as $AB from 'jquery';
 
 @Component({
   selector: 'app-projectlist',
@@ -23,6 +24,7 @@ export class ProjectlistComponent implements OnInit {
   succMsg = '';
   editProjectForm;
   editProjectData = [];
+  editProjectFormData = new FormData();
 
 
 
@@ -62,6 +64,7 @@ export class ProjectlistComponent implements OnInit {
 
   editProject(projId) {
     this.loading = true;
+    this.projId = projId;
     this.adminservice.editProjectData(projId).subscribe((res) => {
       this.loading = false;
       this.editProjectData = res[0];
@@ -72,6 +75,60 @@ export class ProjectlistComponent implements OnInit {
   deleteProject(projId) {
     this.projId = projId;
     console.log(this.projId);
+  }
+
+  editProjectConfirm() {
+    this.loading = true;
+    const obj = {
+      Project_name: this.editProjectForm.value['Project_name'],
+      project_desc: this.editProjectForm.value['project_desc'],
+      Possession_Date: this.editProjectForm.value['Possession_Date'],
+      Launch_Date: this.editProjectForm.value['Launch_Date'],
+      Project_location: this.editProjectForm.value['Project_location'],
+      area: this.editProjectForm.value['area'],
+      lang_lat: this.editProjectForm.value['lang_lat'],
+      BHK: this.editProjectForm.value['BHK'],
+      minbuilduparea: this.editProjectForm.value['minbuilduparea'],
+      maxbuilduparea: this.editProjectForm.value['maxbuilduparea'],
+      minprice: this.editProjectForm.value['minprice'],
+      total_units: this.editProjectForm.value['total_units'],
+      total_area: this.editProjectForm.value['total_area'],
+      availability: this.editProjectForm.value['availability'],
+      Approvals: this.editProjectForm.value['Approvals'],
+      status: this.editProjectForm.value['status']
+    };
+    // this.editProjectFormData.set('Project_name', this.editProjectForm.value['Project_name']);
+    // this.editProjectFormData.set('project_desc', this.editProjectForm.value['project_desc']);
+    // this.editProjectFormData.set('Possession_Date', this.editProjectForm.value['Possession_Date']);
+    // this.editProjectFormData.set('Launch_Date', this.editProjectForm.value['Launch_Date']);
+    // this.editProjectFormData.set('Project_location', this.editProjectForm.value['Project_location']);
+    // this.editProjectFormData.set('area', this.editProjectForm.value['area']);
+    // this.editProjectFormData.set('lang_lat', this.editProjectForm.value['lang_lat']);
+    // this.editProjectFormData.set('BHK', this.editProjectForm.value['BHK']);
+    // this.editProjectFormData.set('minbuilduparea', this.editProjectForm.value['minbuilduparea']);
+    // this.editProjectFormData.set('maxbuilduparea', this.editProjectForm.value['maxbuilduparea']);
+    // this.editProjectFormData.set('minprice', this.editProjectForm.value['minprice']);
+    // this.editProjectFormData.set('total_units', this.editProjectForm.value['total_units']);
+    // this.editProjectFormData.set('total_area', this.editProjectForm.value['total_area']);
+    // this.editProjectFormData.set('availability', this.editProjectForm.value['availability']);
+    // this.editProjectFormData.set('Approvals', this.editProjectForm.value['Approvals']);
+    // this.editProjectFormData.set('status', this.editProjectForm.value['status']);
+
+   // this.editProjectFormData.set('logo', this.editProjectForm.value['logo']);
+    this.adminservice.updateproject(this.projId, JSON.stringify(obj)).subscribe((res) => {
+      this.succMsgFlag = true;
+      this.getProjectList(this.BuildId);
+      console.log(res);
+      if (res.code === 'Success') {
+        this.succMsg = 'Record Updated successfully.';
+      } else if (res.code === 'Failed') {
+        this.succMsg = 'Something went wrong, please try after some time.';
+      }
+      setTimeout(function() { this.succMsgFlag = false; }.bind(this), 4000);
+      this.editProjectForm.reset();
+      this.loading = false;
+      (<any>$('#editProjModal')).modal('hide');
+           });
   }
 
   deleteProjectConfirm() {

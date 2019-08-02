@@ -54,6 +54,9 @@ export class AdminService {
   deleteproject(projId) {
     return this.httpservice.get(`${Urls.ADMIN_DELETE_PROJECT}/${projId}`);
   }
+  updateproject(projId, updatedata) {
+      return this.httpservice.post(`${Urls.ADMIN_UPDATE_PROJECT}/${projId}` , updatedata);
+  }
   addamenities(projId, amenData) {
     return this.httpservice.post(`${Urls.ADMIN_ADD_AMENITIES}/${projId}`, amenData);
   }
@@ -72,8 +75,14 @@ export class AdminService {
   deletepricing(priceId) {
     return this.httpservice.get(`${Urls.ADMIN_DELETE_PRICING}/${priceId}`);
   }
-  addgallery(priceId) {
-    return this.httpservice.post(`${Urls.ADMIN_ADD_GALLERY}`, priceId);
+  addgallery(projId, fdata) {
+    return this.httpservice.post(`${Urls.ADMIN_ADD_GALLERY}/${projId}`, fdata);
+  }
+  listgallery(projId) {
+    return this.httpservice.get(`${Urls.ADMIN_ADD_GALLERY}/${projId}`);
+  }
+  deletegallery(gid) {
+    return this.httpservice.get(`${Urls.ADMIN_ADD_GALLERY}/${gid}`);
   }
   updateBuilder(builderId, updatedata) {
     console.log(updatedata);

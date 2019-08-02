@@ -33,10 +33,10 @@ export class Urls {
   public static ADMIN_ADD_GALLERY = `${Urls.BASE_URL}admin/addgallery`;
   public static ADMIN_LIST_AMENITIES = `${Urls.BASE_URL}admin/listamenities`;
   public static ADMIN_LIST_PRICING = `${Urls.BASE_URL}admin/listpricing`;
-  public static ADMIN_LIST_GALLERY = `${Urls.BASE_URL}admin/`;
+  public static ADMIN_LIST_GALLERY = `${Urls.BASE_URL}admin/listgallery`;
   public static ADMIN_DELETE_AMENITIES = `${Urls.BASE_URL}admin/deleteamenities`;
   public static ADMIN_DELETE_PRICING = `${Urls.BASE_URL}admin/deletepricing`;
-  public static ADMIN_DELETE_GALLERY = `${Urls.BASE_URL}admin/`;
+  public static ADMIN_DELETE_GALLERY = `${Urls.BASE_URL}admin/deletegallery`;
 
 
 }

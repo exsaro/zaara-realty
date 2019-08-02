@@ -74,7 +74,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form [formGroup]="editProjectForm" (ngSubmit)="editProject()">
+          <form [formGroup]="editProjectForm" (submit)="editProjectConfirm()">
           <div class="modal-body">
             <div class="container d-flex align-items-center justify-content-center" *ngIf="loading else editLoad">
               <img class="mt-4" src="assets/images/loader-summery.gif" alt="">
@@ -181,7 +181,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <select formControlName="status" class="form-control" name="status" #status>
-                    <option value="Active" [selected]="true">Active</option>
+                    <option value="Active">Active</option>
                     <option value="InActive">InActive</option>
                   </select>
                 </div>

@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'zaara-homes';
 
 
-  constructor(public  router : Router) { }
+  constructor(public  router: Router) { }
 
 
   ngOnInit() {
