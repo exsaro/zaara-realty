@@ -9,13 +9,15 @@ export class HttpService {
     }
 
   // get method
-  public get(url): Observable<any> {
-      return this.http.get<any>(url);
+  public get(url: string, headers?: HttpHeaders | null): Observable<any> {
+      const expandedHeaders = this.prepareHeader(headers);
+      return this.http.get<any>(url,expandedHeaders);
   }
 
   // post method1
-  public post(url, query, header?): Observable<any> {
-      return this.http.post<any>(url, query, header);
+  public post(url: string, body: string, headers?: HttpHeaders | null): Observable<any> {
+    const expandedHeaders = this.prepareHeader(headers);
+      return this.http.post<any>(url, body, expandedHeaders);
   }
 
   // Delete method
@@ -23,6 +25,16 @@ export class HttpService {
     return this.http.delete<any>(url);
   }
 
+  private prepareHeader(headers: HttpHeaders | null): object {
+    headers = headers || new HttpHeaders();
+
+   // headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Accept', 'application/json');
+
+    return {
+        headers: headers
+    }
+}
 
 
 }
