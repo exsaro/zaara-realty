@@ -27,7 +27,10 @@ export class HttpService {
 
   private prepareHeader(headers: HttpHeaders | null): object {
     headers = headers || new HttpHeaders();
-
+    const Authendication = localStorage.getItem('Authendication');
+    if(Authendication){
+      headers = headers.set('Authorization',"Bearer " +Authendication);
+    }
    // headers = headers.set('Content-Type', 'application/json');
     headers = headers.set('Accept', 'application/json');
 
