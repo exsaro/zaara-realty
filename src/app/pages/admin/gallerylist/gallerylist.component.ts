@@ -8,7 +8,6 @@ import { Console } from '@angular/core/src/console';
   styleUrls: ['./gallerylist.component.css']
 })
 export class GallerylistComponent implements OnInit {
-  galleryadd = new FormData();
   constructor(private adminservice: AdminService, private actRoute: ActivatedRoute,
     private router: Router) { }
   galarylist: any;
@@ -38,20 +37,19 @@ remove(galleryID) {
 }
 
 onFileSelect(event) {
+  const galleryadd = new FormData();
    if (event.target.files.length > 0) {
     const files = event.target.files;
     if (files.length > 0) {
       for (const file of files) {
-        this.galleryadd.set('gimage', file, file.name);
+        galleryadd.append('gimage', file);
     }
-    console.log(this.projid);
-    console.log(this.galleryadd.get('gimage'));
-    this.adminservice.addgallery(this.projid, this.galleryadd).subscribe((res) => {
+    this.adminservice.addgallery(this.projid, galleryadd).subscribe((res) => {
       console.log(res);
     //  this.loading = false;
     },
-    error => {
-console.log(error);
+    (error) => {
+    console.log(error);
     });
     }
     // this.addBuilderForm.get('builders_logo').setValue(file);

@@ -16,7 +16,7 @@
         <div>
             <ul id="navlist">
                 <li *ngFor="let Gallery of galarylist"  class="img_wrp">
-                    <img class="thumbnail"  width="200px" height="200px" class="brochure-poster" src="https://www.zaararealty.in/{{Gallery.img_path}}/{{Gallery.img_name}}" />
+                    <img class="thumbnail"  width="200px" height="200px" class="brochure-poster" src="http://www.zaararealty.in/{{Gallery.img_path}}/{{Gallery.img_name}}" />
                     <img class="close_icon" (click)="remove(Gallery.ID)" src="assets/icons/delete-bin.png" />
 
                 </li>
