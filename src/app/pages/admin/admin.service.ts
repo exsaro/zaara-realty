@@ -76,7 +76,7 @@ export class AdminService {
     return this.httpservice.get(`${Urls.ADMIN_DELETE_PRICING}/${priceId}`);
   }
   addgallery(projId, fdata) {
-    return this.httpservice.post(`${Urls.ADMIN_ADD_GALLERY}/${projId}`, fdata);
+    return this.httpservice.post(`${Urls.ADMIN_ADD_GALLERY}/${projId}`, fdata,null);
   }
   listgallery(projId) {
     return this.httpservice.get(`${Urls.ADMIN_LIST_GALLERY}/${projId}`);
