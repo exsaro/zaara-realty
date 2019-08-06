@@ -12,7 +12,7 @@
             Add Gallery
         </label> -->
         <div>
-          <input type="file" name="gimage" (change)="onFileSelect($event)" multiple/>
+          <input formControlName="gimage" type="file" name="gimage[]" (change)="onFileSelect($event)" multiple/>
         </div>
         <div>
           <button type="submit">Upload</button>

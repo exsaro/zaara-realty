@@ -10,10 +10,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class GallerylistComponent implements OnInit {
   uploadForm: FormGroup;
-  uploadfile: any;  
+  uploadfile: any;
   formData = new FormData();
   constructor(private adminservice: AdminService, private actRoute: ActivatedRoute,
-    private router: Router,private formBuilder: FormBuilder) { }
+    private router: Router, private formBuilder: FormBuilder) { }
   galarylist: any;
 
   projid: any;
@@ -45,20 +45,19 @@ remove(galleryID) {
 }
 
 onFileSelect(event) {
- 
+
    if (event.target.files.length > 0) {
     const files = event.target.files;
- 
+
       for (const file of files) {
-        this.formData.append('gimage',file,file.name);
+        this.formData.append('gimage[]', file, file.name);
     }
 
-    
     // this.addBuilderForm.get('builders_logo').setValue(file);
   }
 }
 onSubmit() {
- console.log(this.formData.getAll('gimage'));
+ console.log(this.formData.get('gimage'));
   this.adminservice.addgallery(this.projid, this.formData).subscribe((res) => {
     console.log(res);
   //  this.loading = false;
