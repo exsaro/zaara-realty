@@ -7,16 +7,16 @@
       <div class="border-bottom pb-3 mb-4 d-flex justify-content-between">
         <h3>List Gallery</h3>
         <form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()"> 
-        <!-- <label class="btn btn-info custom-file-upload">
-            <input type="file" class="form-control" name= "gimage" (change)="onFileSelect($event)" multiple/>
-            Add Gallery
-        </label> -->
-        <div>
+        <label class="btn btn-info custom-file-upload">
           <input formControlName="gimage" type="file" name="gimage[]" (change)="onFileSelect($event)" multiple/>
-        </div>
+            Add Gallery
+        </label>
         <div>
-          <button type="submit">Upload</button>
+          <!-- <input formControlName="gimage" type="file" name="gimage[]" (change)="onFileSelect($event)" multiple/> -->
         </div>
+        <!-- <div>
+          <button type="submit">Upload</button>
+        </div> -->
         </form>
       </div>
       

@@ -52,7 +52,7 @@ onFileSelect(event) {
       for (const file of files) {
         this.formData.append('gimage[]', file, file.name);
     }
-
+    this.onSubmit();
     // this.addBuilderForm.get('builders_logo').setValue(file);
   }
 }

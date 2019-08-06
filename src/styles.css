@@ -3,9 +3,9 @@
  @import '../node_modules/font-awesome/css/font-awesome.min.css';
  @import '../node_modules/owl.carousel/dist/assets/owl.carousel.min.css';
 
- /* input[type="file"] {
+ input[type="file"] {
     display: none;
-} */
+}
 .custom-file-upload {
     /* border: 1px solid #ccc; 
     display: inline-block;*/
