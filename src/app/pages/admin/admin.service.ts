@@ -78,8 +78,7 @@ export class AdminService {
     return this.httpservice.get(`${Urls.ADMIN_DELETE_PRICING}/${priceId}`);
   }
   addgallery(projId, fdata) {
-    console.log(fdata.get('gimage'));
-    return this.httpservice.post(`${Urls.ADMIN_ADD_GALLERY}/${projId}`, fdata);
+      return this.httpservice.post(`${Urls.ADMIN_ADD_GALLERY}/${projId}`, fdata);
   }
   listgallery(projId) {
     return this.httpservice.get(`${Urls.ADMIN_LIST_GALLERY}/${projId}`);
@@ -87,9 +86,11 @@ export class AdminService {
   deletegallery(gid) {
     return this.httpservice.get(`${Urls.ADMIN_DELETE_GALLERY}/${gid}`);
   }
+  change_main_img(gid, projid) {
+    return this.httpservice.get(`${Urls.ADMIN_CHANGE_FAVORITE}/${gid}/${projid}`);
+  }
   updateBuilder(builderId, updatedata) {
-    console.log(updatedata);
-   return this.httpservice.post(`${Urls.ADMIN_UPDATE_BUILDER}/${builderId}` , updatedata);
+      return this.httpservice.post(`${Urls.ADMIN_UPDATE_BUILDER}/${builderId}` , updatedata);
   }
   loggedIn() {
     return !!localStorage.getItem('Authendication');

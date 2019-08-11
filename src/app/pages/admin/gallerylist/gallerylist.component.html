@@ -26,8 +26,7 @@
               type="file"
               name="gimage[]"
               (change)="onFileSelect($event)"
-              multiple
-            />
+              multiple/>
             Add Gallery
           </label>
           <div>
@@ -55,7 +54,8 @@
                   }}"
                 />
                 <!-- fa-heart -->
-                <span class="fav"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+  <span class="fav" *ngIf="Gallery.status == '1'" (click)="main_img(Gallery.ID)"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+  <span class="fav" *ngIf="Gallery.status == '0'" (click)="main_img(Gallery.ID)"><i class="fa fa-heart" aria-hidden="true"></i></span>
 
               </div>
             </div>

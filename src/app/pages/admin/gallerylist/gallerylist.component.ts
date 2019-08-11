@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Console } from '@angular/core/src/console';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-gallerylist',
   templateUrl: './gallerylist.component.html',
@@ -15,7 +15,6 @@ export class GallerylistComponent implements OnInit {
   BuildName;
   ProjName;
   removeLoad = false;
-  formData = new FormData();
   constructor(private adminservice: AdminService, private actRoute: ActivatedRoute,
     private router: Router, private formBuilder: FormBuilder) { }
   galarylist: any;
@@ -50,38 +49,38 @@ remove(galleryID) {
     console.log(res);
   //  this.loading = false;
   this.listgalleries(this.projid);
+   });
+  // this.listgalleries(this.projid);
   this.removeLoad =  false;
-  });
-
   console.log(galleryID);
 }
+main_img(gID) {
+  this.removeLoad =  true;
+  this.adminservice.change_main_img(gID, this.projid).subscribe((res) => {
+    console.log(res);
+  this.listgalleries(this.projid);
+   });
+  this.removeLoad =  false;
+ }
 
 onFileSelect(event) {
-
+  const formData = new FormData();
    if (event.target.files.length > 0) {
+    this.removeLoad =  true;
     const files = event.target.files;
-
-    for (const file of files) {
-      this.formData.append('gimage[]', file, file.name);
+        for (const file of files) {
+      formData.append('gimage[]', file, file.name);
     }
-    this.onSubmit();
-    //this.listgalleries(this.projid);
-    // this.addBuilderForm.get('builders_logo').setValue(file);
+  this.adminservice.addgallery(this.projid, formData).subscribe((res) => {
+      console.log(res);
+       this.listgalleries(this.projid);
+     },
+    (error) => {
+    console.log(error);
+    });
+    this.removeLoad =  false;
+    this.uploadForm.reset();
   }
-
-}
-onSubmit() {
- console.log(this.formData.get('gimage'));
- this.removeLoad =  true;
-  this.adminservice.addgallery(this.projid, this.formData).subscribe((res) => {
-    console.log(res);
-    //this.listgalleries(this.projid);
-  //  this.loading = false;
-  this.removeLoad =  false;
-  },
-  (error) => {
-  console.log(error);
-  });
 
 }
 

@@ -37,6 +37,7 @@ export class Urls {
   public static ADMIN_DELETE_AMENITIES = `${Urls.BASE_URL}admin/deleteamenities`;
   public static ADMIN_DELETE_PRICING = `${Urls.BASE_URL}admin/deletepricing`;
   public static ADMIN_DELETE_GALLERY = `${Urls.BASE_URL}admin/deletegallery`;
+  public static ADMIN_CHANGE_FAVORITE = `${Urls.BASE_URL}admin/changefavorite`;
 
 
 }
