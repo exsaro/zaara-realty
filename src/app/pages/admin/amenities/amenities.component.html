@@ -1,12 +1,19 @@
 <div class="container-fluid">
+  <nav aria-label="breadcrumb ">
+    <ol class="breadcrumb my-5">
+        <li class="breadcrumb-item"><a routerLink="/admin/builderlist">Builder list</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/admin/projectlist', BuildId, BuildName]">Project list</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Amenities</li>
+    </ol>
+  </nav>
   <div class="row">
-    <div class="col-md-2">
+    <!-- <div class="col-md-2">
       <app-adminsidebar></app-adminsidebar>
-    </div>
-    <div class="col-md-10 py-5">
+    </div> -->
+    <div class="col-md-12">
       <div class="border-bottom pb-3 mb-4 d-flex justify-content-between">
-        <h3>List Amenities</h3>
-        <a href="#" (click)="addAmenitiesPage(ProjId, $event)" class="btn btn-info">Add Amenities</a>
+        <h3>List of Amenities for {{ProjName}}</h3>
+        <a href="#" (click)="addAmenitiesPage(ProjId, ProjName, $event)" class="btn btn-info">Add Amenities</a>
       </div>
       <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
       <div class="container d-flex align-items-center justify-content-center" *ngIf="loading else load">
@@ -22,7 +29,7 @@
             <tr *ngFor="let amenList of amenities; let i = index">
               <td>{{amenList.amenities_name}}</td>
               <td>{{amenList.status}}</td>
-              <td><a href="#deleteAmenModal" data-toggle="modal" (click)="deleteAmenities(amenList.ID)">Delete</a></td>
+              <td><a class="badge badge-danger" href="#deleteAmenModal" data-toggle="modal" (click)="deleteAmenities(amenList.ID)">Delete</a></td>
             </tr>
           </table>
           <ng-template #noProjects>No Data Found</ng-template>

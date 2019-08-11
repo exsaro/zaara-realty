@@ -1,12 +1,18 @@
 <div class="container-fluid">
+  <nav aria-label="breadcrumb ">
+    <ol class="breadcrumb my-5">
+        <li class="breadcrumb-item"><a routerLink="/admin/builderlist">Builder list</a></li>
+      <li class="breadcrumb-item active" aria-current="page">List Project</li>
+    </ol>
+  </nav>
   <div class="row">
-    <div class="col-md-2">
+    <!-- <div class="col-md-2">
       <app-adminsidebar></app-adminsidebar>
-    </div>
-    <div class="col-md-10 py-5">
+    </div> -->
+    <div class="col-md-12">
       <div class="border-bottom pb-3 mb-4 d-flex justify-content-between">
-        <h3>List Projects</h3>
-        <a href="#" (click)="addProject(BuildId, $event)" class="btn btn-info">Add Project</a>
+        <h3>List of Projects for {{BuildName}}</h3>
+        <a href="#" (click)="addProject(BuildId, BuildName, $event)" class="btn btn-info">Add Project</a>
       </div>
       <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
 
@@ -29,11 +35,11 @@
           <td>{{projList.area}}</td>
           <td>{{projList.status}}</td>
           <td>
-            <a href="#editProjModal" data-toggle="modal" (click)="editProject(projList.ID)">Edit</a>
-            <a href="#deleteProjModal" data-toggle="modal" (click)="deleteProject(projList.ID)">Delete</a>
-            <a [routerLink]="['/admin/amenitieslist', projList.ID]">Amenities</a>
-            <a [routerLink]="['/admin/pricinglist', projList.ID]">Price</a>
-            <a [routerLink]="['/admin/gallerylist', projList.ID]">Gallery</a>
+            <a class="badge badge-secondary" href="#editProjModal" data-toggle="modal" (click)="editProject(projList.ID)">Edit</a>
+            <a class="badge badge-danger" href="#deleteProjModal" data-toggle="modal" (click)="deleteProject(projList.ID)">Delete</a>
+            <a class="badge badge-primary" [routerLink]="['/admin/amenitieslist', projList.ID, projList.Project_name]">Amenities</a>
+            <a class="badge badge-primary" [routerLink]="['/admin/pricinglist', projList.ID, projList.Project_name]">Price</a>
+            <a class="badge badge-primary" [routerLink]="['/admin/gallerylist', projList.ID, projList.Project_name]">Gallery</a>
           </td>
         </tr>
       </table>
@@ -68,6 +74,10 @@
     <div class="modal fade" id="editProjModal" tabindex="-1" role="dialog" aria-labelledby="editProjModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
+          <div class="container d-flex align-items-center justify-content-center" *ngIf="editLoading else editLoad">
+            <img class="mt-4" src="assets/images/loader-summery.gif" alt="">
+          </div>
+          <ng-template #editLoad>
           <div class="modal-header">
             <h5 class="modal-title" id="editProjModalLabel">Edit Project</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -202,6 +212,7 @@
             [disabled]="!editProjectForm.valid" >Save changes</button>
           </div>
           </form>
+        </ng-template>
         </div>
       </div>
     </div>

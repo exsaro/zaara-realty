@@ -33,6 +33,8 @@ export class AdminService {
     return this.httpservice.post(Urls.ADMIN_ADD_BUILDER, formData);
   }
 
+
+
   listBuilderData() {
     return this.httpservice.get(Urls.ADMIN_LIST_BUILDER);
   }
@@ -92,6 +94,7 @@ export class AdminService {
   loggedIn() {
     return !!localStorage.getItem('Authendication');
   }
+
 
 
 

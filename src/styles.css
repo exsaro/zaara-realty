@@ -3,11 +3,15 @@
  @import '../node_modules/font-awesome/css/font-awesome.min.css';
  @import '../node_modules/owl.carousel/dist/assets/owl.carousel.min.css';
 
- input[type="file"] {
+ body{
+   font-size: 14px;
+ }
+
+ /* input[type="file"] {
     display: none;
-}
+} */
 .custom-file-upload {
-    /* border: 1px solid #ccc; 
+    /* border: 1px solid #ccc;
     display: inline-block;*/
     padding: 6px 12px;
     cursor: pointer;
@@ -26,7 +30,7 @@
  /* #navlist li
  {
      display: inline;
-     
+
      padding-right: 20px;
  }    */
  body{

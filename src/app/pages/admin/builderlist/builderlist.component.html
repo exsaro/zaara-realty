@@ -1,9 +1,13 @@
 <div class="container-fluid">
-  <div class="row">
-  <div class="col-md-2">
-    <app-adminsidebar></app-adminsidebar>
-  </div>
-  <div class="col-md-10 py-5">
+
+    <!-- <app-adminsidebar></app-adminsidebar> -->
+    <nav aria-label="breadcrumb ">
+      <ol class="breadcrumb my-5">
+        <li class="breadcrumb-item active" aria-current="page">List Builder</li>
+      </ol>
+    </nav>
+    <div class="row">
+  <div class="col-md-12">
     <div class="border-bottom pb-3 mb-4 d-flex justify-content-between">
         <h3>List Builder</h3>
         <a routerLink="/admin/addbuilder" class="btn btn-info">Add Builder</a>
@@ -36,10 +40,10 @@
             <td>{{list.builders_area}}</td>
             <td>{{list.status}}</td>
             <td>
-          
-              <a href="#editBuilderModal" data-toggle="modal" (click)="editBuilder(list.ID)">Edit</a>
-              <a href="#deleteBuilderModal" data-toggle="modal" (click)="deleteBuilder(list.ID)">Delete</a>
-              <a href="#" (click)="projectList(list.ID, $event)">Project List</a>
+
+              <a class="badge badge-secondary" href="#editBuilderModal" data-toggle="modal" (click)="editBuilder(list.ID)">Edit</a>
+              <a class="badge badge-danger" href="#deleteBuilderModal" data-toggle="modal" (click)="deleteBuilder(list.ID)">Delete</a>
+              <a class="badge badge-primary" href="#" (click)="projectList(list.ID, list.builders_name, $event)">Project List</a>
             </td>
           </tr>
 
@@ -77,6 +81,10 @@
       <div class="modal fade" id="editBuilderModal" tabindex="-1" role="dialog" aria-labelledby="editBuilderModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
+              <div class="container d-flex align-items-center justify-content-center" *ngIf="editLoading else editLoad">
+                <img class="mt-4" src="assets/images/loader-summery.gif" alt="">
+              </div>
+              <ng-template #editLoad>
               <div class="modal-header">
                 <h5 class="modal-title" id="editBuilderModalLabel">Edit Builder</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -142,6 +150,7 @@
                   [disabled]="!editBuilderForm.valid">Save changes</button>
                 </div>
               </form>
+            </ng-template>
             </div>
           </div>
         </div>

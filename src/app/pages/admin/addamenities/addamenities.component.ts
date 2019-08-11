@@ -6,7 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-addamenities',
   templateUrl: './addamenities.component.html',
-  styleUrls: ['./addamenities.component.css']
+  styleUrls: ['./addamenities.component.css', '../admin.component.css']
 })
 export class AddamenitiesComponent implements OnInit {
 
@@ -16,6 +16,9 @@ export class AddamenitiesComponent implements OnInit {
     private fb: FormBuilder) { }
 
     ProjId;
+    BuildId;
+    BuildName;
+    ProjName;
     addAmenitiesForm;
     public succMsgFlag = false;
     succMsg = '';
@@ -39,6 +42,7 @@ export class AddamenitiesComponent implements OnInit {
 
     this.actrouter.params.subscribe((projId)=> {
       this.ProjId = projId.id;
+      this.ProjName = projId.name;
       console.log(this.ProjId);
     });
 
@@ -46,6 +50,9 @@ export class AddamenitiesComponent implements OnInit {
       amenities_name: ['', [Validators.required]],
       status : ['', [Validators.required]]
     });
+
+    this.BuildId = localStorage.getItem('BuilderId');
+    this.BuildName = localStorage.getItem('BuilderName');
 
   }
 

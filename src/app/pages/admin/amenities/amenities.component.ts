@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-amenities',
   templateUrl: './amenities.component.html',
-  styleUrls: ['./amenities.component.css']
+  styleUrls: ['./amenities.component.css', '../admin.component.css']
 })
 export class AmenitiesComponent implements OnInit {
 
@@ -15,15 +15,18 @@ export class AmenitiesComponent implements OnInit {
 
   amenities = [];
   ProjId;
+  ProjName;
+  BuildId;
+  BuildName;
   loading = false;
   amanId: number;
   public succMsgFlag = false;
   succMsg = '';
 
 
-  addAmenitiesPage(projId, event){
+  addAmenitiesPage(projId, projName, event){
     event.preventDefault();
-    this.route.navigate(['/admin/addamenities', projId]);
+    this.route.navigate(['/admin/addamenities', projId, projName]);
   }
 
   getamenList(projId){
@@ -57,9 +60,14 @@ export class AmenitiesComponent implements OnInit {
 
     this.actrouter.params.subscribe((projId)=> {
       this.ProjId = projId.id;
+      this.ProjName = projId.name;
       this.getamenList(this.ProjId);
       console.log(this.ProjId);
     });
+
+
+    this.BuildId = localStorage.getItem('BuilderId');
+    this.BuildName = localStorage.getItem('BuilderName');
 
 
 

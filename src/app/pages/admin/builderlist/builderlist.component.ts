@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../admin.service';
-import * as $ from 'jquery';
+
+declare let $: any;
 
 @Component({
   selector: 'app-builderlist',
   templateUrl: './builderlist.component.html',
-  styleUrls: ['./builderlist.component.css']
+  styleUrls: ['./builderlist.component.css', '../admin.component.css']
 })
 export class BuilderlistComponent implements OnInit {
 
@@ -20,8 +21,10 @@ export class BuilderlistComponent implements OnInit {
   public succMsgFlag = false;
   succMsg = '';
   loading = false;
+  editLoading = false;
   editBuilderFormData = new FormData();
   builder_Status = ['Active', 'InActive'];
+  display='none';
 
   showBuilderList() {
     this.loading = true;
@@ -44,8 +47,10 @@ export class BuilderlistComponent implements OnInit {
     }
   }
 
+
+
   editBuilderConfirm() {
-    this.loading = true;
+    //this.loading = true;
     this.editBuilderFormData.set('builders_name', this.editBuilderForm.value['builders_name']);
     this.editBuilderFormData.set('builders_location', this.editBuilderForm.value['builders_location']);
     this.editBuilderFormData.set('builders_area', this.editBuilderForm.value['builders_area']);
@@ -65,20 +70,21 @@ export class BuilderlistComponent implements OnInit {
       }
       setTimeout(function() { this.succMsgFlag = false; }.bind(this), 4000);
       this.editBuilderForm.reset();
-      this.loading = false;
-      (<any>$('#editBuilderModal')).modal('hide');
-           });
+      //this.loading = false;
+      $('#editBuilderModal').modal('hide');
+    });
 
   }
   editBuilder(builderId) {
     this.BuilderId = builderId;
-    this.loading = true;
+    this.editLoading = true;
     this.adminservice.editBuilderData(builderId).subscribe((res) => {
       this.editBuilderData = res[0];
       this.editBuilderFormData.set('logo', this.editBuilderData.logo);
       this.formValidation();
+      this.editLoading = false;
     });
-    this.loading = false;
+
     // this.formValidation();
   }
   deleteBuilder(builderId) {
@@ -110,9 +116,9 @@ export class BuilderlistComponent implements OnInit {
   }
 
 
-  public projectList(builderId, event): void {
+  public projectList(builderId, builderName, event): void {
     event.preventDefault();
-    this.router.navigate(['admin/projectlist', builderId]);
+    this.router.navigate(['admin/projectlist',  builderId, builderName]);
  }
 
  updatebuilder() {
@@ -132,6 +138,8 @@ export class BuilderlistComponent implements OnInit {
   ngOnInit() {
     this.showBuilderList();
     this.formValidation();
+    localStorage.removeItem('BuilderId');
+    localStorage.removeItem('BuilderName');
   }
 
 

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-addbuilder',
   templateUrl: './addbuilder.component.html',
-  styleUrls: ['./addbuilder.component.css']
+  styleUrls: ['./addbuilder.component.css', '../admin.component.css']
 })
 export class AddbuilderComponent implements OnInit {
 

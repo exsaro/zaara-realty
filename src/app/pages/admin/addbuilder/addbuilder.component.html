@@ -1,10 +1,16 @@
 <div class="container-fluid">
+  <nav aria-label="breadcrumb ">
+    <ol class="breadcrumb my-5">
+      <li class="breadcrumb-item"><a routerLink="/admin/builderlist">List Builder</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Builder</li>
+    </ol>
+  </nav>
   <div class="row">
-    <div class="col-md-2">
+    <!-- <div class="col-md-2">
       <app-adminsidebar></app-adminsidebar>
-    </div>
+    </div> -->
 
-    <div class="col-md-10 py-5">
+    <div class="col-md-12">
       <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
       <h3 class="border-bottom pb-3 mb-4">Add Builder</h3>
       <form [formGroup]="addBuilderForm" (ngSubmit)="addBuilder()">

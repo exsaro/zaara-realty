@@ -43,35 +43,35 @@ const routes:Routes = [
     component: AddbuilderComponent
   },
   {
-    path : 'admin/projectlist/:id',
+    path : 'admin/projectlist/:id/:name',
     component: ProjectlistComponent
   },
   {
-    path : 'admin/addproject/:id',
+    path : 'admin/addproject/:id/:name',
     component: AddprojectComponent
   },
   {
-    path : 'admin/addamenities/:id',
+    path : 'admin/addamenities/:id/:name',
     component: AddamenitiesComponent
   },
   {
-    path : 'admin/addgallery/:id',
+    path : 'admin/addgallery/:id/:name',
     component: AddgalleryComponent
   },
   {
-    path : 'admin/addpricing/:id',
+    path : 'admin/addpricing/:id/:name',
     component: AddpricingComponent
   },
   {
-    path : 'admin/amenitieslist/:id',
+    path : 'admin/amenitieslist/:id/:name',
     component: AmenitiesComponent
   },
   {
-    path : 'admin/pricinglist/:id',
+    path : 'admin/pricinglist/:id/:name',
     component: PricingComponent
   },
   {
-    path : 'admin/gallerylist/:id',
+    path : 'admin/gallerylist/:id/:name',
     component: GallerylistComponent
   }
 ];

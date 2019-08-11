@@ -6,7 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-addpricing',
   templateUrl: './addpricing.component.html',
-  styleUrls: ['./addpricing.component.css']
+  styleUrls: ['./addpricing.component.css', '../admin.component.css']
 })
 export class AddpricingComponent implements OnInit {
 
@@ -16,6 +16,9 @@ export class AddpricingComponent implements OnInit {
     private fb: FormBuilder) { }
 
     ProjId;
+    BuildId;
+    BuildName;
+    ProjName;
     addPricingForm;
     public succMsgFlag = false;
     succMsg = '';
@@ -38,6 +41,7 @@ export class AddpricingComponent implements OnInit {
     ngOnInit() {
       this.actrouter.params.subscribe((projId)=> {
         this.ProjId = projId.id;
+        this.ProjName = projId.name;
         console.log(this.ProjId);
       });
 
@@ -47,6 +51,8 @@ export class AddpricingComponent implements OnInit {
         sqft_price: ['', [Validators.required]],
         status: ['', [Validators.required]]
       });
+      this.BuildId = localStorage.getItem('BuilderId');
+      this.BuildName = localStorage.getItem('BuilderName');
     }
 
 }

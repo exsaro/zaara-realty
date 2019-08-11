@@ -1,13 +1,21 @@
 <div class="container-fluid">
+    <nav aria-label="breadcrumb ">
+        <ol class="breadcrumb my-5">
+            <li class="breadcrumb-item"><a routerLink="/admin/builderlist">Builder list</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/admin/projectlist', BuildId, BuildName]">Project list</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Pricing</li>
+        </ol>
+      </nav>
   <div class="row">
-    <div class="col-md-2">
+
+    <!-- <div class="col-md-2">
       <app-adminsidebar></app-adminsidebar>
-    </div>
-    <div class="col-md-10 py-5">
+    </div> -->
+    <div class="col-md-12">
 
       <div class="border-bottom pb-3 mb-4 d-flex justify-content-between">
-        <h3>List Pricing</h3>
-        <a href="#" (click)="addPricingPage(ProjId, $event)" class="btn btn-info">Add Pricing</a>
+        <h3>List Pricing for {{ProjName}}</h3>
+        <a href="#" (click)="addPricingPage(ProjId, ProjName, $event)" class="btn btn-info">Add Pricing</a>
       </div>
       <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
       <div class="container d-flex align-items-center justify-content-center" *ngIf="loading else load">
@@ -25,7 +33,7 @@
               <td>{{priceList.type}}</td>
               <td>{{priceList.area_size}}</td>
               <td>{{priceList.sqft_price}}</td>
-              <td><a href="#deletePriceModal" data-toggle="modal" (click)="deletePricing(priceList.ID)">Delete</a></td>
+              <td><a class="badge badge-danger" href="#deletePriceModal" data-toggle="modal" (click)="deletePricing(priceList.ID)">Delete</a></td>
             </tr>
           </table>
           <ng-template #noProjects>No Data Found</ng-template>

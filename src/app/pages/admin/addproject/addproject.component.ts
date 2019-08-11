@@ -7,7 +7,7 @@ import { stringify } from '@angular/core/src/util';
 @Component({
   selector: 'app-addproject',
   templateUrl: './addproject.component.html',
-  styleUrls: ['./addproject.component.css']
+  styleUrls: ['./addproject.component.css', '../admin.component.css']
 })
 export class AddprojectComponent implements OnInit {
 
@@ -19,6 +19,7 @@ export class AddprojectComponent implements OnInit {
 
     addProjectForm: FormGroup;
     buildId;
+    buildName;
     public succMsgFlag = false;
     succMsg = '';
 
@@ -44,6 +45,7 @@ export class AddprojectComponent implements OnInit {
 
     this.actrouter.params.subscribe((buildId) => {
       this.buildId = buildId.id;
+      this.buildName = buildId.name;
 
     });
 

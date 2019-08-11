@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-pricing',
   templateUrl: './pricing.component.html',
-  styleUrls: ['./pricing.component.css']
+  styleUrls: ['./pricing.component.css', '../admin.component.css']
 })
 export class PricingComponent implements OnInit {
 
@@ -14,15 +14,18 @@ export class PricingComponent implements OnInit {
     private route: Router) { }
 
     ProjId;
+    ProjName;
+    BuildId;
+    BuildName;
     loading = false;
     pricing = [];
     priceId: number;
     public succMsgFlag = false;
     succMsg = '';
 
-    addPricingPage(projId, event){
+    addPricingPage(projId, projName, event){
       event.preventDefault();
-      this.route.navigate(['/admin/addpricing', projId]);
+      this.route.navigate(['/admin/addpricing', projId, projName]);
     }
 
     deletePricing(priceId){
@@ -57,9 +60,12 @@ export class PricingComponent implements OnInit {
   ngOnInit() {
     this.actrouter.params.subscribe((projId)=> {
       this.ProjId = projId.id;
+      this.ProjName = projId.name;
       this.getPricingList(this.ProjId);
       console.log(this.ProjId);
     });
+    this.BuildId = localStorage.getItem('BuilderId');
+    this.BuildName = localStorage.getItem('BuilderName');
 
   }
 

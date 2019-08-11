@@ -7,7 +7,7 @@ import * as $AB from 'jquery';
 @Component({
   selector: 'app-projectlist',
   templateUrl: './projectlist.component.html',
-  styleUrls: ['./projectlist.component.css']
+  styleUrls: ['./projectlist.component.css', '../admin.component.css']
 })
 export class ProjectlistComponent implements OnInit {
 
@@ -18,7 +18,9 @@ export class ProjectlistComponent implements OnInit {
 
   listProjects = [];
   loading = false;
+  editLoading = false;
   BuildId;
+  BuildName;
   projId: number;
   public succMsgFlag = false;
   succMsg = '';
@@ -51,22 +53,11 @@ export class ProjectlistComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-
-    this.actRoute.params.subscribe((builderId) => {
-      this.BuildId = builderId;
-      this.getProjectList(builderId);
-    });
-
-    this.formValidation();
-
-  }
-
   editProject(projId) {
-    this.loading = true;
+    this.editLoading = true;
     this.projId = projId;
     this.adminservice.editProjectData(projId).subscribe((res) => {
-      this.loading = false;
+      this.editLoading = false;
       this.editProjectData = res[0];
       this.formValidation();
     });
@@ -154,10 +145,25 @@ export class ProjectlistComponent implements OnInit {
     });
   }
 
-  public addProject(BuildId, event?): void {
+  public addProject(BuildId, BuildName, event?): void {
     event.preventDefault();
-    this.router.navigate(['admin/addproject', BuildId.id]);
+    this.router.navigate(['admin/addproject', BuildId.id, BuildName]);
     // console.log(BuildId);
  }
+
+
+ ngOnInit() {
+
+  this.actRoute.params.subscribe((builderId) => {
+    this.BuildId = builderId;
+    this.BuildName = builderId.name;
+    this.getProjectList(builderId);
+    localStorage.setItem('BuilderId', builderId.id);
+    localStorage.setItem('BuilderName', builderId.name);
+  });
+
+  this.formValidation();
+
+}
 
 }
