@@ -47,7 +47,7 @@ const routes: Routes = [{
     HttpClientXsrfModule.withOptions({
      headerName: 'Z-Token',
     }),
-    RouterModule.forRoot(routes, {useHash: true})
+    RouterModule.forRoot(routes)
   ],
   exports: [
     RouterModule
