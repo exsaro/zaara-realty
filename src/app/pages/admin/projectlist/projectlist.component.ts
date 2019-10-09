@@ -60,6 +60,8 @@ export class ProjectlistComponent implements OnInit {
       this.editLoading = false;
       this.editProjectData = res[0];
       this.formValidation();
+    },err => {
+      this.router.navigate(['admin']);
     });
   }
 
@@ -119,7 +121,9 @@ export class ProjectlistComponent implements OnInit {
       this.editProjectForm.reset();
       this.loading = false;
       (<any>$('#editProjModal')).modal('hide');
-           });
+           },err => {
+            this.router.navigate(['admin']);
+          });
   }
 
   deleteProjectConfirm() {
@@ -133,6 +137,8 @@ export class ProjectlistComponent implements OnInit {
           this.succMsg = 'Something went wrong, please try after some time.';
         }
         setTimeout(function() { this.succMsgFlag = false; }.bind(this), 4000);
+    },err => {
+      this.router.navigate(['admin']);
     });
   }
 
@@ -142,6 +148,8 @@ export class ProjectlistComponent implements OnInit {
       this.listProjects = res;
       this.loading = false;
       console.log(res);
+    },err => {
+      this.router.navigate(['admin']);
     });
   }
 

@@ -17,6 +17,7 @@ export class AddbuilderComponent implements OnInit {
   public succMsgFlag = false;
   succMsg = '';
   builderData = new FormData();
+  router: any;
   constructor(private fb: FormBuilder, private adminservice: AdminService, private route: Router) {
 
    }
@@ -48,7 +49,10 @@ export class AddbuilderComponent implements OnInit {
         }
         setTimeout(function() { this.succMsgFlag = false; }.bind(this), 4000);
         this.addBuilderForm.reset();
+      },err => {
+        this.router.navigate(['admin']);
       }
+
     );
   }
 

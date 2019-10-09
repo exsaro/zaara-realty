@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class GallerylistComponent implements OnInit {
   uploadForm: FormGroup;
   uploadfile: any;
+  loading = false;
   BuildId;
   BuildName;
   ProjName;
@@ -35,12 +36,14 @@ export class GallerylistComponent implements OnInit {
     this.BuildName = localStorage.getItem('BuilderName');
   }
 listgalleries(projid) {
-//    this.loading = true;
+    this.loading = true;
     this.adminservice.listgallery(projid).subscribe((res) => {
-      console.log(res);
-      this.galarylist = res.response;
-      console.log(this.galarylist);
-    //  this.loading = false;
+    console.log(res);
+    this.galarylist = res.response;
+    console.log(this.galarylist);
+    this.loading = false;
+    },err => {
+      this.router.navigate(['admin']);
     });
 }
 remove(galleryID) {
@@ -49,7 +52,9 @@ remove(galleryID) {
     console.log(res);
   //  this.loading = false;
   this.listgalleries(this.projid);
-   });
+   },err => {
+    this.router.navigate(['admin']);
+  });
   // this.listgalleries(this.projid);
   this.removeLoad =  false;
   console.log(galleryID);
@@ -59,7 +64,9 @@ main_img(gID) {
   this.adminservice.change_main_img(gID, this.projid).subscribe((res) => {
     console.log(res);
   this.listgalleries(this.projid);
-   });
+   },err => {
+    this.router.navigate(['admin']);
+  });
   this.removeLoad =  false;
  }
 
@@ -76,8 +83,8 @@ onFileSelect(event) {
        this.listgalleries(this.projid);
      },
     (error) => {
-    console.log(error);
-    });
+             this.router.navigate(['admin']);
+        });
     this.removeLoad =  false;
     this.uploadForm.reset();
   }

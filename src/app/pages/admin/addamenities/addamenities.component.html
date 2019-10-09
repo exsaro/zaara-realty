@@ -6,6 +6,7 @@
         <li class="breadcrumb-item"><a [routerLink]="['/admin/amenitieslist', ProjId, ProjName]">Amenities list</a></li>
       <li class="breadcrumb-item active" aria-current="page">Add amenities</li>
     </ol>
+    <span id ="logout">Welcome Admin || <a routerLink="/admin/login">Logout </a> </span>
   </nav>
   <div class="row">
 
@@ -19,6 +20,7 @@
       </div>
 
       <form [formGroup]="addAmenitiesForm" (ngSubmit)="addAmenities()">
+
       <div class="card mb-4 p-3">
           <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
           <div class="row">

@@ -34,7 +34,7 @@ export class HttpService {
     }
    headers = headers.set('Content-Type', 'application/json');
     headers = headers.set('Accept', 'application/json');
-    headers = headers.set('observe', 'response');
+  //  headers = headers.set('observe', 'response');
     return {
         headers: headers,
         }

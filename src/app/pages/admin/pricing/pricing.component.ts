@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./pricing.component.css', '../admin.component.css']
 })
 export class PricingComponent implements OnInit {
+  router: any;
 
   constructor(private adminservice: AdminService,
     private actrouter: ActivatedRoute,
@@ -44,6 +45,8 @@ export class PricingComponent implements OnInit {
         }
         setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 4000);
         console.log(res);
+      },err => {
+        this.router.navigate(['admin']);
       });
     }
 
@@ -54,6 +57,8 @@ export class PricingComponent implements OnInit {
         this.loading = false;
         console.log(res);
 
+      },err => {
+        this.router.navigate(['admin']);
       });
     }
 

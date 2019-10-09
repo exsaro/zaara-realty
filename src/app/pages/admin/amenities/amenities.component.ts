@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./amenities.component.css', '../admin.component.css']
 })
 export class AmenitiesComponent implements OnInit {
+  router: any;
 
   constructor(private adminservice: AdminService,
     private actrouter: ActivatedRoute,
@@ -35,7 +36,10 @@ export class AmenitiesComponent implements OnInit {
       this.amenities = res.response;
       this.loading = false;
       console.log(res.response);
-    });
+    },err => {
+      this.router.navigate(['admin']);
+    }
+);
   }
 
   deleteAmenities(amenId){
@@ -53,7 +57,10 @@ export class AmenitiesComponent implements OnInit {
         this.succMsg = 'Something went wrong, please try after some time.';
       }
       setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 4000);
-    });
+    },err => {
+      this.router.navigate(['admin']);
+    }
+);
   }
 
   ngOnInit() {

@@ -51,7 +51,7 @@ export class AddamenitiesComponent implements OnInit {
 
     this.addAmenitiesForm = this.fb.group({
       amenities_name: ['', [Validators.required]],
-      status : ['', [Validators.required]]
+      status : ['Active', [Validators.required]]
     });
 
     this.BuildId = localStorage.getItem('BuilderId');

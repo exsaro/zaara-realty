@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./addpricing.component.css', '../admin.component.css']
 })
 export class AddpricingComponent implements OnInit {
+  router: any;
 
   constructor(private adminservice: AdminService,
     private actrouter: ActivatedRoute,
@@ -35,6 +36,8 @@ export class AddpricingComponent implements OnInit {
         setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 4000);
         this.addPricingForm.reset();
         console.log(res);
+      },err => {
+        this.router.navigate(['admin']);
       });
     }
 
@@ -49,7 +52,7 @@ export class AddpricingComponent implements OnInit {
         type: ['', [Validators.required]],
         area_size: ['', [Validators.required]],
         sqft_price: ['', [Validators.required]],
-        status: ['', [Validators.required]]
+        status: ['Active', [Validators.required]]
       });
       this.BuildId = localStorage.getItem('BuilderId');
       this.BuildName = localStorage.getItem('BuilderName');
