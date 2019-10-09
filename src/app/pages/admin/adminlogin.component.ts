@@ -30,11 +30,11 @@ export class AdminLoginComponent implements OnInit {
     if ( username === 'admin' && password === 'admin' ) {
       this.adminservice.adminLogin(loginData).subscribe((res) => {
           if (!!res['token']) {
-            localStorage.setItem('Authendication', res['token']);
+            localStorage.setItem('Auth', res['token']);
             this.route.navigate(['/admin', 'builderlist']);
           }
         },
-        (err) => console.log(err)
+        (err) => console.log(err) 
       );
     } else {
       this.validateFlag = true;
@@ -43,6 +43,8 @@ export class AdminLoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    localStorage.removeItem('Auth');
+
     this.adminForm = this.fb.group({
       adminLogin: ['', [Validators.required]],
       adminPass: ['', [Validators.required]]

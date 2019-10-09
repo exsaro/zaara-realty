@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./addamenities.component.css', '../admin.component.css']
 })
 export class AddamenitiesComponent implements OnInit {
+  router: any;
 
   constructor(private adminservice: AdminService,
     private actrouter: ActivatedRoute,
@@ -35,6 +36,8 @@ export class AddamenitiesComponent implements OnInit {
         setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 4000);
         this.addAmenitiesForm.reset();
         console.log(res);
+      },err => {
+        this.router.navigate(['admin']);
       })
     }
 

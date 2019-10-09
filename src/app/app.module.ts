@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule ,Title } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { AdminLoginComponent } from './pages/admin/adminlogin.component';
 import { BuilderlistComponent } from './pages/admin/builderlist/builderlist.component';
 import { AddbuilderComponent } from './pages/admin/addbuilder/addbuilder.component';
 import { AddgalleryComponent } from './pages/admin/addgallery/addgallery.component';
+
 
 
 
@@ -32,7 +33,7 @@ const routes: Routes = [{
 {
   path : 'admin/builderlist',
   component : BuilderlistComponent
-}
+},
 ];
 
 @NgModule({
@@ -53,7 +54,7 @@ const routes: Routes = [{
     RouterModule
   ],
 
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

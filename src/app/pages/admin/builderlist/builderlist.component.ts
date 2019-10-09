@@ -28,14 +28,16 @@ export class BuilderlistComponent implements OnInit {
 
   showBuilderList() {
     this.loading = true;
+    
     this.adminservice.listBuilderData().subscribe((res) => {
-      this.builderList = res;
-      console.log(this.builderList);
-      this.loading = false;
-    } );
+        this.builderList = res;
+       this.loading = false;
+    },err => {
+          this.router.navigate(['admin']);
+    });
+  
   }
-
-  onFileSelect(event) {
+    onFileSelect(event) {
       if (event.target.files.length > 0) {
       const file = event.target.files[0];
 
@@ -83,6 +85,8 @@ export class BuilderlistComponent implements OnInit {
       this.editBuilderFormData.set('logo', this.editBuilderData.logo);
       this.formValidation();
       this.editLoading = false;
+    },err => {
+      this.router.navigate(['admin']);
     });
 
     // this.formValidation();
@@ -100,7 +104,9 @@ export class BuilderlistComponent implements OnInit {
           this.succMsg = 'Something went wrong, please try after some time.';
         }
         setTimeout(function() { this.succMsgFlag = false; }.bind(this), 4000);
-    });
+    },err => {
+      this.router.navigate(['admin']);
+});
   }
 
   formValidation() {
@@ -132,14 +138,16 @@ export class BuilderlistComponent implements OnInit {
       this.succMsg = 'Something went wrong, please try after some time.';
     }
     setTimeout(function() { this.succMsgFlag = false; }.bind(this), 4000);
+},err => {
+  this.router.navigate(['admin']);
 });
 
  }
   ngOnInit() {
     this.showBuilderList();
     this.formValidation();
-    localStorage.removeItem('BuilderId');
-    localStorage.removeItem('BuilderName');
+    // localStorage.removeItem('BuilderId');
+    // localStorage.removeItem('BuilderName');
   }
 
 

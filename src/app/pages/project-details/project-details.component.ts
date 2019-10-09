@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Projects} from '../../shared/models/projects.model';
 import { ActivatedRoute } from "@angular/router";
 import {ProjectDetailsService} from './project-details.service';
@@ -29,7 +30,7 @@ export class ProjectDetailsComponent implements OnInit{
     public projectDetails:Projects.ResponseModel;
     constructor(private route:ActivatedRoute,
                 private projectDetailsService:ProjectDetailsService,
-                private fb: FormBuilder
+                private fb: FormBuilder, private title:Title
     ){ }
 
     showPop(index) {
@@ -89,6 +90,8 @@ export class ProjectDetailsComponent implements OnInit{
          const projectDetailsRequestParams = `${projectDetailsRoutingData.location}/${projectDetailsRoutingData.project}`;
          this.projectDetailsService.getProjectDetails(projectDetailsRequestParams).subscribe((apiData)=>{
           this.loading = false;
+          this.title.setTitle(apiData[0].Project_name+" at "+apiData[0].Project_location+","+apiData[0].area);
+
           this.latLang = apiData[0].lang_lat.split(',');
           this.lat = this.latLang[0];
           this.lang = this.latLang[1];

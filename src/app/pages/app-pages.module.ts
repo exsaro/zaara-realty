@@ -30,10 +30,19 @@ import { GallerylistComponent } from './admin/gallerylist/gallerylist.component'
 
 const routes:Routes = [
 
-  {
-    path : 'admin',
-    component: AdminLoginComponent
+  // {
+  //   path : 'admin',
+  //   component: AdminLoginComponent
+  // },
+  { 
+    path: 'admin',
+    redirectTo: 'admin/login',
+    pathMatch: 'full'
   },
+{
+  path : 'admin/login',
+  component : AdminLoginComponent
+},
   {
     path : 'admin/builderlist',
     component: BuilderlistComponent
