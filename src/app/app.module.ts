@@ -13,6 +13,8 @@ import { AdminLoginComponent } from './pages/admin/adminlogin.component';
 import { BuilderlistComponent } from './pages/admin/builderlist/builderlist.component';
 import { AddbuilderComponent } from './pages/admin/addbuilder/addbuilder.component';
 import { AddgalleryComponent } from './pages/admin/addgallery/addgallery.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -48,7 +50,9 @@ const routes: Routes = [{
     HttpClientXsrfModule.withOptions({
      headerName: 'Z-Token',
     }),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule
+
   ],
   exports: [
     RouterModule

@@ -25,6 +25,9 @@ import { AddpricingComponent } from './admin/addpricing/addpricing.component';
 import { AddamenitiesComponent } from './admin/addamenities/addamenities.component';
 import { AddgalleryComponent } from './admin/addgallery/addgallery.component';
 import { GallerylistComponent } from './admin/gallerylist/gallerylist.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
 // import { TokenInterceptorService } from '../pages/admin/token-interceptor.service';
 
 
@@ -34,7 +37,7 @@ const routes:Routes = [
   //   path : 'admin',
   //   component: AdminLoginComponent
   // },
-  { 
+  {
     path: 'admin',
     redirectTo: 'admin/login',
     pathMatch: 'full'
@@ -59,10 +62,10 @@ const routes:Routes = [
     path : 'admin/addproject/:id/:name',
     component: AddprojectComponent
   },
-  {
-    path : 'admin/addamenities/:id/:name',
-    component: AddamenitiesComponent
-  },
+  // {
+  //   path : 'admin/addamenities/:id/:name',
+  //   component: AddamenitiesComponent
+  // },
   {
     path : 'admin/addgallery/:id/:name',
     component: AddgalleryComponent
@@ -110,6 +113,9 @@ const routes:Routes = [
          FormsModule,
          ReactiveFormsModule,
          RecaptchaModule,
+         MatChipsModule,
+         MatFormFieldModule,
+         MatIconModule,
          RecaptchaFormsModule,
          AgmCoreModule.forRoot({
           apiKey: 'AIzaSyBlVqyB--wrkGpks1i74mHuZLpGu1pwVq8'

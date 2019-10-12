@@ -3,6 +3,7 @@ import { AdminService } from '../admin.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Console } from '@angular/core/src/console';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-gallerylist',
   templateUrl: './gallerylist.component.html',
