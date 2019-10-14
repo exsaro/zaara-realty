@@ -20,7 +20,7 @@
     <div class="col-md-12">
       <div class="border-bottom pb-3 mb-4 d-flex justify-content-between">
         <h3>List Gallery for {{ ProjName }}</h3>
-        <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="uploadForm">
           <label class="btn btn-info custom-file-upload">
             <input
               formControlName="gimage"
