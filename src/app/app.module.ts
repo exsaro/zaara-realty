@@ -27,15 +27,7 @@ const routes: Routes = [{
 {
   path : 'project-details/:location/:project',
   component: ProjectDetailsComponent
-},
-{
-  path : 'admin/addgallery',
-  component : AddgalleryComponent
-},
-{
-  path : 'admin/builderlist',
-  component : BuilderlistComponent
-},
+}
 ];
 
 @NgModule({
