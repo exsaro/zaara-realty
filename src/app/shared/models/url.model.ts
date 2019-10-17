@@ -7,11 +7,7 @@
 
 export class Urls {
 
-<<<<<<< HEAD
   public static BASE_URL = `https://www.zaararealty.in/api/public/`;
-=======
-  public static BASE_URL = `http://localhost:81/zaararealty/public/`;
->>>>>>> 00c7844f71a903e202415473b26c7e596f72ba17
   public static BUILDER_URL = `${Urls.BASE_URL}builder/`;
   public static PROJECT_URL = `${Urls.BASE_URL}projects/`;
   public static SEARCH_URL = `${Urls.BASE_URL}search/`;
