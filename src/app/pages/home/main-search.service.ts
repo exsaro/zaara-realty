@@ -16,5 +16,9 @@ export class MainSearchService {
     return this.httpService.get(Urls.SEARCH_URL+queryString);
   }
 
+  clients(){
+    return this.httpService.get(Urls.CLIENT_URL);
+  }
+
 
 }

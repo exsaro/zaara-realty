@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   disBtn = false;
   loading = false;
   selected = false;
-
+  clients = [];
   quickSearchs = ['Chennai', 'Coonoor', 'Trichy']
 
   constructor(private router: Router, private searchservice: MainSearchService, private summeryservice: ProjectSummaryService) {}
@@ -107,11 +107,19 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/project-details']);
     }
 
-
+getclients(){
+  this.searchservice.clients().subscribe((res) => {
+  this.clients = res;
+  console.log(this.clients);
+},
+(error) => {
+  console.log(error);
+});
+}
 
 
   ngOnInit() {
-
+    this.getclients();
     $('.owl-carousel').owlCarousel({
       items: 5,
       nav: true,

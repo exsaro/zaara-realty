@@ -116,8 +116,8 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="owl-carousel mb-0">
-                    <li><img class="img-fluid" src="assets/images/clients/casagrand_logo.jpg" alt=""></li>
-                    <li><img class="img-fluid" src="assets/images/clients/ozonegreen_logo.jpg" alt=""></li>
+                    <li *ngFor="let client of clients"><img class="img-fluid" [src]="'https://www.zaararealty.in'+client.logo" alt=""></li>
+                    <!-- <li><img class="img-fluid" src="assets/images/clients/ozonegreen_logo.jpg" alt=""></li>
                     <li><img class="img-fluid" src="assets/images/clients/shriram_logo.jpg" alt=""></li>
                     <li><img class="img-fluid" src="assets/images/clients/thelokhaubud_logo.jpg" alt=""></li>
                     <li><img class="img-fluid" src="assets/images/clients/urbantree_logo.jpg" alt=""></li>
@@ -129,7 +129,7 @@
                     <li><img class="img-fluid" src="assets/images/clients/agni_logo.jpg" alt=""></li>
                     <li><img class="img-fluid" src="assets/images/clients/alliance_logo.jpg" alt=""></li>
                     <li><img class="img-fluid" src="assets/images/clients/puravankara_logo.jpg" alt=""></li>
-                    <li><img class="img-fluid" src="assets/images/clients/urbanrise_logo.jpg" alt=""></li>
+                    <li><img class="img-fluid" src="assets/images/clients/urbanrise_logo.jpg" alt=""></li> -->
 
 
                 </ul>
