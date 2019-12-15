@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { MainSearchService } from './main-search.service';
 import { Projects} from '../../shared/models/projects.model';
 import { ProjectSummaryService } from '../../shared/components/project-summary/project-summary.service';
-
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import {ProjectDetailsService} from '../project-details/project-details.service';
 declare let $: any;
 
 @Component({
@@ -13,10 +14,14 @@ declare let $: any;
 })
 
 export class HomeComponent implements OnInit {
-
+  private recaptchaSiteKey = '6Lfki38UAAAAADienDrSAirDZ7LdEWmU3SnDtTdc';
+  leadForm: FormGroup;
   public searchResults: string[] = [];
   public searchAllResults: Projects.SearchModel;
   public searchRequestParams;
+  public succMsgFlag = false;
+  succMsg = '';
+  progressFlag = false;
 
   @ViewChild('mainSearch') mainSearch:ElementRef;
   showSuggest = true;
@@ -26,8 +31,28 @@ export class HomeComponent implements OnInit {
   clients = [];
   quickSearchs = ['Chennai', 'Coonoor', 'Trichy']
 
-  constructor(private router: Router, private searchservice: MainSearchService, private summeryservice: ProjectSummaryService) {}
+  constructor(private router: Router, private searchservice: MainSearchService, private summeryservice: ProjectSummaryService,private fb: FormBuilder,private projectDetailsService:ProjectDetailsService) {}
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+}
+leads(form){
+  let leadData = JSON.stringify(form.value);
+  console.log(form.value);
+  this.progressFlag = true;
+  this.projectDetailsService.postProjectLeads(leadData).subscribe( (res)=>{
+    console.log(res.code);
+    this.succMsgFlag = true;
+    this.progressFlag = false;
 
+    if(res.code === 'Success'){
+      this.succMsg = 'Your details added successfully, Our Representative will get back to you soon.';
+    }else if(res.code === 'Failed'){
+      this.succMsg = 'Something went wrong, please try after some time.';
+    }
+    setTimeout(function(){ this.succMsgFlag = false; }.bind(this), 4000);
+  });
+  form.reset();
+}
   public displaySuggest(query: string) {
       this.loading = true;
       this.selected = false;
@@ -119,6 +144,13 @@ getclients(){
 
 
   ngOnInit() {
+    this.leadForm = this.fb.group({
+      Last_Name: ['', [Validators.required]],
+      Email: ['', [Validators.required, Validators.email]],
+      Mobile: ['', [Validators.required, Validators.pattern(/^(\+)?\d+$/)]],
+      recaptchaReactive: ['', [Validators.required]],
+      Referrer: [`${window.location.href}`]
+    });
     this.getclients();
     $('.owl-carousel').owlCarousel({
       items: 5,

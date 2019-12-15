@@ -14,7 +14,7 @@ import { BuilderlistComponent } from './pages/admin/builderlist/builderlist.comp
 import { AddbuilderComponent } from './pages/admin/addbuilder/addbuilder.component';
 import { AddgalleryComponent } from './pages/admin/addgallery/addgallery.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { RecaptchaModule } from 'ng-recaptcha';
 
 
 
@@ -43,7 +43,8 @@ const routes: Routes = [{
      headerName: 'Z-Token',
     }),
     RouterModule.forRoot(routes),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RecaptchaModule
 
   ],
   exports: [

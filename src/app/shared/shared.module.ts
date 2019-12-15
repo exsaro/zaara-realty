@@ -8,6 +8,7 @@ import { ProjectSummaryComponent } from '../shared/components/project-summary/pr
 import { ProjectSummaryService} from './components/project-summary/project-summary.service';
 
 
+
 @NgModule({
 
     declarations : [
