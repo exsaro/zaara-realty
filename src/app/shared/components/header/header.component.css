@@ -46,3 +46,17 @@ header .nav li{
     text-align: center;
 }
 }
+#mail-btn {
+  position: fixed;
+  top: 25px;
+  right: 20px;
+  z-index: 999;
+  font-size: 18px;
+  border: none;
+  outline: 0;
+  color: #fff;
+}
+.enquire-btn{padding:.7rem 1.5rem .7rem!important;
+  background:#cea654;border-radius:25px;font-size:16px;
+  color:#fff!important;top:100px; right:60px;}
+.enquire-btn a,.enquire-btn a:hover,a:hover.enquire-btn{text-decoration:none;}
