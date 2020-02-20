@@ -1,4 +1,4 @@
-<header class="d-flex align-items-center container-fluid">
+<header class="d-flex align-items-center container-fluid" id="header">
     <h1><a href=""><img src="assets/images/svg/logo.svg" alt=""></a></h1>
     <ul class="nav">
         <li class="closBtn">
@@ -11,8 +11,44 @@
         <li class="nav-item"><a href="#projects">Projects</a></li>
         <li class="nav-item"><a href="#contact">Contact us</a></li>
     </ul>
+
+    <div class="search-container">
+      <div class="search-section d-flex">
+          <input type="text" name="mainSearch" #mainSearch value="" ng-model="mainSearch" (keyup)="displaySuggest(mainSearch.value)" autocomplete="off" class="search-txt flex-grow-1 mr-2" placeholder="Enter your Preferred Location">
+          <button class="btn btn-primary" (click)="showProjects($event,mainSearch.value)" [disabled]="!mainSearch.value">Submit</button>
+          <!-- <button class="btn btn-primary" (click)="navigateToProjectDetails()">Submit</button> -->
+      </div>
+
+    <div class="auto-suggest" *ngIf="!showSuggest">
+      <!-- <div *ngIf="loading">Loading...</div> -->
+      <ul>
+        <div>
+          <li><span>{{searchAllResults.Location.type}}</span></li>
+          <li *ngFor="let suggestLocation of searchAllResults.Location.response">
+            <a href="#" (click)="getData($event,suggestLocation)">{{suggestLocation}}</a>
+          </li>
+        </div>
+        <div>
+            <li><span>{{searchAllResults.Projects.type}}</span></li>
+            <li *ngFor="let suggestProjects of searchAllResults.Projects.response">
+              <a href="#" (click)="getData($event,suggestProjects)">{{suggestProjects}}</a>
+            </li>
+        </div>
+      </ul>
+
+      </div>
+
+      <!-- <div class="latest-search mt-3">
+          <ul>
+              <li *ngFor="let quickSerch of quickSearchs"><a (click)="showProjects($event,quickSerch)" href="#">{{quickSerch}}</a></li>
+          </ul>
+      </div> -->
+
+  </div>
+
     <span class="hamburger"><img src="assets/images/svg/navbar-togler-dark.svg" alt=""></span>
-    <div id="mail-btn" class="" align="right">
+
+    <div id="mail-btn" class="">
         <a class="enquire-btn enquiry-scroll"  href="#contact" title="enquire"><span class="shimmer">Enquire Now</span></a>
     </div>
 </header>

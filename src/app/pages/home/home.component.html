@@ -1,6 +1,6 @@
 
-    <div id="loadermodal" class="modal fade"> 
-      
+    <div id="loadermodal" class="modal fade">
+
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
         <div class="modal-body" style="padding:0!important">
@@ -26,8 +26,8 @@
                     required="required"
                   />
                 </div>
-  
-  
+
+
                 <div class="form-group col-md-4">
                   <input
                     type="email"
@@ -58,31 +58,32 @@
               </form>
               <div *ngIf="!!succMsgFlag" class="alert alert-warning">{{succMsg}}</div>
             </div>
-                            
-          
+
+
         </div>
 
 </div>
 </div>
 
-</div> </div> 
+</div> </div>
 
 
-</div>       
+</div>
 </div>
 <section class="hero-container mb-5 carousel slide parallax" id="hero" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#hero" data-slide-to="0" class="active"></li>
         <li data-target="#hero" data-slide-to="1"></li>
         <li data-target="#hero" data-slide-to="2"></li>
+        <li data-target="#hero" data-slide-to="3"></li>
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="hero-section d-flex justify-content-center">
             <img class="img-fluid" src="assets/images/hero-banner/banner1.jpg" alt="">
             <div class="container hero-caption">
-                <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p>
-                <!-- <button class="btn btn-primary no-radius">Read more</button> -->
+                <!-- <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p> -->
+                <a href="#89" class="btn btn-primary no-radius">Read more</a>
             </div>
             </div>
         </div>
@@ -90,8 +91,8 @@
             <div class="hero-section d-flex justify-content-center">
             <img class="img-fluid" src="assets/images/hero-banner/banner2.jpg" alt="">
             <div class="container hero-caption">
-                <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p>
-                <!-- <button class="btn btn-primary no-radius">Read more</button> -->
+                <!-- <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p> -->
+                <a href="#31" class="btn btn-primary no-radius">Read more</a>
             </div>
             </div>
         </div>
@@ -99,45 +100,23 @@
             <div class="hero-section d-flex justify-content-center">
             <img class="img-fluid" src="assets/images/hero-banner/banner3.jpg" alt="">
             <div class="container hero-caption">
-                <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p>
-                <!-- <button class="btn btn-primary no-radius">Read more</button> -->
+                <!-- <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p> -->
+                <a href="#3" class="btn btn-primary no-radius">Read more</a>
             </div>
             </div>
         </div>
-    </div>
-    <div class="search-container container">
-        <div class="search-section d-flex">
-            <input type="text" name="mainSearch" #mainSearch value="" ng-model="mainSearch" (keyup)="displaySuggest(mainSearch.value)" autocomplete="off" class="search-txt flex-grow-1 mr-2" placeholder="Enter your Preferred Location">
-            <button class="btn btn-primary" (click)="showProjects($event,mainSearch.value)" [disabled]="!mainSearch.value">Submit</button>
-            <!-- <button class="btn btn-primary" (click)="navigateToProjectDetails()">Submit</button> -->
-        </div>
-
-      <div class="auto-suggest" *ngIf="!showSuggest">
-        <!-- <div *ngIf="loading">Loading...</div> -->
-        <ul>
-          <div>
-            <li><span>{{searchAllResults.Location.type}}</span></li>
-            <li *ngFor="let suggestLocation of searchAllResults.Location.response">
-              <a href="#" (click)="getData($event,suggestLocation)">{{suggestLocation}}</a>
-            </li>
+        <div class="carousel-item">
+          <div class="hero-section d-flex justify-content-center">
+          <img class="img-fluid" src="assets/images/hero-banner/banner4.jpg" alt="">
+          <div class="container hero-caption">
+              <!-- <p><span>Driven, motivated and inspired</span> <br> <span>everyone at <strong>Zaara Realty</strong> strives</span> <br> <span>for brilliance at work</span></p> -->
+              <a href="#6" class="btn btn-primary no-radius">Read more</a>
           </div>
-          <div>
-              <li><span>{{searchAllResults.Projects.type}}</span></li>
-              <li *ngFor="let suggestProjects of searchAllResults.Projects.response">
-                <a href="#" (click)="getData($event,suggestProjects)">{{suggestProjects}}</a>
-              </li>
           </div>
-        </ul>
-
-        </div>
-
-        <div class="latest-search mt-3">
-            <ul>
-                <li *ngFor="let quickSerch of quickSearchs"><a (click)="showProjects($event,quickSerch)" href="#">{{quickSerch}}</a></li>
-            </ul>
-        </div>
-
+      </div>
     </div>
+
+
 </section>
 
 <section class="welcome-contaoner pb-5 parallax position-relative" id="about">
@@ -253,8 +232,8 @@
                         required="required"
                       />
                     </div>
-      
-      
+
+
                     <div class="form-group col-md-4">
                       <input
                         type="email"
@@ -383,7 +362,7 @@ if(document.getElementById('imgid').src.indexOf('&d') !== -1 ) {
                         <script type='text/javascript' id='VisitorTracking'>var $zoho = $zoho || {}; $zoho.salesiq = $zoho.salesiq || { widgetcode: 'cbd79a307854091edc4c17ce1ab03ee4b096443a8ff041c96feb67127ffa91205d5fe629768af6d9a03793700d9418c2', values: {}, ready: function () { $zoho.salesiq.floatbutton.visible('hide'); } }; var d = document; s = d.createElement('script'); s.type = 'text/javascript'; s.id = 'zsiqscript'; s.defer = true; s.src = 'https://salesiq.zoho.com/widget'; t = d.getElementsByTagName('script')[0]; t.parentNode.insertBefore(s, t); function trackVisitor() { try { if ($zoho) { var LDTuvidObj = document.forms['WebToLeads3582582000000339009']['LDTuvid']; if (LDTuvidObj) { LDTuvidObj.value = $zoho.salesiq.visitor.uniqueid(); } var firstnameObj = document.forms['WebToLeads3582582000000339009']['First Name']; if (firstnameObj) { name = firstnameObj.value + ' ' + name; } $zoho.salesiq.visitor.name(name); var emailObj = document.forms['WebToLeads3582582000000339009']['Email']; if (emailObj) { email = emailObj.value; $zoho.salesiq.visitor.email(email); } } } catch (e) { } }</script>-->
                     <!-- </form>
                      <iframe name='captchaFrame' style='display:none;'></iframe> -->
-               
+
                 <div class="address text-center">
                     <p><span>Call us: </span>+91 7067 7067 22</p>
                     <p><span>Email us: </span><a href="mailto:lakshmi@zaararealty.in">lakshmi@zaararealty.in</a></p>
