@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { MainSearchService } from '../../../pages/home/main-search.service';
 import { Projects} from '../../../shared/models/projects.model';
+import { Router } from '@angular/router';
 
 declare let $:any;
 
@@ -25,7 +26,7 @@ export class HeaderComponent implements OnInit {
   clients = [];
   quickSearchs = ['Chennai', 'Coonoor', 'Trichy']
 
-    constructor(private searchservice: MainSearchService){
+    constructor(private searchservice: MainSearchService, public router: Router){
 
     }
 
@@ -104,6 +105,7 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit(){
         this.hamburgerMobileMenu();
+        // console.log(this.router.url.indexOf('/project-details'));
     }
 
 

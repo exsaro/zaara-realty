@@ -67,6 +67,7 @@ export class ProjectDetailsComponent implements OnInit{
         Last_Name: ['', [Validators.required]],
         Email: ['', [Validators.required, Validators.email]],
         Mobile: ['', [Validators.required, Validators.pattern(/^(\+)?\d+$/)]],
+        Message: ['', [Validators.required]],
         // recaptchaReactive: ['', [Validators.required]],
         Referrer: [`${window.location.href}`]
       });

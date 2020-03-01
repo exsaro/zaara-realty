@@ -12,7 +12,7 @@
         <li class="nav-item"><a href="#contact">Contact us</a></li>
     </ul>
 
-    <div class="search-container">
+    <div class="search-container" *ngIf="router.url.indexOf('/project-details')">
       <div class="search-section d-flex">
           <input type="text" name="mainSearch" #mainSearch value="" ng-model="mainSearch" (keyup)="displaySuggest(mainSearch.value)" autocomplete="off" class="search-txt flex-grow-1 mr-2" placeholder="Enter your Preferred Location">
           <button class="btn btn-primary" (click)="showProjects($event,mainSearch.value)" [disabled]="!mainSearch.value">Submit</button>

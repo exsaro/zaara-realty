@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MainSearchService } from './main-search.service';
 import { Projects} from '../../shared/models/projects.model';
@@ -14,6 +14,8 @@ declare let $: any;
 })
 
 export class HomeComponent implements OnInit {
+  @ViewChild("refersite") inputvalue;
+  referSite = '';
   private recaptchaSiteKey = '6Lfki38UAAAAADienDrSAirDZ7LdEWmU3SnDtTdc';
   leadForm: FormGroup;
   // public searchResults: string[] = [];
@@ -142,15 +144,20 @@ getclients(){
 });
 }
 
+leadFormObj(){
+  this.leadForm = this.fb.group({
+    Last_Name: ['', [Validators.required]],
+    Email: ['', [Validators.required, Validators.email]],
+    Mobile: ['', [Validators.required, Validators.pattern(/^(\+)?\d+$/)]],
+    Message: ['', [Validators.required]],
+    recaptchaReactive: ['', [Validators.required]],
+    Referrer: [`${window.location.href}?=refer_site=${this.referSite}`]
+  });
+}
+
 
   ngOnInit() {
-    this.leadForm = this.fb.group({
-      Last_Name: ['', [Validators.required]],
-      Email: ['', [Validators.required, Validators.email]],
-      Mobile: ['', [Validators.required, Validators.pattern(/^(\+)?\d+$/)]],
-      recaptchaReactive: ['', [Validators.required]],
-      Referrer: [`${window.location.href}`]
-    });
+    this.leadFormObj();
     this.getclients();
     $('.owl-carousel').owlCarousel({
       items: 5,
@@ -174,5 +181,16 @@ getclients(){
   $('.owl-next').html('<img src="assets/images/svg/arrow-right.svg" width="32" />');
 
   }
+
+  getRef(value){
+    //console.log(this.inputvalue.nativeElement.value);
+    this.referSite = value;
+    setTimeout(()=>{
+      this.leadFormObj();
+    },500)
+
+  }
+
+
 
 }
