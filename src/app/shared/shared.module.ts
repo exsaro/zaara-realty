@@ -16,7 +16,7 @@ import { ProjectSummaryService} from './components/project-summary/project-summa
         HeaderComponent,
         FooterComponent,
         ProjectSummaryComponent,
-
+ 
     ],
     imports :[CommonModule],
     exports: [

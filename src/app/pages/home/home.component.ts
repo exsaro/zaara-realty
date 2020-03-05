@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   succMsg = '';
   progressFlag = false;
 
-  // @ViewChild('mainSearch') mainSearch:ElementRef;
+ // @ViewChild('mainSearch') mainSearch:ElementRef;
   // showSuggest = true;
   disBtn = false;
   loading = false;
@@ -33,10 +33,12 @@ export class HomeComponent implements OnInit {
   clients = [];
   quickSearchs = ['Chennai', 'Coonoor', 'Trichy']
 
-  constructor(private router: Router, private searchservice: MainSearchService, private summeryservice: ProjectSummaryService,private fb: FormBuilder,private projectDetailsService:ProjectDetailsService) {}
+  constructor(private router: Router, private searchservice: MainSearchService,private fb: FormBuilder,private projectDetailsService:ProjectDetailsService) {}
   resolved(captchaResponse: string) {
+   
     console.log(`Resolved captcha with response: ${captchaResponse}`);
 }
+
 leads(form){
   let leadData = JSON.stringify(form.value);
   console.log(form.value);
@@ -116,19 +118,13 @@ leads(form){
 
 
 
-    // showProjects(e: any, projects: string) {
+    showProjects(projects: string) {
 
-    //   e.returnValue = false;
-    //   this.selected = true
-    //   this.searchResults = [];
-    //   this.searchRequestParams = projects;
-    //   this.disBtn = false;
-    //   this.showSuggest = true;
-    //   this.mainSearch.nativeElement.value = '';
-
-    //   window.scrollTo(0, 1300);
-
-    // }
+     // e.returnValue = false;
+      this.searchRequestParams = projects;
+     // this.mainSearch.nativeElement.value = '';
+     window.scrollTo(0, 1300);
+    }
 
     public navigateToProjectDetails(): void {
       this.router.navigate(['/project-details']);
@@ -154,11 +150,13 @@ leadFormObj(){
     Referrer: [`${window.location.href}?=refer_site=${this.referSite}`]
   });
 }
-
+ngOnChanges(){
+  alert(this.searchRequestParams);
+}
 
   ngOnInit() {
     this.leadFormObj();
-    this.getclients();
+    //this.getclients();
     $('.owl-carousel').owlCarousel({
       items: 5,
       nav: true,

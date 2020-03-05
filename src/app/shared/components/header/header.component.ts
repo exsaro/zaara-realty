@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { MainSearchService } from '../../../pages/home/main-search.service';
 import { Projects} from '../../../shared/models/projects.model';
 import { Router } from '@angular/router';
-
+import {ProjectDetailsService} from '../../../pages/project-details/project-details.service';
+import { HomeComponent } from "../../../pages/home/home.component";
 declare let $:any;
 
 @Component({
@@ -14,7 +15,7 @@ declare let $:any;
 export class HeaderComponent implements OnInit {
   public searchResults: string[] = [];
   public searchAllResults: Projects.SearchModel;
-  public searchRequestParams;
+ // public searchRequestParams;
   public succMsgFlag = false;
   succMsg = '';
   progressFlag = false;
@@ -26,7 +27,7 @@ export class HeaderComponent implements OnInit {
   clients = [];
   quickSearchs = ['Chennai', 'Coonoor', 'Trichy']
 
-    constructor(private searchservice: MainSearchService, public router: Router){
+    constructor(private searchservice: MainSearchService, public router: Router, public homecomponent: HomeComponent){
 
     }
 
@@ -87,12 +88,12 @@ export class HeaderComponent implements OnInit {
       e.returnValue = false;
       this.selected = true
       this.searchResults = [];
-      this.searchRequestParams = projects;
+    
       this.disBtn = false;
       this.showSuggest = true;
       this.mainSearch.nativeElement.value = '';
-
-      window.scrollTo(0, 1300);
+      this.homecomponent.showProjects(projects);
+     
 
     }
 

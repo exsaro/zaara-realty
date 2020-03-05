@@ -51,7 +51,7 @@ const routes: Routes = [{
     RouterModule
   ],
 
-  providers: [Title],
+  providers: [Title,HomeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
