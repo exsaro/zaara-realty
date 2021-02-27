@@ -15,6 +15,7 @@ import { AddbuilderComponent } from './pages/admin/addbuilder/addbuilder.compone
 import { AddgalleryComponent } from './pages/admin/addgallery/addgallery.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { PrivacyPolicyComponent } from "./pages/privacy-policy/privacy-policy.component";
 
 
 
@@ -27,6 +28,10 @@ const routes: Routes = [{
 {
   path : 'project-details/:location/:project',
   component: ProjectDetailsComponent
+},
+{
+  path : 'privacy-policy',
+  component: PrivacyPolicyComponent
 }
 ];
 

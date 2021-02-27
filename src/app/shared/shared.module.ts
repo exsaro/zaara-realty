@@ -9,6 +9,7 @@ import { ProjectSummaryService} from './components/project-summary/project-summa
 
 
 
+
 @NgModule({
 
     declarations : [
@@ -16,6 +17,7 @@ import { ProjectSummaryService} from './components/project-summary/project-summa
         HeaderComponent,
         FooterComponent,
         ProjectSummaryComponent,
+
  
     ],
     imports :[CommonModule],

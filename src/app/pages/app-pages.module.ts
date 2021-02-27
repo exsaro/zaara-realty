@@ -28,6 +28,7 @@ import { GallerylistComponent } from './admin/gallerylist/gallerylist.component'
 import {MatChipsModule} from '@angular/material/chips';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 // import { TokenInterceptorService } from '../pages/admin/token-interceptor.service';
 
 
@@ -105,7 +106,8 @@ const routes:Routes = [
          AddpricingComponent,
          AddamenitiesComponent,
          AddgalleryComponent,
-         GallerylistComponent
+         GallerylistComponent,
+         PrivacyPolicyComponent
     ],
     imports :[
          SharedModule,

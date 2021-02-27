@@ -27,7 +27,7 @@ export class ProjectSummaryComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
-        alert("This " +this.searchRequestParams);
+       // alert("This " + this.searchRequestParams);
         if (this.searchRequestParams) {
             const searchRequestParamsLen = this.searchRequestParams.split(',').length;
 
