@@ -52,6 +52,7 @@ export class ProjectSummaryComponent implements OnInit, OnChanges {
             if (apiData && apiData.length) {
                 this.noResult = false;
                 this.projectSummaryList = [...apiData];
+                console.log(this.projectSummaryList);
             } else {
               this.noResult = true;
             }
